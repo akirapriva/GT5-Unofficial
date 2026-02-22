@@ -877,22 +877,6 @@ public class RecipesGregTech {
                 .duration(1 * MINUTES)
                 .eut(3)
                 .addTo(brewingRecipes);
-
-            GTValues.RA.stdBuilder()
-                .itemInputs(new ItemStack(BOPBlockRegistrator.sapling_Rainforest))
-                .fluidInputs(Materials.Honey.getFluid(100))
-                .fluidOutputs(Materials.Biomass.getFluid(100))
-                .duration(1 * MINUTES)
-                .eut(3)
-                .addTo(brewingRecipes);
-
-            GTValues.RA.stdBuilder()
-                .itemInputs(new ItemStack(BOPBlockRegistrator.sapling_Rainforest))
-                .fluidInputs(FluidRegistry.getFluidStack("juice", 100))
-                .fluidOutputs(Materials.Biomass.getFluid(100))
-                .duration(1 * MINUTES)
-                .eut(3)
-                .addTo(brewingRecipes);
         }
     }
 
