@@ -27,6 +27,7 @@ import gregtech.api.enums.OrePrefixes;
 import gregtech.api.enums.TierEU;
 import gregtech.api.recipe.metadata.CompressionTierKey;
 import gregtech.api.util.GTOreDictUnificator;
+import gregtech.common.config.Gregtech;
 import gregtech.common.items.CombType;
 import gregtech.loaders.misc.GTBees;
 import gtPlusPlus.core.fluids.GTPPFluids;
@@ -55,15 +56,17 @@ public class NetheriteRecipes {
                     .addTo(autoclaveRecipes);
 
                 if (Forestry.isModLoaded()) {
-                    GTValues.RA.stdBuilder() // Prismarine + Comb
-                        .itemInputs(
-                            GregtechItemList.RedAlgaeBiomass.get(32),
-                            GTBees.combs.getStackForType(CombType.PRISMATIC, 8))
-                        .fluidInputs(Materials.Grade1PurifiedWater.getFluid(8000))
-                        .itemOutputs(GTOreDictUnificator.get(OrePrefixes.shard, Materials.Prismarine, 16))
-                        .duration(15 * SECONDS)
-                        .eut(TierEU.RECIPE_LuV)
-                        .addTo(autoclaveRecipes);
+                    if (Gregtech.general.GTBees) {
+                        GTValues.RA.stdBuilder() // Prismarine + Comb
+                            .itemInputs(
+                                GregtechItemList.RedAlgaeBiomass.get(32),
+                                GTBees.combs.getStackForType(CombType.PRISMATIC, 8))
+                            .fluidInputs(Materials.Grade1PurifiedWater.getFluid(8000))
+                            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.shard, Materials.Prismarine, 16))
+                            .duration(15 * SECONDS)
+                            .eut(TierEU.RECIPE_LuV)
+                            .addTo(autoclaveRecipes);
+                    }
                 }
             }
 
@@ -360,18 +363,20 @@ public class NetheriteRecipes {
             .addTo(blastFurnaceRecipes);
 
         if (Forestry.isModLoaded()) {
-            GTValues.RA.stdBuilder()
-                .itemInputs(
-                    ItemList.Netherite_Nanoparticles.get(1),
-                    GTBees.combs.getStackForType(CombType.NETHERITE, 8))
-                .circuit(2)
-                .fluidInputs(Materials.HellishMetal.getMolten(1 * INGOTS))
-                .itemOutputs(ItemList.Intensely_Bonded_Netherite_Nanoparticles.get(2))
-                .fluidOutputs(Materials.Thaumium.getMolten(2 * NUGGETS))
-                .duration(15 * SECONDS)
-                .eut(TierEU.RECIPE_ZPM)
-                .metadata(COIL_HEAT, 7500)
-                .addTo(blastFurnaceRecipes);
+            if (Gregtech.general.GTBees) {
+                GTValues.RA.stdBuilder()
+                    .itemInputs(
+                        ItemList.Netherite_Nanoparticles.get(1),
+                        GTBees.combs.getStackForType(CombType.NETHERITE, 8))
+                    .circuit(2)
+                    .fluidInputs(Materials.HellishMetal.getMolten(1 * INGOTS))
+                    .itemOutputs(ItemList.Intensely_Bonded_Netherite_Nanoparticles.get(2))
+                    .fluidOutputs(Materials.Thaumium.getMolten(2 * NUGGETS))
+                    .duration(15 * SECONDS)
+                    .eut(TierEU.RECIPE_ZPM)
+                    .metadata(COIL_HEAT, 7500)
+                    .addTo(blastFurnaceRecipes);
+            }
         }
 
         NetheriteRecipes.addNetheriteParts();

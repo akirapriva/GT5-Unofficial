@@ -51,6 +51,7 @@ import gregtech.api.util.GTLog;
 import gregtech.api.util.GTOreDictUnificator;
 import gregtech.api.util.GTRecipe;
 import gregtech.api.util.GTUtility;
+import gregtech.common.config.Gregtech;
 import gregtech.common.items.CombType;
 import gregtech.loaders.misc.GTBees;
 import gregtech.mixin.interfaces.accessors.IRecipeMutableAccess;
@@ -708,24 +709,26 @@ public class NaquadahReworkRecipeLoader {
             if (!GTUtility.isStackValid(input)) continue;
 
             int[] oreDict = OreDictionary.getOreIDs(input);
-            if (checkCombs && input.isItemEqual(GTBees.combs.getStackForType(CombType.DOB))) {
-                GTRecipe tRecipe = recipe.copy();
-                boolean modified = false;
-                for (int i = 0; i < tRecipe.mOutputs.length; i++) {
-                    if (!GTUtility.isStackValid(tRecipe.mOutputs[i])) continue;
-                    if (tRecipe.mOutputs[i].isItemEqual(Materials.Naquadah.getDustTiny(1))) {
-                        tRecipe.mOutputs[i] = GTUtility.copyAmount(
-                            tRecipe.mOutputs[i].stackSize * 2L,
-                            GGMaterial.naquadahEarth.get(OrePrefixes.dustTiny, 1));
-                        modified = true;
+            if (Gregtech.general.GTBees) {
+                if (checkCombs && input.isItemEqual(GTBees.combs.getStackForType(CombType.DOB))) {
+                    GTRecipe tRecipe = recipe.copy();
+                    boolean modified = false;
+                    for (int i = 0; i < tRecipe.mOutputs.length; i++) {
+                        if (!GTUtility.isStackValid(tRecipe.mOutputs[i])) continue;
+                        if (tRecipe.mOutputs[i].isItemEqual(Materials.Naquadah.getDustTiny(1))) {
+                            tRecipe.mOutputs[i] = GTUtility.copyAmount(
+                                tRecipe.mOutputs[i].stackSize * 2L,
+                                GGMaterial.naquadahEarth.get(OrePrefixes.dustTiny, 1));
+                            modified = true;
+                        }
                     }
+                    if (modified) {
+                        GTLog.err.println("recipe edited: " + displayRecipe(tRecipe));
+                        reAdd.add(tRecipe);
+                        remove.add(recipe);
+                    }
+                    continue;
                 }
-                if (modified) {
-                    GTLog.err.println("recipe edited: " + displayRecipe(tRecipe));
-                    reAdd.add(tRecipe);
-                    remove.add(recipe);
-                }
-                continue;
             }
 
             for (int oreDictID : oreDict) {

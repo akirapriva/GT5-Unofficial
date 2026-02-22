@@ -24,6 +24,7 @@ import gregtech.api.enums.Materials;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.enums.TierEU;
 import gregtech.api.util.GTOreDictUnificator;
+import gregtech.common.config.Gregtech;
 import gregtech.common.items.CombType;
 import gregtech.loaders.misc.GTBees;
 import gtPlusPlus.core.fluids.GTPPFluids;
@@ -132,6 +133,9 @@ public class RecipesRareEarthProcessing {
             .addTo(chemicalBathRecipes);
 
         if (Forestry.isModLoaded()) {
+            if (!Gregtech.general.GTBees) {
+                return;
+            }
             // Refined Rare Earth Comb Processing
             GTValues.RA.stdBuilder()
                 .itemInputs(GTBees.combs.getStackForType(CombType.REFINEDRAREEARTH, 1))

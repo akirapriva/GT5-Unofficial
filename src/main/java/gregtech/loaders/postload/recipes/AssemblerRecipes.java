@@ -6168,39 +6168,43 @@ public class AssemblerRecipes implements Runnable {
 
         }
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                new ItemStack(Blocks.piston, 1, 0),
-                ItemList.FR_Casing_Sturdy.get(1),
-                GTOreDictUnificator.get(OrePrefixes.plate, Materials.Lapis, 1))
-            .circuit(1)
-            .itemOutputs(getModItem(NewHorizonsCoreMod.ID, "EngineCore", 1L, 0))
-            .fluidInputs(Materials.SeedOil.getFluid(250))
-            .duration(5 * SECONDS)
-            .eut(TierEU.RECIPE_LV / 2)
-            .addTo(assemblerRecipes);
+        if (Forestry.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    new ItemStack(Blocks.piston, 1, 0),
+                    ItemList.FR_Casing_Sturdy.get(1),
+                    GTOreDictUnificator.get(OrePrefixes.plate, Materials.Lapis, 1))
+                .circuit(1)
+                .itemOutputs(getModItem(NewHorizonsCoreMod.ID, "EngineCore", 1L, 0))
+                .fluidInputs(Materials.SeedOil.getFluid(250))
+                .duration(5 * SECONDS)
+                .eut(TierEU.RECIPE_LV / 2)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                new ItemStack(Blocks.piston, 1, 0),
-                ItemList.FR_Casing_Sturdy.get(1),
-                GTOreDictUnificator.get(OrePrefixes.plate, Materials.Lapis, 1))
-            .circuit(1)
-            .itemOutputs(getModItem(NewHorizonsCoreMod.ID, "EngineCore", 1L, 0))
-            .fluidInputs(Materials.Lubricant.getFluid(125))
-            .duration(5 * SECONDS)
-            .eut(TierEU.RECIPE_LV / 2)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    new ItemStack(Blocks.piston, 1, 0),
+                    ItemList.FR_Casing_Sturdy.get(1),
+                    GTOreDictUnificator.get(OrePrefixes.plate, Materials.Lapis, 1))
+                .circuit(1)
+                .itemOutputs(getModItem(NewHorizonsCoreMod.ID, "EngineCore", 1L, 0))
+                .fluidInputs(Materials.Lubricant.getFluid(125))
+                .duration(5 * SECONDS)
+                .eut(TierEU.RECIPE_LV / 2)
+                .addTo(assemblerRecipes);
+        }
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                getModItem(ExtraUtilities.ID, "trashcan", 1L, 0),
-                GTOreDictUnificator.get(OrePrefixes.plate, Materials.Obsidian, 4))
-            .circuit(1)
-            .itemOutputs(getModItem(Railcraft.ID, "machine.beta", 1L, 11))
-            .duration(10 * SECONDS)
-            .eut(TierEU.RECIPE_LV / 2)
-            .addTo(assemblerRecipes);
+        if (ExtraUtilities.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    getModItem(ExtraUtilities.ID, "trashcan", 1L, 0),
+                    GTOreDictUnificator.get(OrePrefixes.plate, Materials.Obsidian, 4))
+                .circuit(1)
+                .itemOutputs(getModItem(Railcraft.ID, "machine.beta", 1L, 11))
+                .duration(10 * SECONDS)
+                .eut(TierEU.RECIPE_LV / 2)
+                .addTo(assemblerRecipes);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(
@@ -6262,15 +6266,17 @@ public class AssemblerRecipes implements Runnable {
             .eut(TierEU.RECIPE_LV)
             .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.plate, Materials.AnyIron, 2),
-                getModItem(TinkerConstruct.ID, "GlassPane", 2L, 0))
-            .circuit(21)
-            .itemOutputs(getModItem(Railcraft.ID, "machine.beta", 2L, 1))
-            .duration(40 * SECONDS)
-            .eut(TierEU.RECIPE_LV)
-            .addTo(assemblerRecipes);
+        if (TinkerConstruct.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    GTOreDictUnificator.get(OrePrefixes.plate, Materials.AnyIron, 2),
+                    getModItem(TinkerConstruct.ID, "GlassPane", 2L, 0))
+                .circuit(21)
+                .itemOutputs(getModItem(Railcraft.ID, "machine.beta", 2L, 1))
+                .duration(40 * SECONDS)
+                .eut(TierEU.RECIPE_LV)
+                .addTo(assemblerRecipes);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(
@@ -6300,15 +6306,17 @@ public class AssemblerRecipes implements Runnable {
             .eut(TierEU.RECIPE_MV / 2)
             .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.plate, Materials.Steel, 2),
-                getModItem(TinkerConstruct.ID, "GlassPane", 2L, 0))
-            .circuit(21)
-            .itemOutputs(getModItem(Railcraft.ID, "machine.beta", 2L, 14))
-            .duration(20 * SECONDS)
-            .eut(TierEU.RECIPE_MV / 2)
-            .addTo(assemblerRecipes);
+        if (TinkerConstruct.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    GTOreDictUnificator.get(OrePrefixes.plate, Materials.Steel, 2),
+                    getModItem(TinkerConstruct.ID, "GlassPane", 2L, 0))
+                .circuit(21)
+                .itemOutputs(getModItem(Railcraft.ID, "machine.beta", 2L, 14))
+                .duration(20 * SECONDS)
+                .eut(TierEU.RECIPE_MV / 2)
+                .addTo(assemblerRecipes);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(
@@ -6338,15 +6346,17 @@ public class AssemblerRecipes implements Runnable {
             .eut(TierEU.RECIPE_MV)
             .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.plate, Materials.Aluminium, 2),
-                getModItem(TinkerConstruct.ID, "GlassPane", 2L, 0))
-            .circuit(21)
-            .itemOutputs(getModItem(Railcraft.ID, "machine.zeta", 2L, 1))
-            .duration(40 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .addTo(assemblerRecipes);
+        if (TinkerConstruct.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    GTOreDictUnificator.get(OrePrefixes.plate, Materials.Aluminium, 2),
+                    getModItem(TinkerConstruct.ID, "GlassPane", 2L, 0))
+                .circuit(21)
+                .itemOutputs(getModItem(Railcraft.ID, "machine.zeta", 2L, 1))
+                .duration(40 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .addTo(assemblerRecipes);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(
@@ -6376,15 +6386,17 @@ public class AssemblerRecipes implements Runnable {
             .eut(TierEU.RECIPE_HV / 2)
             .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.plate, Materials.StainlessSteel, 2),
-                getModItem(TinkerConstruct.ID, "GlassPane", 2L, 0))
-            .circuit(21)
-            .itemOutputs(getModItem(Railcraft.ID, "machine.zeta", 2L, 4))
-            .duration(20 * SECONDS)
-            .eut(TierEU.RECIPE_HV / 2)
-            .addTo(assemblerRecipes);
+        if (TinkerConstruct.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    GTOreDictUnificator.get(OrePrefixes.plate, Materials.StainlessSteel, 2),
+                    getModItem(TinkerConstruct.ID, "GlassPane", 2L, 0))
+                .circuit(21)
+                .itemOutputs(getModItem(Railcraft.ID, "machine.zeta", 2L, 4))
+                .duration(20 * SECONDS)
+                .eut(TierEU.RECIPE_HV / 2)
+                .addTo(assemblerRecipes);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(
@@ -6414,15 +6426,17 @@ public class AssemblerRecipes implements Runnable {
             .eut(TierEU.RECIPE_HV)
             .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.plate, Materials.Titanium, 2),
-                getModItem(TinkerConstruct.ID, "GlassPane", 2L, 0))
-            .circuit(21)
-            .itemOutputs(getModItem(Railcraft.ID, "machine.zeta", 2L, 7))
-            .duration(40 * SECONDS)
-            .eut(TierEU.RECIPE_HV)
-            .addTo(assemblerRecipes);
+        if (TinkerConstruct.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    GTOreDictUnificator.get(OrePrefixes.plate, Materials.Titanium, 2),
+                    getModItem(TinkerConstruct.ID, "GlassPane", 2L, 0))
+                .circuit(21)
+                .itemOutputs(getModItem(Railcraft.ID, "machine.zeta", 2L, 7))
+                .duration(40 * SECONDS)
+                .eut(TierEU.RECIPE_HV)
+                .addTo(assemblerRecipes);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(
@@ -6452,15 +6466,17 @@ public class AssemblerRecipes implements Runnable {
             .eut(TierEU.RECIPE_EV)
             .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.plate, Materials.TungstenSteel, 2),
-                getModItem(TinkerConstruct.ID, "GlassPane", 2L, 0))
-            .circuit(21)
-            .itemOutputs(getModItem(Railcraft.ID, "machine.zeta", 2L, 10))
-            .duration(20 * SECONDS)
-            .eut(TierEU.RECIPE_EV)
-            .addTo(assemblerRecipes);
+        if (TinkerConstruct.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    GTOreDictUnificator.get(OrePrefixes.plate, Materials.TungstenSteel, 2),
+                    getModItem(TinkerConstruct.ID, "GlassPane", 2L, 0))
+                .circuit(21)
+                .itemOutputs(getModItem(Railcraft.ID, "machine.zeta", 2L, 10))
+                .duration(20 * SECONDS)
+                .eut(TierEU.RECIPE_EV)
+                .addTo(assemblerRecipes);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(
@@ -6490,15 +6506,17 @@ public class AssemblerRecipes implements Runnable {
             .eut(TierEU.RECIPE_EV)
             .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.plate, Materials.Palladium, 2),
-                getModItem(TinkerConstruct.ID, "GlassPane", 2L, 0))
-            .circuit(21)
-            .itemOutputs(getModItem(Railcraft.ID, "machine.zeta", 2L, 13))
-            .duration(40 * SECONDS)
-            .eut(TierEU.RECIPE_EV)
-            .addTo(assemblerRecipes);
+        if (TinkerConstruct.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    GTOreDictUnificator.get(OrePrefixes.plate, Materials.Palladium, 2),
+                    getModItem(TinkerConstruct.ID, "GlassPane", 2L, 0))
+                .circuit(21)
+                .itemOutputs(getModItem(Railcraft.ID, "machine.zeta", 2L, 13))
+                .duration(40 * SECONDS)
+                .eut(TierEU.RECIPE_EV)
+                .addTo(assemblerRecipes);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(
@@ -6527,16 +6545,17 @@ public class AssemblerRecipes implements Runnable {
             .duration(20 * SECONDS)
             .eut(TierEU.RECIPE_IV / 2)
             .addTo(assemblerRecipes);
-
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.plate, Materials.Iridium, 2),
-                getModItem(TinkerConstruct.ID, "GlassPane", 2L, 0))
-            .circuit(21)
-            .itemOutputs(getModItem(Railcraft.ID, "machine.eta", 2L, 1))
-            .duration(20 * SECONDS)
-            .eut(TierEU.RECIPE_IV / 2)
-            .addTo(assemblerRecipes);
+        if (TinkerConstruct.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    GTOreDictUnificator.get(OrePrefixes.plate, Materials.Iridium, 2),
+                    getModItem(TinkerConstruct.ID, "GlassPane", 2L, 0))
+                .circuit(21)
+                .itemOutputs(getModItem(Railcraft.ID, "machine.eta", 2L, 1))
+                .duration(20 * SECONDS)
+                .eut(TierEU.RECIPE_IV / 2)
+                .addTo(assemblerRecipes);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(
@@ -6565,16 +6584,17 @@ public class AssemblerRecipes implements Runnable {
             .duration(40 * SECONDS)
             .eut(TierEU.RECIPE_IV)
             .addTo(assemblerRecipes);
-
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.plate, Materials.Osmium, 2),
-                getModItem(TinkerConstruct.ID, "GlassPane", 2L, 0))
-            .circuit(21)
-            .itemOutputs(getModItem(Railcraft.ID, "machine.eta", 2L, 4))
-            .duration(40 * SECONDS)
-            .eut(TierEU.RECIPE_IV)
-            .addTo(assemblerRecipes);
+        if (TinkerConstruct.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    GTOreDictUnificator.get(OrePrefixes.plate, Materials.Osmium, 2),
+                    getModItem(TinkerConstruct.ID, "GlassPane", 2L, 0))
+                .circuit(21)
+                .itemOutputs(getModItem(Railcraft.ID, "machine.eta", 2L, 4))
+                .duration(40 * SECONDS)
+                .eut(TierEU.RECIPE_IV)
+                .addTo(assemblerRecipes);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(
@@ -6603,16 +6623,17 @@ public class AssemblerRecipes implements Runnable {
             .duration(20 * SECONDS)
             .eut(TierEU.RECIPE_LuV)
             .addTo(assemblerRecipes);
-
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.plate, Materials.Neutronium, 2),
-                getModItem(TinkerConstruct.ID, "GlassPane", 2L, 0))
-            .circuit(21)
-            .itemOutputs(getModItem(Railcraft.ID, "machine.eta", 2L, 7))
-            .duration(20 * SECONDS)
-            .eut(TierEU.RECIPE_LuV)
-            .addTo(assemblerRecipes);
+        if (TinkerConstruct.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    GTOreDictUnificator.get(OrePrefixes.plate, Materials.Neutronium, 2),
+                    getModItem(TinkerConstruct.ID, "GlassPane", 2L, 0))
+                .circuit(21)
+                .itemOutputs(getModItem(Railcraft.ID, "machine.eta", 2L, 7))
+                .duration(20 * SECONDS)
+                .eut(TierEU.RECIPE_LuV)
+                .addTo(assemblerRecipes);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(

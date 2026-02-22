@@ -19,6 +19,7 @@ import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
 import gregtech.api.enums.Mods;
 import gregtech.api.recipe.RecipeMaps;
+import gregtech.common.config.Gregtech;
 import gregtech.common.items.CombType;
 import gregtech.loaders.misc.GTBees;
 
@@ -128,33 +129,35 @@ public class GTForestryCompat {
 
     public static void transferCentrifugeRecipes() {
         // Dumb exceptions
-        ItemStack irradiatedComb = GTModHandler.getModItem(Mods.Forestry.ID, "beeCombs", 1, 9);
-        ItemStack DOBComb = GTBees.combs.getStackForType(CombType.DOB);
+        if (Gregtech.general.GTBees) {
+            ItemStack irradiatedComb = GTModHandler.getModItem(Mods.Forestry.ID, "beeCombs", 1, 9);
+            ItemStack DOBComb = GTBees.combs.getStackForType(CombType.DOB);
 
-        for (ICentrifugeRecipe tRecipe : RecipeManagers.centrifugeManager.recipes()) {
-            ItemStack input = tRecipe.getInput();
+            for (ICentrifugeRecipe tRecipe : RecipeManagers.centrifugeManager.recipes()) {
+                ItemStack input = tRecipe.getInput();
 
-            // Don't transfer GT recipes to centrifuge, those recipes are made already by ItemComb
-            if (input.getUnlocalizedName()
-                .contains("gt.comb") && !input.isItemEqual(DOBComb)) continue;
-            if (irradiatedComb != null && input.isItemEqual(irradiatedComb)) continue;
-            Map<ItemStack, Float> outputs = tRecipe.getAllProducts();
-            ItemStack[] tOutputs = new ItemStack[outputs.size()];
-            int[] tChances = new int[outputs.size()];
-            int i = 0;
-            for (Map.Entry<ItemStack, Float> entry : outputs.entrySet()) {
-                tChances[i] = (int) (entry.getValue() * 10000);
-                tOutputs[i] = entry.getKey()
-                    .copy();
-                i++;
+                // Don't transfer GT recipes to centrifuge, those recipes are made already by ItemComb
+                if (input.getUnlocalizedName()
+                    .contains("gt.comb") && !input.isItemEqual(DOBComb)) continue;
+                if (irradiatedComb != null && input.isItemEqual(irradiatedComb)) continue;
+                Map<ItemStack, Float> outputs = tRecipe.getAllProducts();
+                ItemStack[] tOutputs = new ItemStack[outputs.size()];
+                int[] tChances = new int[outputs.size()];
+                int i = 0;
+                for (Map.Entry<ItemStack, Float> entry : outputs.entrySet()) {
+                    tChances[i] = (int) (entry.getValue() * 10000);
+                    tOutputs[i] = entry.getKey()
+                        .copy();
+                    i++;
+                }
+                GTValues.RA.stdBuilder()
+                    .itemInputs(tRecipe.getInput())
+                    .itemOutputs(tOutputs)
+                    .outputChances(tChances)
+                    .duration(6 * SECONDS + 8 * TICKS)
+                    .eut(5)
+                    .addTo(centrifugeRecipes);
             }
-            GTValues.RA.stdBuilder()
-                .itemInputs(tRecipe.getInput())
-                .itemOutputs(tOutputs)
-                .outputChances(tChances)
-                .duration(6 * SECONDS + 8 * TICKS)
-                .eut(5)
-                .addTo(centrifugeRecipes);
         }
     }
 

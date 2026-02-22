@@ -880,7 +880,7 @@ public class OrePrefixes {
         .recyclable()
         .materialGenerationBits(TOOL)
         .materialAmount(M * 2)
-        .textureIndex(32)
+        .textureIndex(OrePrefixTextureID.TOOL_HEAD_SWORD)
         .build();
 
     public static final OrePrefixes toolHeadPickaxe = new OrePrefixBuilder("toolHeadPickaxe")
@@ -891,7 +891,7 @@ public class OrePrefixes {
         .recyclable()
         .materialGenerationBits(TOOL)
         .materialAmount(M * 3)
-        .textureIndex(33)
+        .textureIndex(OrePrefixTextureID.TOOL_HEAD_PICKAXE)
         .build();
 
     public static final OrePrefixes toolHeadShovel = new OrePrefixBuilder("toolHeadShovel")
@@ -903,7 +903,7 @@ public class OrePrefixes {
         .materialGenerationBits(TOOL)
         .materialAmount(M * 1)
         .defaultStackSize(64)
-        .textureIndex(34)
+        .textureIndex(OrePrefixTextureID.TOOL_HEAD_SHOVEL)
         .build();
 
     public static final OrePrefixes toolHeadUniversalSpade = new OrePrefixBuilder("toolHeadUniversalSpade")
@@ -915,7 +915,7 @@ public class OrePrefixes {
         .materialGenerationBits(TOOL)
         .materialAmount(M * 1)
         .defaultStackSize(64)
-        .textureIndex(43)
+        .textureIndex(OrePrefixTextureID.TOOL_HEAD_UNIVERSAL_SPADE)
         .build();
 
     public static final OrePrefixes toolHeadAxe = new OrePrefixBuilder("toolHeadAxe").withDefaultLocalName("Axe Heads")
@@ -926,7 +926,7 @@ public class OrePrefixes {
         .materialGenerationBits(TOOL)
         .materialAmount(M * 3)
         .defaultStackSize(64)
-        .textureIndex(35)
+        .textureIndex(OrePrefixTextureID.TOOL_HEAD_AXE)
         .build();
 
     public static final OrePrefixes toolHeadHoe = new OrePrefixBuilder("toolHeadHoe").withDefaultLocalName("Hoe Heads")
@@ -937,7 +937,7 @@ public class OrePrefixes {
         .materialGenerationBits(TOOL)
         .materialAmount(M * 2)
         .defaultStackSize(64)
-        .textureIndex(36)
+        .textureIndex(OrePrefixTextureID.TOOL_HEAD_HOE)
         .build();
 
     public static final OrePrefixes toolHeadSense = new OrePrefixBuilder("toolHeadSense")
@@ -949,7 +949,7 @@ public class OrePrefixes {
         .materialGenerationBits(TOOL)
         .materialAmount(M * 3)
         .defaultStackSize(64)
-        .textureIndex(44)
+        .textureIndex(OrePrefixTextureID.TOOL_HEAD_SENSE)
         .build();
 
     /** consisting out of 2 Ingots. */
@@ -985,7 +985,7 @@ public class OrePrefixes {
         .materialGenerationBits(TOOL)
         .materialAmount(M * 4)
         .defaultStackSize(64)
-        .textureIndex(45)
+        .textureIndex(OrePrefixTextureID.TOOL_HEAD_PLOW)
         .build();
 
     /** consisting out of 2 Ingots. */

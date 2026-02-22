@@ -27,6 +27,7 @@ import static gregtech.api.util.GTRecipeConstants.CLEANROOM;
 import static gregtech.api.util.GTRecipeConstants.UniversalChemical;
 import static gtPlusPlus.api.recipe.GTPPRecipeMaps.chemicalDehydratorRecipes;
 
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.List;
 
@@ -65,6 +66,7 @@ import gregtech.api.util.GTRecipeConstants;
 import gregtech.api.util.GTUtility;
 import gregtech.common.render.items.GeneratedMaterialRenderer;
 import gregtech.loaders.misc.GTBees;
+import it.unimi.dsi.fastutil.ints.IntArrayList;
 import mods.railcraft.common.items.firestone.IItemFirestoneBurning;
 import vazkii.botania.common.item.ModItems;
 
@@ -362,95 +364,97 @@ public class ItemComb extends Item implements IGT_ItemWithMaterialRenderer, IIte
             ItemList.FR_RefractoryWax.get(1),
             50 * 100);
 
-        // Thaumic
-        addProcessGT(CombType.THAUMIUMDUST, new Materials[] { Materials.Thaumium }, Voltage.MV);
-        addCentrifugeToItemStack(
-            CombType.THAUMIUMSHARD,
-            new ItemStack[] { GTModHandler.getModItem(MagicBees.ID, "propolis", 1, 1),
-                GTModHandler.getModItem(MagicBees.ID, "propolis", 1, 2),
-                GTModHandler.getModItem(MagicBees.ID, "propolis", 1, 3),
-                GTModHandler.getModItem(MagicBees.ID, "propolis", 1, 4),
-                GTModHandler.getModItem(MagicBees.ID, "propolis", 1, 5),
-                GTModHandler.getModItem(MagicBees.ID, "propolis", 1, 6),
-                GTModHandler.getModItem(MagicBees.ID, "wax", 1, 0) },
-            new int[] { 20 * 100, 20 * 100, 20 * 100, 20 * 100, 20 * 100, 20 * 100, 50 * 100 },
-            Voltage.ULV);
-        addProcessGT(CombType.AMBER, new Materials[] { Materials.Amber }, Voltage.LV);
-        addProcessGT(CombType.QUICKSILVER, new Materials[] { Materials.Cinnabar }, Voltage.LV);
-        addCentrifugeToItemStack(
-            CombType.SALISMUNDUS,
-            new ItemStack[] { GTModHandler.getModItem(Thaumcraft.ID, "ItemResource", 1, 14),
-                GTModHandler.getModItem(MagicBees.ID, "wax", 1, 0) },
-            new int[] { 100 * 100, 50 * 100 },
-            Voltage.MV);
-        addCentrifugeToItemStack(
-            CombType.TAINTED,
-            new ItemStack[] { GTModHandler.getModItem(Thaumcraft.ID, "ItemResource", 1, 11),
-                GTModHandler.getModItem(Thaumcraft.ID, "ItemResource", 1, 12),
-                GTModHandler.getModItem(Thaumcraft.ID, "blockTaintFibres", 1, 0),
-                GTModHandler.getModItem(Thaumcraft.ID, "blockTaintFibres", 1, 1),
-                GTModHandler.getModItem(Thaumcraft.ID, "blockTaintFibres", 1, 2),
-                GTModHandler.getModItem(MagicBees.ID, "wax", 1, 0) },
-            new int[] { 15 * 100, 15 * 100, 15 * 100, 15 * 100, 15 * 100, 50 * 100 },
-            Voltage.ULV);
-        addProcessGT(CombType.MITHRIL, new Materials[] { Materials.Mithril }, Voltage.HV);
-        addProcessGT(CombType.ASTRALSILVER, new Materials[] { Materials.AstralSilver }, Voltage.HV);
-        addCentrifugeToMaterial(
-            CombType.ASTRALSILVER,
-            new Materials[] { Materials.AstralSilver, Materials.Silver },
-            new int[] { 20 * 100, 10 * 100 },
-            GTValues.emptyIntArray,
-            Voltage.HV,
-            GTModHandler.getModItem(MagicBees.ID, "wax", 1, 0),
-            50 * 100);
-        addCentrifugeToItemStack(
-            CombType.THAUMINITE,
-            new ItemStack[] { GTModHandler.getModItem(ThaumicBases.ID, "resource", 1, 0),
-                GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.Thaumium, 1),
-                GTModHandler.getModItem(MagicBees.ID, "wax", 1, 0) },
-            new int[] { 20 * 100, 10 * 100, 50 * 100 },
-            Voltage.HV);
-        addProcessGT(CombType.SHADOWMETAL, new Materials[] { Materials.Shadow }, Voltage.HV);
-        addCentrifugeToMaterial(
-            CombType.SHADOWMETAL,
-            new Materials[] { Materials.Shadow, Materials.ShadowSteel },
-            new int[] { 20 * 100, 10 * 100 },
-            GTValues.emptyIntArray,
-            Voltage.HV,
-            GTModHandler.getModItem(MagicBees.ID, "wax", 1, 0),
-            50 * 100);
-        addProcessGT(CombType.DIVIDED, new Materials[] { Materials.Diamond }, Voltage.HV);
-        addCentrifugeToItemStack(
-            CombType.DIVIDED,
-            new ItemStack[] { GTModHandler.getModItem(MagicBees.ID, "wax", 1, 0),
-                GTModHandler.getModItem(ExtraUtilities.ID, "unstableingot", 1, 1),
-                GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.Iron, 1),
-                GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.Diamond, 1) },
-            new int[] { 50 * 100, 20 * 100, 10 * 100, 5 * 100 },
-            Voltage.HV);
-        addProcessGT(CombType.SPARKLING, new Materials[] { Materials.NetherStar }, Voltage.EV);
-        addCentrifugeToItemStack(
-            CombType.SPARKLING,
-            new ItemStack[] { GTModHandler.getModItem(MagicBees.ID, "wax", 1, 0),
-                GTModHandler.getModItem(MagicBees.ID, "miscResources", 2, 5),
-                GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.NetherStar, 1) },
-            new int[] { 50 * 100, 10 * 100, 10 * 100 },
-            Voltage.EV);
+        if (Thaumcraft.isModLoaded() && MagicBees.isModLoaded()) {
+            // Thaumic
+            addProcessGT(CombType.THAUMIUMDUST, new Materials[] { Materials.Thaumium }, Voltage.MV);
+            addCentrifugeToItemStack(
+                CombType.THAUMIUMSHARD,
+                new ItemStack[] { GTModHandler.getModItem(MagicBees.ID, "propolis", 1, 1),
+                    GTModHandler.getModItem(MagicBees.ID, "propolis", 1, 2),
+                    GTModHandler.getModItem(MagicBees.ID, "propolis", 1, 3),
+                    GTModHandler.getModItem(MagicBees.ID, "propolis", 1, 4),
+                    GTModHandler.getModItem(MagicBees.ID, "propolis", 1, 5),
+                    GTModHandler.getModItem(MagicBees.ID, "propolis", 1, 6),
+                    GTModHandler.getModItem(MagicBees.ID, "wax", 1, 0) },
+                new int[] { 20 * 100, 20 * 100, 20 * 100, 20 * 100, 20 * 100, 20 * 100, 50 * 100 },
+                Voltage.ULV);
+            addProcessGT(CombType.AMBER, new Materials[] { Materials.Amber }, Voltage.LV);
+            addProcessGT(CombType.QUICKSILVER, new Materials[] { Materials.Cinnabar }, Voltage.LV);
+            addCentrifugeToItemStack(
+                CombType.SALISMUNDUS,
+                new ItemStack[] { GTModHandler.getModItem(Thaumcraft.ID, "ItemResource", 1, 14),
+                    GTModHandler.getModItem(MagicBees.ID, "wax", 1, 0) },
+                new int[] { 100 * 100, 50 * 100 },
+                Voltage.MV);
+            addCentrifugeToItemStack(
+                CombType.TAINTED,
+                new ItemStack[] { GTModHandler.getModItem(Thaumcraft.ID, "ItemResource", 1, 11),
+                    GTModHandler.getModItem(Thaumcraft.ID, "ItemResource", 1, 12),
+                    GTModHandler.getModItem(Thaumcraft.ID, "blockTaintFibres", 1, 0),
+                    GTModHandler.getModItem(Thaumcraft.ID, "blockTaintFibres", 1, 1),
+                    GTModHandler.getModItem(Thaumcraft.ID, "blockTaintFibres", 1, 2),
+                    GTModHandler.getModItem(MagicBees.ID, "wax", 1, 0) },
+                new int[] { 15 * 100, 15 * 100, 15 * 100, 15 * 100, 15 * 100, 50 * 100 },
+                Voltage.ULV);
+            addProcessGT(CombType.MITHRIL, new Materials[] { Materials.Mithril }, Voltage.HV);
+            addProcessGT(CombType.ASTRALSILVER, new Materials[] { Materials.AstralSilver }, Voltage.HV);
+            addCentrifugeToMaterial(
+                CombType.ASTRALSILVER,
+                new Materials[] { Materials.AstralSilver, Materials.Silver },
+                new int[] { 20 * 100, 10 * 100 },
+                GTValues.emptyIntArray,
+                Voltage.HV,
+                GTModHandler.getModItem(MagicBees.ID, "wax", 1, 0),
+                50 * 100);
+            addCentrifugeToItemStack(
+                CombType.THAUMINITE,
+                new ItemStack[] { GTModHandler.getModItem(ThaumicBases.ID, "resource", 1, 0),
+                    GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.Thaumium, 1),
+                    GTModHandler.getModItem(MagicBees.ID, "wax", 1, 0) },
+                new int[] { 20 * 100, 10 * 100, 50 * 100 },
+                Voltage.HV);
+            addProcessGT(CombType.SHADOWMETAL, new Materials[] { Materials.Shadow }, Voltage.HV);
+            addCentrifugeToMaterial(
+                CombType.SHADOWMETAL,
+                new Materials[] { Materials.Shadow, Materials.ShadowSteel },
+                new int[] { 20 * 100, 10 * 100 },
+                GTValues.emptyIntArray,
+                Voltage.HV,
+                GTModHandler.getModItem(MagicBees.ID, "wax", 1, 0),
+                50 * 100);
+            addProcessGT(CombType.DIVIDED, new Materials[] { Materials.Diamond }, Voltage.HV);
+            addCentrifugeToItemStack(
+                CombType.DIVIDED,
+                new ItemStack[] { GTModHandler.getModItem(MagicBees.ID, "wax", 1, 0),
+                    GTModHandler.getModItem(ExtraUtilities.ID, "unstableingot", 1, 1),
+                    GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.Iron, 1),
+                    GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.Diamond, 1) },
+                new int[] { 50 * 100, 20 * 100, 10 * 100, 5 * 100 },
+                Voltage.HV);
+            addProcessGT(CombType.SPARKLING, new Materials[] { Materials.NetherStar }, Voltage.EV);
+            addCentrifugeToItemStack(
+                CombType.SPARKLING,
+                new ItemStack[] { GTModHandler.getModItem(MagicBees.ID, "wax", 1, 0),
+                    GTModHandler.getModItem(MagicBees.ID, "miscResources", 2, 5),
+                    GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.NetherStar, 1) },
+                new int[] { 50 * 100, 10 * 100, 10 * 100 },
+                Voltage.EV);
 
-        addCentrifugeToMaterial(
-            CombType.THAUMIUMDUST,
-            new Materials[] { Materials.Thaumium },
-            new int[] { 100 * 100 },
-            GTValues.emptyIntArray,
-            Voltage.MV,
-            GTModHandler.getModItem(MagicBees.ID, "wax", 1, 0),
-            50 * 100);
-        addCentrifugeToItemStack(
-            CombType.QUICKSILVER,
-            new ItemStack[] { GTModHandler.getModItem(MagicBees.ID, "wax", 1, 0),
-                GTModHandler.getModItem(Thaumcraft.ID, "ItemNugget", 1, 5) },
-            new int[] { 50 * 100, 100 * 100 },
-            Voltage.ULV);
+            addCentrifugeToMaterial(
+                CombType.THAUMIUMDUST,
+                new Materials[] { Materials.Thaumium },
+                new int[] { 100 * 100 },
+                GTValues.emptyIntArray,
+                Voltage.MV,
+                GTModHandler.getModItem(MagicBees.ID, "wax", 1, 0),
+                50 * 100);
+            addCentrifugeToItemStack(
+                CombType.QUICKSILVER,
+                new ItemStack[] { GTModHandler.getModItem(MagicBees.ID, "wax", 1, 0),
+                    GTModHandler.getModItem(Thaumcraft.ID, "ItemNugget", 1, 5) },
+                new int[] { 50 * 100, 100 * 100 },
+                Voltage.ULV);
+        }
 
         // Gem Line
         addProcessGT(CombType.STONE, new Materials[] { Materials.Soapstone }, Voltage.LV);
@@ -1130,11 +1134,12 @@ public class ItemComb extends Item implements IGT_ItemWithMaterialRenderer, IIte
 
     public void addCentrifugeToItemStack(CombType comb, ItemStack[] aItem, int[] chance, Voltage volt, int duration) {
         ItemStack tComb = getStackForType(comb);
+
         Builder<ItemStack, Float> Product = new ImmutableMap.Builder<>();
         for (int i = 0; i < aItem.length; i++) {
-            if (aItem[i] == NI) {
-                continue;
-            }
+            if (aItem[i] == NI) continue;
+            if (aItem[i] == null) continue;
+
             Product.put(aItem[i], chance[i] / 10000.0f);
         }
 
@@ -1142,10 +1147,22 @@ public class ItemComb extends Item implements IGT_ItemWithMaterialRenderer, IIte
             RecipeManagers.centrifugeManager.addRecipe(40, tComb, Product.build());
         }
 
+        List<ItemStack> outs = new ArrayList<>();
+        IntArrayList ch = new IntArrayList();
+
+        for (int i = 0; i < aItem.length; i++) {
+            ItemStack s = aItem[i];
+            if (s == null || s == NI) continue;
+            outs.add(s);
+            ch.add(chance[i]);
+        }
+
+        if (outs.isEmpty()) return;
+
         GTValues.RA.stdBuilder()
             .itemInputs(tComb)
-            .itemOutputs(aItem)
-            .outputChances(chance)
+            .itemOutputs(outs.toArray(new ItemStack[0]))
+            .outputChances(ch.toIntArray())
             .duration(duration)
             .eut(volt.getSimpleEnergy())
             .addTo(centrifugeRecipes);
