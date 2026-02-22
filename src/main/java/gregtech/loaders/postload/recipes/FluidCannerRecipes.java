@@ -1,5 +1,6 @@
 package gregtech.loaders.postload.recipes;
 
+import static gregtech.api.enums.Mods.TwilightForest;
 import static gregtech.api.recipe.RecipeMaps.cannerRecipes;
 import static gregtech.api.util.GTRecipeBuilder.INGOTS;
 
@@ -67,13 +68,15 @@ public class FluidCannerRecipes implements Runnable {
             .eut(1)
             .addTo(cannerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(ItemList.TF_Vial_FieryTears.get(1))
-            .itemOutputs(ItemList.Bottle_Empty.get(1))
-            .fluidOutputs(Materials.FierySteel.getFluid(250))
-            .duration(4)
-            .eut(1)
-            .addTo(cannerRecipes);
+        if (TwilightForest.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(ItemList.TF_Vial_FieryTears.get(1))
+                .itemOutputs(ItemList.Bottle_Empty.get(1))
+                .fluidOutputs(Materials.FierySteel.getFluid(250))
+                .duration(4)
+                .eut(1)
+                .addTo(cannerRecipes);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(ItemList.Spray_Color_Remover_Empty.get(1))

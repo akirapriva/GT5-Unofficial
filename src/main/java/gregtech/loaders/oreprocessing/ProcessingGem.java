@@ -486,9 +486,15 @@ public class ProcessingGem implements gregtech.api.interfaces.IOreRecipeRegistra
                         }
                     }
                 }
+                ItemStack out = GTOreDictUnificator.get(OrePrefixes.gem, aMaterial, 2L);
+                if (out == null) {
+                    System.err
+                        .println("[ProcessingGem] Missing gem form for material=" + aMaterial + " input=" + aStack);
+                    return;
+                }
                 GTValues.RA.stdBuilder()
                     .itemInputs(aStack)
-                    .itemOutputs(GTOreDictUnificator.get(OrePrefixes.gem, aMaterial, 2L))
+                    .itemOutputs(out)
                     .duration(3 * SECONDS + 4 * TICKS)
                     .eut(TierEU.RECIPE_LV / 2)
                     .addTo(hammerRecipes);

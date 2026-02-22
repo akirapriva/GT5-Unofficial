@@ -1,9 +1,7 @@
 package gregtech.loaders.postload.chains;
 
 import static bartworks.API.recipe.BartWorksRecipeMaps.electricImplosionCompressorRecipes;
-import static gregtech.api.enums.Mods.EtFuturumRequiem;
-import static gregtech.api.enums.Mods.Forestry;
-import static gregtech.api.enums.Mods.ThaumicTinkerer;
+import static gregtech.api.enums.Mods.*;
 import static gregtech.api.recipe.RecipeMaps.*;
 import static gregtech.api.util.GTModHandler.getModItem;
 import static gregtech.api.util.GTRecipeBuilder.*;
@@ -45,51 +43,55 @@ public class NetheriteRecipes {
 
         // Prismatic Acid
         {
-            GTValues.RA.stdBuilder() // Prismarine
-                .itemInputs(
-                    GregtechItemList.RedAlgaeBiomass.get(32),
-                    GTOreDictUnificator.get(OrePrefixes.dust, Materials.CertusQuartz, 32))
-                .fluidInputs(Materials.Grade1PurifiedWater.getFluid(8000))
-                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.shard, Materials.Prismarine, 8))
-                .duration(15 * SECONDS)
-                .eut(TierEU.RECIPE_LuV)
-                .addTo(autoclaveRecipes);
-
-            if (Forestry.isModLoaded()) {
-                GTValues.RA.stdBuilder() // Prismarine + Comb
+            if (Botania.isModLoaded()) {
+                GTValues.RA.stdBuilder() // Prismarine
                     .itemInputs(
                         GregtechItemList.RedAlgaeBiomass.get(32),
-                        GTBees.combs.getStackForType(CombType.PRISMATIC, 8))
+                        GTOreDictUnificator.get(OrePrefixes.dust, Materials.CertusQuartz, 32))
                     .fluidInputs(Materials.Grade1PurifiedWater.getFluid(8000))
-                    .itemOutputs(GTOreDictUnificator.get(OrePrefixes.shard, Materials.Prismarine, 16))
+                    .itemOutputs(GTOreDictUnificator.get(OrePrefixes.shard, Materials.Prismarine, 8))
                     .duration(15 * SECONDS)
                     .eut(TierEU.RECIPE_LuV)
                     .addTo(autoclaveRecipes);
+
+                if (Forestry.isModLoaded()) {
+                    GTValues.RA.stdBuilder() // Prismarine + Comb
+                        .itemInputs(
+                            GregtechItemList.RedAlgaeBiomass.get(32),
+                            GTBees.combs.getStackForType(CombType.PRISMATIC, 8))
+                        .fluidInputs(Materials.Grade1PurifiedWater.getFluid(8000))
+                        .itemOutputs(GTOreDictUnificator.get(OrePrefixes.shard, Materials.Prismarine, 16))
+                        .duration(15 * SECONDS)
+                        .eut(TierEU.RECIPE_LuV)
+                        .addTo(autoclaveRecipes);
+                }
             }
 
-            GTValues.RA.stdBuilder() // Leaching
-                .itemInputs(GTOreDictUnificator.get(OrePrefixes.shard, Materials.Prismarine, 24))
-                .fluidInputs(
-                    new FluidStack(GTPPFluids.IndustrialStrengthHydrofluoricAcid, 4000),
-                    new FluidStack(GTPPFluids.HydrogenPeroxide, 4000))
-                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.CertusQuartz, 4))
-                .fluidOutputs(Materials.PrismarineSolution.getFluid(8000))
-                .duration(20 * SECONDS)
-                .eut(TierEU.RECIPE_IV)
-                .metadata(DISSOLUTION_TANK_RATIO, 1)
-                .addTo(dissolutionTankRecipes);
+            if (Botania.isModLoaded()) {
+                GTValues.RA.stdBuilder() // Leaching
+                    .itemInputs(GTOreDictUnificator.get(OrePrefixes.shard, Materials.Prismarine, 24))
+                    .fluidInputs(
+                        new FluidStack(GTPPFluids.IndustrialStrengthHydrofluoricAcid, 4000),
+                        new FluidStack(GTPPFluids.HydrogenPeroxide, 4000))
+                    .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.CertusQuartz, 4))
+                    .fluidOutputs(Materials.PrismarineSolution.getFluid(8000))
+                    .duration(20 * SECONDS)
+                    .eut(TierEU.RECIPE_IV)
+                    .metadata(DISSOLUTION_TANK_RATIO, 1)
+                    .addTo(dissolutionTankRecipes);
 
-            GTValues.RA.stdBuilder() // Looped Leaching
-                .itemInputs(GTOreDictUnificator.get(OrePrefixes.shard, Materials.Prismarine, 6))
-                .fluidInputs(
-                    Materials.PrismarineContaminatedHydrogenPeroxide.getFluid(6000),
-                    new FluidStack(GTPPFluids.HydrogenPeroxide, 2000))
-                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.NetherQuartz, 1))
-                .fluidOutputs(Materials.PrismarineSolution.getFluid(8000))
-                .duration(20 * SECONDS)
-                .eut(TierEU.RECIPE_IV)
-                .metadata(DISSOLUTION_TANK_RATIO, 3)
-                .addTo(dissolutionTankRecipes);
+                GTValues.RA.stdBuilder() // Looped Leaching
+                    .itemInputs(GTOreDictUnificator.get(OrePrefixes.shard, Materials.Prismarine, 6))
+                    .fluidInputs(
+                        Materials.PrismarineContaminatedHydrogenPeroxide.getFluid(6000),
+                        new FluidStack(GTPPFluids.HydrogenPeroxide, 2000))
+                    .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.NetherQuartz, 1))
+                    .fluidOutputs(Materials.PrismarineSolution.getFluid(8000))
+                    .duration(20 * SECONDS)
+                    .eut(TierEU.RECIPE_IV)
+                    .metadata(DISSOLUTION_TANK_RATIO, 3)
+                    .addTo(dissolutionTankRecipes);
+            }
 
             GTValues.RA.stdBuilder() // Extraction
                 .circuit(1)

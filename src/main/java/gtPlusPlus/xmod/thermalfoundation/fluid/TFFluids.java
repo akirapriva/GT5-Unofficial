@@ -13,14 +13,24 @@ public class TFFluids {
 
     public static void preInit() {
         Logger.INFO("Adding in our own versions of Thermal Foundation Fluids - Non-GT");
-        final Fluid pyrotheum = FluidRegistry.getFluid("pyrotheum");
-        final Fluid cryotheum = FluidRegistry.getFluid("cryotheum");
-        final Fluid ender = FluidRegistry.getFluid("ender");
 
-        fluidPyrotheum = pyrotheum;
-        fluidCryotheum = cryotheum;
-        fluidEnder = ender;
+        fluidPyrotheum = ensureFluid("pyrotheum");
+        fluidCryotheum = ensureFluid("cryotheum");
+        fluidEnder = ensureFluid("ender");
+    }
 
+    private static Fluid ensureFluid(String name) {
+        Fluid f = FluidRegistry.getFluid(name);
+
+        if (f == null) {
+            Logger.INFO("Fluid '" + name + "' was missing. Registering new fluid.");
+            f = new Fluid(name);
+            FluidRegistry.registerFluid(f);
+        } else {
+            Logger.INFO("Fluid '" + name + "' already exists. Using existing instance.");
+        }
+
+        return f;
     }
 
     public static void init() {}

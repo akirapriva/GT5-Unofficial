@@ -48,15 +48,17 @@ public class SifterRecipes implements Runnable {
             .duration(30 * SECONDS)
             .eut(TierEU.RECIPE_LV / 2)
             .addTo(sifterRecipes);
-        GTValues.RA.stdBuilder()
-            .itemInputs(ItemList.ElectronicsLump.get(1))
-            .itemOutputs(
-                ItemList.Electric_Motor_LV.get(1),
-                getModItem(Forestry.ID, "thermionicTubes", 1L, 5),
-                getModItem(EnderIO.ID, "itemPowerConduit", 1L, 0))
-            .outputChances(25 * 100, 25 * 100, 25 * 100)
-            .duration(30 * SECONDS)
-            .eut(TierEU.RECIPE_LV / 2)
-            .addTo(sifterRecipes);
+        if (Forestry.isModLoaded() && EnderIO.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(ItemList.ElectronicsLump.get(1))
+                .itemOutputs(
+                    ItemList.Electric_Motor_LV.get(1),
+                    getModItem(Forestry.ID, "thermionicTubes", 1L, 5),
+                    getModItem(EnderIO.ID, "itemPowerConduit", 1L, 0))
+                .outputChances(25 * 100, 25 * 100, 25 * 100)
+                .duration(30 * SECONDS)
+                .eut(TierEU.RECIPE_LV / 2)
+                .addTo(sifterRecipes);
+        }
     }
 }

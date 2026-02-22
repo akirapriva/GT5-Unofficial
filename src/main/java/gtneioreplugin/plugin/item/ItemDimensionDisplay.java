@@ -18,7 +18,7 @@ public class ItemDimensionDisplay extends ItemBlock {
 
     public ItemDimensionDisplay(Block block) {
         super(block);
-
+        setCreativeTab(GTNEIOrePlugin.creativeTab);
         if (FMLCommonHandler.instance()
             .getEffectiveSide() == Side.CLIENT) {
             MinecraftForgeClient.registerItemRenderer(this, new ItemDimensionDisplayRenderer());

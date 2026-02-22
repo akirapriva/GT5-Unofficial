@@ -576,6 +576,7 @@ public class GTMod {
         GregTechAPI.sAfterGTLoad = null;
         GregTechAPI.sBeforeGTPostload = null;
         GregTechAPI.sAfterGTPostload = null;
+        GTPostLoad.createGTtoolsCreativeTab();
     }
 
     @Mod.EventHandler

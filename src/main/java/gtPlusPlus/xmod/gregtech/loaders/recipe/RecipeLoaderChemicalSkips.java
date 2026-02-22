@@ -1,10 +1,7 @@
 package gtPlusPlus.xmod.gregtech.loaders.recipe;
 
 import static goodgenerator.loader.Loaders.advancedRadiationProtectionPlate;
-import static gregtech.api.enums.Mods.EtFuturumRequiem;
-import static gregtech.api.enums.Mods.EternalSingularity;
-import static gregtech.api.enums.Mods.GalaxySpace;
-import static gregtech.api.enums.Mods.NewHorizonsCoreMod;
+import static gregtech.api.enums.Mods.*;
 import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
 import static gregtech.api.recipe.RecipeMaps.fusionRecipes;
 import static gregtech.api.util.GTModHandler.getModItem;
@@ -299,21 +296,23 @@ public class RecipeLoaderChemicalSkips {
                 .addTo(quantumForceTransformerRecipes);
         }
         // Prismarine
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.shard, Materials.Prismarine, 12),
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.NaquadahEnriched, 32))
-            .fluidInputs(
-                Materials.Hydrogen.getGas(2_000),
-                Materials.Oxygen.getGas(2_000),
-                Materials.Nitrogen.getGas(24_000))
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.PrismaticNaquadah, 16))
-            .fluidOutputs(Materials.PrismaticAcid.getFluid(32_000))
-            .duration(20 * SECONDS)
-            .eut(TierEU.RECIPE_UHV)
-            .metadata(QFT_CATALYST, GregtechItemList.CrystalColorizationCatalyst.get(0))
-            .metadata(QFT_FOCUS_TIER, 2)
-            .addTo(quantumForceTransformerRecipes);
+        if (Botania.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    GTOreDictUnificator.get(OrePrefixes.shard, Materials.Prismarine, 12),
+                    GTOreDictUnificator.get(OrePrefixes.dust, Materials.NaquadahEnriched, 32))
+                .fluidInputs(
+                    Materials.Hydrogen.getGas(2_000),
+                    Materials.Oxygen.getGas(2_000),
+                    Materials.Nitrogen.getGas(24_000))
+                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.PrismaticNaquadah, 16))
+                .fluidOutputs(Materials.PrismaticAcid.getFluid(32_000))
+                .duration(20 * SECONDS)
+                .eut(TierEU.RECIPE_UHV)
+                .metadata(QFT_CATALYST, GregtechItemList.CrystalColorizationCatalyst.get(0))
+                .metadata(QFT_FOCUS_TIER, 2)
+                .addTo(quantumForceTransformerRecipes);
+        }
         // Stem Cells
         GTValues.RA.stdBuilder()
             .itemInputs(
@@ -594,18 +593,20 @@ public class RecipeLoaderChemicalSkips {
                 .eut(TierEU.RECIPE_UEV)
                 .addTo(assemblerRecipes);
         }
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                GregtechItemList.EmptyCatalystCarrier.get(1),
-                Materials.PrismaticNaquadah.getDust(64),
-                GTOreDictUnificator.get(OrePrefixes.shard, Materials.Prismarine, 64),
-                Materials.Silver.getNanite(1))
-            .circuit(10)
-            .itemOutputs(GregtechItemList.CrystalColorizationCatalyst.get(1))
-            .fluidInputs(MaterialsElements.STANDALONE.HYPOGEN.getFluidStack(1 * STACKS))
-            .duration(60 * SECONDS)
-            .eut(TierEU.RECIPE_UEV)
-            .addTo(assemblerRecipes);
+        if (Botania.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    GregtechItemList.EmptyCatalystCarrier.get(1),
+                    Materials.PrismaticNaquadah.getDust(64),
+                    GTOreDictUnificator.get(OrePrefixes.shard, Materials.Prismarine, 64),
+                    Materials.Silver.getNanite(1))
+                .circuit(10)
+                .itemOutputs(GregtechItemList.CrystalColorizationCatalyst.get(1))
+                .fluidInputs(MaterialsElements.STANDALONE.HYPOGEN.getFluidStack(1 * STACKS))
+                .duration(60 * SECONDS)
+                .eut(TierEU.RECIPE_UEV)
+                .addTo(assemblerRecipes);
+        }
         GTValues.RA.stdBuilder()
             .itemInputs(
                 GregtechItemList.EmptyCatalystCarrier.get(1),
@@ -629,17 +630,19 @@ public class RecipeLoaderChemicalSkips {
             .duration(60 * SECONDS)
             .eut(TierEU.RECIPE_UIV)
             .addTo(assemblerRecipes);
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                GregtechItemList.EmptyCatalystCarrier.get(1),
-                GregtechItemList.Laser_Lens_Special.get(64),
-                GTModHandler.getModItem(EternalSingularity.ID, "eternal_singularity", 10))
-            .circuit(10)
-            .itemOutputs(GregtechItemList.ParticleAccelerationCatalyst.get(1))
-            .fluidInputs(Materials.SpaceTime.getMolten(1 * STACKS))
-            .duration(60 * SECONDS)
-            .eut(TierEU.RECIPE_UIV)
-            .addTo(assemblerRecipes);
+        if (EternalSingularity.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    GregtechItemList.EmptyCatalystCarrier.get(1),
+                    GregtechItemList.Laser_Lens_Special.get(64),
+                    GTModHandler.getModItem(EternalSingularity.ID, "eternal_singularity", 10))
+                .circuit(10)
+                .itemOutputs(GregtechItemList.ParticleAccelerationCatalyst.get(1))
+                .fluidInputs(Materials.SpaceTime.getMolten(1 * STACKS))
+                .duration(60 * SECONDS)
+                .eut(TierEU.RECIPE_UIV)
+                .addTo(assemblerRecipes);
+        }
         GTValues.RA.stdBuilder()
             .itemInputs(
                 GregtechItemList.EmptyCatalystCarrier.get(1),

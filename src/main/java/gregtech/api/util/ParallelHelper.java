@@ -402,7 +402,7 @@ public class ParallelHelper {
             return;
         }
         if (!calculator.getAllowedTierSkip()) {
-            result = CheckRecipeResultRegistry.insufficientVoltage(recipe.mEUt);
+            result = CheckRecipeResultRegistry.insufficientVoltage(tRecipeEUt);
             return;
         }
 

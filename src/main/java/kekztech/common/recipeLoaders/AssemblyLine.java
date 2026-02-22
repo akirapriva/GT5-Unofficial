@@ -1,10 +1,7 @@
 package kekztech.common.recipeLoaders;
 
 import static goodgenerator.loader.Loaders.huiCircuit;
-import static gregtech.api.enums.Mods.EnderIO;
-import static gregtech.api.enums.Mods.EternalSingularity;
-import static gregtech.api.enums.Mods.NewHorizonsCoreMod;
-import static gregtech.api.enums.Mods.UniversalSingularities;
+import static gregtech.api.enums.Mods.*;
 import static gregtech.api.util.GTRecipeBuilder.INGOTS;
 import static gregtech.api.util.GTRecipeBuilder.MINUTES;
 import static gregtech.api.util.GTRecipeBuilder.SECONDS;
@@ -73,71 +70,79 @@ public class AssemblyLine implements Runnable {
             .addTo(AssemblyLine);
 
         // TFFTStorageField8
-        GTValues.RA.stdBuilder()
-            .metadata(RESEARCH_ITEM, new ItemStack(Blocks.tfftStorageField, 1, 7))
-            .metadata(SCANNING, new Scanning(1 * MINUTES + 30 * SECONDS, TierEU.RECIPE_ZPM))
-            .itemInputs(
-                ItemList.Quantum_Tank_IV.get(1),
-                ItemList.Machine_Multi_NeutroniumCompressor.get(1),
-                GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.StellarAlloy, 12),
-                GTOreDictUnificator.get(OrePrefixes.pipeNonuple, Materials.DraconiumAwakened, 3),
-                GTModHandler.getModItem(NewHorizonsCoreMod.ID, "NeutroniumBars", 6),
-                GTOreDictUnificator.get(OrePrefixes.rotor, Materials.InfinityCatalyst, 6),
-                ItemList.Field_Generator_ZPM.get(16),
-                ItemList.Field_Generator_UV.get(4),
-                new ItemStack(huiCircuit, 4, 2),
-                GTModHandler.getModItem(UniversalSingularities.ID, "universal.tinkersConstruct.singularity", 1, 4))
-            .fluidInputs(
-                Materials.CrystallinePinkSlime.getMolten(30 * INGOTS),
-                Materials.RadoxPolymer.getMolten(20 * INGOTS))
-            .itemOutputs(new ItemStack(Blocks.tfftStorageField, 1, 8))
-            .duration(30 * SECONDS)
-            .eut(TierEU.RECIPE_UEV)
-            .addTo(AssemblyLine);
+        if (UniversalSingularities.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .metadata(RESEARCH_ITEM, new ItemStack(Blocks.tfftStorageField, 1, 7))
+                .metadata(SCANNING, new Scanning(1 * MINUTES + 30 * SECONDS, TierEU.RECIPE_ZPM))
+                .itemInputs(
+                    ItemList.Quantum_Tank_IV.get(1),
+                    ItemList.Machine_Multi_NeutroniumCompressor.get(1),
+                    GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.StellarAlloy, 12),
+                    GTOreDictUnificator.get(OrePrefixes.pipeNonuple, Materials.DraconiumAwakened, 3),
+                    GTModHandler.getModItem(NewHorizonsCoreMod.ID, "NeutroniumBars", 6),
+                    GTOreDictUnificator.get(OrePrefixes.rotor, Materials.InfinityCatalyst, 6),
+                    ItemList.Field_Generator_ZPM.get(16),
+                    ItemList.Field_Generator_UV.get(4),
+                    new ItemStack(huiCircuit, 4, 2),
+                    GTModHandler.getModItem(UniversalSingularities.ID, "universal.tinkersConstruct.singularity", 1, 4))
+                .fluidInputs(
+                    Materials.CrystallinePinkSlime.getMolten(30 * INGOTS),
+                    Materials.RadoxPolymer.getMolten(20 * INGOTS))
+                .itemOutputs(new ItemStack(Blocks.tfftStorageField, 1, 8))
+                .duration(30 * SECONDS)
+                .eut(TierEU.RECIPE_UEV)
+                .addTo(AssemblyLine);
 
-        // TFFTStorageField9
-        GTValues.RA.stdBuilder()
-            .metadata(RESEARCH_ITEM, new ItemStack(Blocks.tfftStorageField, 1, 8))
-            .metadata(SCANNING, new Scanning(1 * MINUTES + 30 * SECONDS, TierEU.RECIPE_UHV))
-            .itemInputs(
-                ItemList.Quantum_Tank_IV.get(4),
-                ItemList.Machine_Multi_NeutroniumCompressor.get(2),
-                GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.TranscendentMetal, 6),
-                GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.ProtoHalkonite, 6),
-                GTOreDictUnificator.get(OrePrefixes.pipeNonuple, Materials.Infinity, 3),
-                ItemList.EnergisedTesseract.get(1),
-                HYPOGEN.getRotor(6),
-                ItemList.Field_Generator_UHV.get(16),
-                ItemList.Field_Generator_UEV.get(4),
-                new ItemStack(huiCircuit, 4, 3),
-                GTModHandler.getModItem(UniversalSingularities.ID, "universal.tinkersConstruct.singularity", 1, 4))
-            .fluidInputs(Materials.MelodicAlloy.getMolten(40 * INGOTS), Materials.RadoxPolymer.getMolten(24 * INGOTS))
-            .itemOutputs(new ItemStack(Blocks.tfftStorageField, 1, 9))
-            .duration(30 * SECONDS)
-            .eut(TierEU.RECIPE_UMV)
-            .addTo(AssemblyLine);
+            // TFFTStorageField9
+            GTValues.RA.stdBuilder()
+                .metadata(RESEARCH_ITEM, new ItemStack(Blocks.tfftStorageField, 1, 8))
+                .metadata(SCANNING, new Scanning(1 * MINUTES + 30 * SECONDS, TierEU.RECIPE_UHV))
+                .itemInputs(
+                    ItemList.Quantum_Tank_IV.get(4),
+                    ItemList.Machine_Multi_NeutroniumCompressor.get(2),
+                    GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.TranscendentMetal, 6),
+                    GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.ProtoHalkonite, 6),
+                    GTOreDictUnificator.get(OrePrefixes.pipeNonuple, Materials.Infinity, 3),
+                    ItemList.EnergisedTesseract.get(1),
+                    HYPOGEN.getRotor(6),
+                    ItemList.Field_Generator_UHV.get(16),
+                    ItemList.Field_Generator_UEV.get(4),
+                    new ItemStack(huiCircuit, 4, 3),
+                    GTModHandler.getModItem(UniversalSingularities.ID, "universal.tinkersConstruct.singularity", 1, 4))
+                .fluidInputs(
+                    Materials.MelodicAlloy.getMolten(40 * INGOTS),
+                    Materials.RadoxPolymer.getMolten(24 * INGOTS))
+                .itemOutputs(new ItemStack(Blocks.tfftStorageField, 1, 9))
+                .duration(30 * SECONDS)
+                .eut(TierEU.RECIPE_UMV)
+                .addTo(AssemblyLine);
+        }
 
-        // TFFTStorageField10
-        GTValues.RA.stdBuilder()
-            .metadata(RESEARCH_ITEM, new ItemStack(Blocks.tfftStorageField, 1, 9))
-            .metadata(SCANNING, new Scanning(1 * MINUTES + 30 * SECONDS, TierEU.RECIPE_UIV))
-            .itemInputs(
-                ItemList.Quantum_Tank_IV.get(16),
-                ItemList.Machine_Multi_NeutroniumCompressor.get(4),
-                GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.SpaceTime, 12),
-                GTOreDictUnificator.get(OrePrefixes.pipeNonuple, Materials.SpaceTime, 3),
-                ItemList.EnergisedTesseract.get(6),
-                GTOreDictUnificator.get(OrePrefixes.rotor, Materials.SpaceTime, 6),
-                ItemList.Field_Generator_UEV.get(16),
-                ItemList.Field_Generator_UIV.get(4),
-                new ItemStack(huiCircuit, 8, 4),
-                GTModHandler.getModItem(EnderIO.ID, "itemBasicCapacitor", 64, 5),
-                GTModHandler.getModItem(EternalSingularity.ID, "eternal_singularity", 1))
-            .fluidInputs(Materials.StellarAlloy.getMolten(50 * INGOTS), Materials.RadoxPolymer.getMolten(32 * INGOTS))
-            .itemOutputs(new ItemStack(Blocks.tfftStorageField, 1, 10))
-            .duration(30 * SECONDS)
-            .eut(TierEU.RECIPE_UXV)
-            .addTo(AssemblyLine);
+        if (EnderIO.isModLoaded() && EternalSingularity.isModLoaded()) {
+            // TFFTStorageField10
+            GTValues.RA.stdBuilder()
+                .metadata(RESEARCH_ITEM, new ItemStack(Blocks.tfftStorageField, 1, 9))
+                .metadata(SCANNING, new Scanning(1 * MINUTES + 30 * SECONDS, TierEU.RECIPE_UIV))
+                .itemInputs(
+                    ItemList.Quantum_Tank_IV.get(16),
+                    ItemList.Machine_Multi_NeutroniumCompressor.get(4),
+                    GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.SpaceTime, 12),
+                    GTOreDictUnificator.get(OrePrefixes.pipeNonuple, Materials.SpaceTime, 3),
+                    ItemList.EnergisedTesseract.get(6),
+                    GTOreDictUnificator.get(OrePrefixes.rotor, Materials.SpaceTime, 6),
+                    ItemList.Field_Generator_UEV.get(16),
+                    ItemList.Field_Generator_UIV.get(4),
+                    new ItemStack(huiCircuit, 8, 4),
+                    GTModHandler.getModItem(EnderIO.ID, "itemBasicCapacitor", 64, 5),
+                    GTModHandler.getModItem(EternalSingularity.ID, "eternal_singularity", 1))
+                .fluidInputs(
+                    Materials.StellarAlloy.getMolten(50 * INGOTS),
+                    Materials.RadoxPolymer.getMolten(32 * INGOTS))
+                .itemOutputs(new ItemStack(Blocks.tfftStorageField, 1, 10))
+                .duration(30 * SECONDS)
+                .eut(TierEU.RECIPE_UXV)
+                .addTo(AssemblyLine);
+        }
 
         // LuV Capacitor
         GTValues.RA.stdBuilder()

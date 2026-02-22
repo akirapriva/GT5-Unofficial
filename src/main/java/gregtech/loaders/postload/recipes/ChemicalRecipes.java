@@ -3,8 +3,10 @@ package gregtech.loaders.postload.recipes;
 import static gregtech.api.enums.Mods.Forestry;
 import static gregtech.api.enums.Mods.GTPlusPlus;
 import static gregtech.api.enums.Mods.GalaxySpace;
+import static gregtech.api.enums.Mods.Genetics;
 import static gregtech.api.enums.Mods.NewHorizonsCoreMod;
 import static gregtech.api.enums.Mods.Railcraft;
+import static gregtech.api.enums.Mods.Thaumcraft;
 import static gregtech.api.recipe.RecipeMaps.chemicalReactorRecipes;
 import static gregtech.api.recipe.RecipeMaps.multiblockChemicalReactorRecipes;
 import static gregtech.api.util.GTModHandler.getModItem;
@@ -114,35 +116,40 @@ public class ChemicalRecipes implements Runnable {
             .eut(TierEU.RECIPE_LV)
             .addTo(UniversalChemical);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.InfusedGold, 8),
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Iron, 8))
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.Thaumium, 16))
-            .fluidInputs(GTModHandler.getIC2Coolant(1_000))
-            .duration(20 * SECONDS)
-            .eut(TierEU.RECIPE_HV)
-            .addTo(UniversalChemical);
+        if (Thaumcraft.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    GTOreDictUnificator.get(OrePrefixes.dust, Materials.InfusedGold, 8),
+                    GTOreDictUnificator.get(OrePrefixes.dust, Materials.Iron, 8))
+                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.Thaumium, 16))
+                .fluidInputs(GTModHandler.getIC2Coolant(1_000))
+                .duration(20 * SECONDS)
+                .eut(TierEU.RECIPE_HV)
+                .addTo(UniversalChemical);
+        }
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(GalaxySpace.ID, "item.UnknowCrystal", 4), Materials.Osmiridium.getDust(2))
-            .itemOutputs(ItemList.Circuit_Chip_Stemcell.get(64))
-            .fluidInputs(Materials.GrowthMediumSterilized.getFluid(1_000))
-            .fluidOutputs(getFluidStack("bacterialsludge", 1_000))
-            .duration(30 * SECONDS)
-            .eut(TierEU.RECIPE_LuV)
-            .addTo(UniversalChemical);
-
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                ItemList.Circuit_Chip_Stemcell.get(32),
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.CosmicNeutronium, 4))
-            .itemOutputs(ItemList.Circuit_Chip_Biocell.get(32))
-            .fluidInputs(Materials.BioMediumSterilized.getFluid(2_000))
-            .fluidOutputs(getFluidStack("mutagen", 2_000))
-            .duration(60 * SECONDS)
-            .eut(TierEU.RECIPE_UV)
-            .addTo(UniversalChemical);
+        if (GalaxySpace.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(GalaxySpace.ID, "item.UnknowCrystal", 4), Materials.Osmiridium.getDust(2))
+                .itemOutputs(ItemList.Circuit_Chip_Stemcell.get(64))
+                .fluidInputs(Materials.GrowthMediumSterilized.getFluid(1_000))
+                .fluidOutputs(getFluidStack("bacterialsludge", 1_000))
+                .duration(30 * SECONDS)
+                .eut(TierEU.RECIPE_LuV)
+                .addTo(UniversalChemical);
+        }
+        if (Genetics.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    ItemList.Circuit_Chip_Stemcell.get(32),
+                    GTOreDictUnificator.get(OrePrefixes.dust, Materials.CosmicNeutronium, 4))
+                .itemOutputs(ItemList.Circuit_Chip_Biocell.get(32))
+                .fluidInputs(Materials.BioMediumSterilized.getFluid(2_000))
+                .fluidOutputs(getFluidStack("mutagen", 2_000))
+                .duration(60 * SECONDS)
+                .eut(TierEU.RECIPE_UV)
+                .addTo(UniversalChemical);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(
@@ -2704,15 +2711,17 @@ public class ChemicalRecipes implements Runnable {
             .eut(TierEU.RECIPE_IV)
             .addTo(UniversalChemical);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Tin, 1),
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Saltpeter, 1))
-            .itemOutputs(getModItem(Railcraft.ID, "glass", 6))
-            .fluidInputs(Materials.Glass.getMolten(6 * INGOTS))
-            .duration(2 * SECONDS + 10 * TICKS)
-            .eut(TierEU.RECIPE_LV)
-            .addTo(UniversalChemical);
+        if (Railcraft.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    GTOreDictUnificator.get(OrePrefixes.dust, Materials.Tin, 1),
+                    GTOreDictUnificator.get(OrePrefixes.dust, Materials.Saltpeter, 1))
+                .itemOutputs(getModItem(Railcraft.ID, "glass", 6))
+                .fluidInputs(Materials.Glass.getMolten(6 * INGOTS))
+                .duration(2 * SECONDS + 10 * TICKS)
+                .eut(TierEU.RECIPE_LV)
+                .addTo(UniversalChemical);
+        }
 
         // NH3 + 2CH4O = C2H7N + 2H2O
 

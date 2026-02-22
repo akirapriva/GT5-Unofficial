@@ -1,21 +1,6 @@
 package gregtech.loaders.postload.recipes;
 
-import static gregtech.api.enums.Mods.AppliedEnergistics2;
-import static gregtech.api.enums.Mods.AvaritiaAddons;
-import static gregtech.api.enums.Mods.BuildCraftFactory;
-import static gregtech.api.enums.Mods.ExtraUtilities;
-import static gregtech.api.enums.Mods.Forestry;
-import static gregtech.api.enums.Mods.GalacticraftCore;
-import static gregtech.api.enums.Mods.GalacticraftMars;
-import static gregtech.api.enums.Mods.IC2NuclearControl;
-import static gregtech.api.enums.Mods.IndustrialCraft2;
-import static gregtech.api.enums.Mods.IronChests;
-import static gregtech.api.enums.Mods.IronTanks;
-import static gregtech.api.enums.Mods.NewHorizonsCoreMod;
-import static gregtech.api.enums.Mods.OpenComputers;
-import static gregtech.api.enums.Mods.Railcraft;
-import static gregtech.api.enums.Mods.TinkerConstruct;
-import static gregtech.api.enums.Mods.TwilightForest;
+import static gregtech.api.enums.Mods.*;
 import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
 import static gregtech.api.util.GTModHandler.getModItem;
 import static gregtech.api.util.GTRecipeBuilder.EIGHTH_INGOTS;
@@ -577,14 +562,16 @@ public class AssemblerRecipes implements Runnable {
             .eut(4)
             .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Wood, 1))
-            .circuit(2)
-            .itemOutputs(ItemList.FR_Stick.get(1L))
-            .fluidInputs(Materials.SeedOil.getFluid(50L))
-            .duration(16 * TICKS)
-            .eut(8)
-            .addTo(assemblerRecipes);
+        if (Forestry.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Wood, 1))
+                .circuit(2)
+                .itemOutputs(ItemList.FR_Stick.get(1L))
+                .fluidInputs(Materials.SeedOil.getFluid(50L))
+                .duration(16 * TICKS)
+                .eut(8)
+                .addTo(assemblerRecipes);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(
@@ -1438,173 +1425,178 @@ public class AssemblerRecipes implements Runnable {
             .eut(4)
             .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(TwilightForest.ID, "item.charmOfLife1", 4L, 0))
-            .circuit(4)
-            .itemOutputs(getModItem(TwilightForest.ID, "item.charmOfLife2", 1L, 0))
-            .duration(5 * SECONDS)
-            .eut(8)
-            .addTo(assemblerRecipes);
+        if (TwilightForest.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(TwilightForest.ID, "item.charmOfLife1", 4L, 0))
+                .circuit(4)
+                .itemOutputs(getModItem(TwilightForest.ID, "item.charmOfLife2", 1L, 0))
+                .duration(5 * SECONDS)
+                .eut(8)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(TwilightForest.ID, "item.charmOfKeeping1", 4L, 0))
-            .circuit(4)
-            .itemOutputs(getModItem(TwilightForest.ID, "item.charmOfKeeping2", 1L, 0))
-            .duration(5 * SECONDS)
-            .eut(8)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(TwilightForest.ID, "item.charmOfKeeping1", 4L, 0))
+                .circuit(4)
+                .itemOutputs(getModItem(TwilightForest.ID, "item.charmOfKeeping2", 1L, 0))
+                .duration(5 * SECONDS)
+                .eut(8)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(TwilightForest.ID, "item.charmOfKeeping2", 4L, 0))
-            .circuit(4)
-            .itemOutputs(getModItem(TwilightForest.ID, "item.charmOfKeeping3", 1L, 0))
-            .duration(5 * SECONDS)
-            .eut(8)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(TwilightForest.ID, "item.charmOfKeeping2", 4L, 0))
+                .circuit(4)
+                .itemOutputs(getModItem(TwilightForest.ID, "item.charmOfKeeping3", 1L, 0))
+                .duration(5 * SECONDS)
+                .eut(8)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(TwilightForest.ID, "item.charmOfLife2", 1L, 0))
-            .circuit(1)
-            .itemOutputs(getModItem(TwilightForest.ID, "item.charmOfLife1", 4L, 0))
-            .duration(5 * SECONDS)
-            .eut(8)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(TwilightForest.ID, "item.charmOfLife2", 1L, 0))
+                .circuit(1)
+                .itemOutputs(getModItem(TwilightForest.ID, "item.charmOfLife1", 4L, 0))
+                .duration(5 * SECONDS)
+                .eut(8)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(TwilightForest.ID, "item.charmOfKeeping2", 1L, 0))
-            .circuit(1)
-            .itemOutputs(getModItem(TwilightForest.ID, "item.charmOfKeeping1", 4L, 0))
-            .duration(5 * SECONDS)
-            .eut(8)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(TwilightForest.ID, "item.charmOfKeeping2", 1L, 0))
+                .circuit(1)
+                .itemOutputs(getModItem(TwilightForest.ID, "item.charmOfKeeping1", 4L, 0))
+                .duration(5 * SECONDS)
+                .eut(8)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(TwilightForest.ID, "item.charmOfKeeping3", 1L, 0))
-            .circuit(1)
-            .itemOutputs(getModItem(TwilightForest.ID, "item.charmOfKeeping2", 4L, 0))
-            .duration(5 * SECONDS)
-            .eut(8)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(TwilightForest.ID, "item.charmOfKeeping3", 1L, 0))
+                .circuit(1)
+                .itemOutputs(getModItem(TwilightForest.ID, "item.charmOfKeeping2", 4L, 0))
+                .duration(5 * SECONDS)
+                .eut(8)
+                .addTo(assemblerRecipes);
+        }
+        if (AppliedEnergistics2.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 16),
+                    getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 20))
+                .itemOutputs(getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 23))
+                .fluidInputs(Materials.Redstone.getMolten(1 * INGOTS))
+                .duration(3 * SECONDS + 4 * TICKS)
+                .eut(TierEU.RECIPE_LV)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 16),
-                getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 20))
-            .itemOutputs(getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 23))
-            .fluidInputs(Materials.Redstone.getMolten(1 * INGOTS))
-            .duration(3 * SECONDS + 4 * TICKS)
-            .eut(TierEU.RECIPE_LV)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 17),
+                    getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 20))
+                .itemOutputs(getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 24))
+                .fluidInputs(Materials.Redstone.getMolten(1 * INGOTS))
+                .duration(3 * SECONDS + 4 * TICKS)
+                .eut(TierEU.RECIPE_LV)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 17),
-                getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 20))
-            .itemOutputs(getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 24))
-            .fluidInputs(Materials.Redstone.getMolten(1 * INGOTS))
-            .duration(3 * SECONDS + 4 * TICKS)
-            .eut(TierEU.RECIPE_LV)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 18),
+                    getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 20))
+                .itemOutputs(getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 22))
+                .fluidInputs(Materials.Redstone.getMolten(1 * INGOTS))
+                .duration(3 * SECONDS + 4 * TICKS)
+                .eut(TierEU.RECIPE_LV)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 18),
-                getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 20))
-            .itemOutputs(getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 22))
-            .fluidInputs(Materials.Redstone.getMolten(1 * INGOTS))
-            .duration(3 * SECONDS + 4 * TICKS)
-            .eut(TierEU.RECIPE_LV)
-            .addTo(assemblerRecipes);
+            final ItemStack certusQuartzSeed = getModItem(AppliedEnergistics2.ID, "item.ItemCrystalSeed", 2L, 0);
+            NBTTagCompound certusQuartzTag = new NBTTagCompound();
+            certusQuartzTag.setInteger("progress", 0);
+            certusQuartzSeed.setTagCompound(certusQuartzTag);
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    GTOreDictUnificator.get(OrePrefixes.dust, Materials.CertusQuartz, 1),
+                    new ItemStack(Blocks.sand, 1, 32767))
+                .itemOutputs(certusQuartzSeed)
+                .duration(3 * SECONDS + 4 * TICKS)
+                .eut(8)
+                .addTo(assemblerRecipes);
 
-        final ItemStack certusQuartzSeed = getModItem(AppliedEnergistics2.ID, "item.ItemCrystalSeed", 2L, 0);
-        NBTTagCompound certusQuartzTag = new NBTTagCompound();
-        certusQuartzTag.setInteger("progress", 0);
-        certusQuartzSeed.setTagCompound(certusQuartzTag);
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.CertusQuartz, 1),
-                new ItemStack(Blocks.sand, 1, 32767))
-            .itemOutputs(certusQuartzSeed)
-            .duration(3 * SECONDS + 4 * TICKS)
-            .eut(8)
-            .addTo(assemblerRecipes);
+            final ItemStack netherQuartzSeed = getModItem(AppliedEnergistics2.ID, "item.ItemCrystalSeed", 2L, 600);
+            NBTTagCompound netherQuartzTag = new NBTTagCompound();
+            netherQuartzTag.setInteger("progress", 600);
+            netherQuartzSeed.setTagCompound(netherQuartzTag);
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    GTOreDictUnificator.get(OrePrefixes.dust, Materials.NetherQuartz, 1),
+                    new ItemStack(Blocks.sand, 1, 32767))
+                .itemOutputs(netherQuartzSeed)
+                .duration(3 * SECONDS + 4 * TICKS)
+                .eut(8)
+                .addTo(assemblerRecipes);
 
-        final ItemStack netherQuartzSeed = getModItem(AppliedEnergistics2.ID, "item.ItemCrystalSeed", 2L, 600);
-        NBTTagCompound netherQuartzTag = new NBTTagCompound();
-        netherQuartzTag.setInteger("progress", 600);
-        netherQuartzSeed.setTagCompound(netherQuartzTag);
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.NetherQuartz, 1),
-                new ItemStack(Blocks.sand, 1, 32767))
-            .itemOutputs(netherQuartzSeed)
-            .duration(3 * SECONDS + 4 * TICKS)
-            .eut(8)
-            .addTo(assemblerRecipes);
+            final ItemStack fluixSeed = getModItem(AppliedEnergistics2.ID, "item.ItemCrystalSeed", 2L, 1200);
+            NBTTagCompound fluixTag = new NBTTagCompound();
+            fluixTag.setInteger("progress", 1200);
+            fluixSeed.setTagCompound(fluixTag);
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    GTOreDictUnificator.get(OrePrefixes.dust, Materials.Fluix, 1),
+                    new ItemStack(Blocks.sand, 1, 32767))
+                .itemOutputs(fluixSeed)
+                .duration(3 * SECONDS + 4 * TICKS)
+                .eut(8)
+                .addTo(assemblerRecipes);
+        }
+        if (Forestry.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(ItemList.FR_Wax.get(6), new ItemStack(Items.string, 1, 32767))
+                .itemOutputs(getModItem(Forestry.ID, "candle", 24L, 0))
+                .fluidInputs(Materials.Water.getFluid(600))
+                .duration(3 * SECONDS + 4 * TICKS)
+                .eut(8)
+                .addTo(assemblerRecipes);
 
-        final ItemStack fluixSeed = getModItem(AppliedEnergistics2.ID, "item.ItemCrystalSeed", 2L, 1200);
-        NBTTagCompound fluixTag = new NBTTagCompound();
-        fluixTag.setInteger("progress", 1200);
-        fluixSeed.setTagCompound(fluixTag);
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Fluix, 1),
-                new ItemStack(Blocks.sand, 1, 32767))
-            .itemOutputs(fluixSeed)
-            .duration(3 * SECONDS + 4 * TICKS)
-            .eut(8)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(ItemList.FR_Wax.get(2), ItemList.FR_Silk.get(1))
+                .itemOutputs(getModItem(Forestry.ID, "candle", 8L, 0))
+                .fluidInputs(Materials.Water.getFluid(200))
+                .duration(16 * TICKS)
+                .eut(8)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(ItemList.FR_Wax.get(6), new ItemStack(Items.string, 1, 32767))
-            .itemOutputs(getModItem(Forestry.ID, "candle", 24L, 0))
-            .fluidInputs(Materials.Water.getFluid(600))
-            .duration(3 * SECONDS + 4 * TICKS)
-            .eut(8)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(ItemList.FR_Silk.get(9))
+                .circuit(9)
+                .itemOutputs(getModItem(Forestry.ID, "craftingMaterial", 1L, 3))
+                .fluidInputs(Materials.Water.getFluid(500))
+                .duration(3 * SECONDS + 4 * TICKS)
+                .eut(8)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(ItemList.FR_Wax.get(2), ItemList.FR_Silk.get(1))
-            .itemOutputs(getModItem(Forestry.ID, "candle", 8L, 0))
-            .fluidInputs(Materials.Water.getFluid(200))
-            .duration(16 * TICKS)
-            .eut(8)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Forestry.ID, "propolis", 5L, 2))
+                .circuit(5)
+                .itemOutputs(getModItem(Forestry.ID, "craftingMaterial", 1L, 1))
+                .duration(16 * TICKS)
+                .eut(8)
+                .addTo(assemblerRecipes);
+            if (Railcraft.isModLoaded()) {
+                GTValues.RA.stdBuilder()
+                    .itemInputs(
+                        GTOreDictUnificator.get(OrePrefixes.stick, Materials.Wood, 1),
+                        new ItemStack(Blocks.wool, 1, 32767))
+                    .itemOutputs(new ItemStack(Blocks.torch, 6, 0))
+                    .fluidInputs(Materials.Creosote.getFluid(1_000))
+                    .duration(2 * SECONDS)
+                    .eut(20)
+                    .addTo(assemblerRecipes);
+            }
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(ItemList.FR_Silk.get(9))
-            .circuit(9)
-            .itemOutputs(getModItem(Forestry.ID, "craftingMaterial", 1L, 3))
-            .fluidInputs(Materials.Water.getFluid(500))
-            .duration(3 * SECONDS + 4 * TICKS)
-            .eut(8)
-            .addTo(assemblerRecipes);
-
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Forestry.ID, "propolis", 5L, 2))
-            .circuit(5)
-            .itemOutputs(getModItem(Forestry.ID, "craftingMaterial", 1L, 1))
-            .duration(16 * TICKS)
-            .eut(8)
-            .addTo(assemblerRecipes);
-
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.stick, Materials.Wood, 1),
-                new ItemStack(Blocks.wool, 1, 32767))
-            .itemOutputs(new ItemStack(Blocks.torch, 6, 0))
-            .fluidInputs(Materials.Creosote.getFluid(1_000))
-            .duration(2 * SECONDS)
-            .eut(20)
-            .addTo(assemblerRecipes);
-
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Forestry.ID, "craftingMaterial", 5L, 1))
-            .circuit(5)
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.gem, Materials.EnderPearl, 1))
-            .duration(3 * SECONDS + 4 * TICKS)
-            .eut(8)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Forestry.ID, "craftingMaterial", 5L, 1))
+                .circuit(5)
+                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.gem, Materials.EnderPearl, 1))
+                .duration(3 * SECONDS + 4 * TICKS)
+                .eut(8)
+                .addTo(assemblerRecipes);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(new ItemStack(Blocks.piston, 1, 32767), new ItemStack(Items.slime_ball, 1, 32767))
@@ -3422,162 +3414,166 @@ public class AssemblerRecipes implements Runnable {
         }
 
         // MV input bus
-        {
-            GTValues.RA.stdBuilder()
-                .itemInputs(ItemList.Hull_MV.get(1), getModItem(IronChests.ID, "BlockIronChest", 1, 3))
-                .circuit(1)
-                .itemOutputs(ItemList.Hatch_Input_Bus_MV.get(1))
-                .fluidInputs(Materials.Polyethylene.getMolten(2 * INGOTS))
-                .duration(24 * SECONDS)
-                .eut(TierEU.RECIPE_MV)
-                .addTo(assemblerRecipes);
+        if (IronChests.isModLoaded()) {
+            {
+                GTValues.RA.stdBuilder()
+                    .itemInputs(ItemList.Hull_MV.get(1), getModItem(IronChests.ID, "BlockIronChest", 1, 3))
+                    .circuit(1)
+                    .itemOutputs(ItemList.Hatch_Input_Bus_MV.get(1))
+                    .fluidInputs(Materials.Polyethylene.getMolten(2 * INGOTS))
+                    .duration(24 * SECONDS)
+                    .eut(TierEU.RECIPE_MV)
+                    .addTo(assemblerRecipes);
 
-            GTValues.RA.stdBuilder()
-                .itemInputs(ItemList.Hull_MV.get(1), getModItem(IronChests.ID, "BlockIronChest", 1, 3))
-                .circuit(1)
-                .itemOutputs(ItemList.Hatch_Input_Bus_MV.get(1))
-                .fluidInputs(Materials.Polytetrafluoroethylene.getMolten(1 * INGOTS))
-                .duration(24 * SECONDS)
-                .eut(TierEU.RECIPE_MV)
-                .addTo(assemblerRecipes);
+                GTValues.RA.stdBuilder()
+                    .itemInputs(ItemList.Hull_MV.get(1), getModItem(IronChests.ID, "BlockIronChest", 1, 3))
+                    .circuit(1)
+                    .itemOutputs(ItemList.Hatch_Input_Bus_MV.get(1))
+                    .fluidInputs(Materials.Polytetrafluoroethylene.getMolten(1 * INGOTS))
+                    .duration(24 * SECONDS)
+                    .eut(TierEU.RECIPE_MV)
+                    .addTo(assemblerRecipes);
 
-            GTValues.RA.stdBuilder()
-                .itemInputs(ItemList.Hull_MV.get(1), getModItem(IronChests.ID, "BlockIronChest", 1, 3))
-                .circuit(1)
-                .itemOutputs(ItemList.Hatch_Input_Bus_MV.get(1))
-                .fluidInputs(Materials.Polybenzimidazole.getMolten(1 * EIGHTH_INGOTS))
-                .duration(24 * SECONDS)
-                .eut(TierEU.RECIPE_MV)
-                .addTo(assemblerRecipes);
-        }
+                GTValues.RA.stdBuilder()
+                    .itemInputs(ItemList.Hull_MV.get(1), getModItem(IronChests.ID, "BlockIronChest", 1, 3))
+                    .circuit(1)
+                    .itemOutputs(ItemList.Hatch_Input_Bus_MV.get(1))
+                    .fluidInputs(Materials.Polybenzimidazole.getMolten(1 * EIGHTH_INGOTS))
+                    .duration(24 * SECONDS)
+                    .eut(TierEU.RECIPE_MV)
+                    .addTo(assemblerRecipes);
+            }
 
-        // HV input bus
-        {
-            GTValues.RA.stdBuilder()
-                .itemInputs(ItemList.Hull_HV.get(1), getModItem(IronChests.ID, "BlockIronChest", 1, 0))
-                .circuit(1)
-                .itemOutputs(ItemList.Hatch_Input_Bus_HV.get(1))
-                .fluidInputs(Materials.Polyethylene.getMolten(3 * INGOTS))
-                .duration(24 * SECONDS)
-                .eut(TierEU.RECIPE_HV)
-                .addTo(assemblerRecipes);
+            // HV input bus
+            {
+                GTValues.RA.stdBuilder()
+                    .itemInputs(ItemList.Hull_HV.get(1), getModItem(IronChests.ID, "BlockIronChest", 1, 0))
+                    .circuit(1)
+                    .itemOutputs(ItemList.Hatch_Input_Bus_HV.get(1))
+                    .fluidInputs(Materials.Polyethylene.getMolten(3 * INGOTS))
+                    .duration(24 * SECONDS)
+                    .eut(TierEU.RECIPE_HV)
+                    .addTo(assemblerRecipes);
 
-            GTValues.RA.stdBuilder()
-                .itemInputs(ItemList.Hull_HV.get(1), getModItem(IronChests.ID, "BlockIronChest", 1, 0))
-                .circuit(1)
-                .itemOutputs(ItemList.Hatch_Input_Bus_HV.get(1))
-                .fluidInputs(Materials.Polytetrafluoroethylene.getMolten(2 * INGOTS))
-                .duration(24 * SECONDS)
-                .eut(TierEU.RECIPE_HV)
-                .addTo(assemblerRecipes);
+                GTValues.RA.stdBuilder()
+                    .itemInputs(ItemList.Hull_HV.get(1), getModItem(IronChests.ID, "BlockIronChest", 1, 0))
+                    .circuit(1)
+                    .itemOutputs(ItemList.Hatch_Input_Bus_HV.get(1))
+                    .fluidInputs(Materials.Polytetrafluoroethylene.getMolten(2 * INGOTS))
+                    .duration(24 * SECONDS)
+                    .eut(TierEU.RECIPE_HV)
+                    .addTo(assemblerRecipes);
 
-            GTValues.RA.stdBuilder()
-                .itemInputs(ItemList.Hull_HV.get(1), getModItem(IronChests.ID, "BlockIronChest", 1, 0))
-                .circuit(1)
-                .itemOutputs(ItemList.Hatch_Input_Bus_HV.get(1))
-                .fluidInputs(Materials.Polybenzimidazole.getMolten(1 * QUARTER_INGOTS))
-                .duration(24 * SECONDS)
-                .eut(TierEU.RECIPE_HV)
-                .addTo(assemblerRecipes);
-        }
+                GTValues.RA.stdBuilder()
+                    .itemInputs(ItemList.Hull_HV.get(1), getModItem(IronChests.ID, "BlockIronChest", 1, 0))
+                    .circuit(1)
+                    .itemOutputs(ItemList.Hatch_Input_Bus_HV.get(1))
+                    .fluidInputs(Materials.Polybenzimidazole.getMolten(1 * QUARTER_INGOTS))
+                    .duration(24 * SECONDS)
+                    .eut(TierEU.RECIPE_HV)
+                    .addTo(assemblerRecipes);
+            }
 
-        // EV input bus
-        {
-            GTValues.RA.stdBuilder()
-                .itemInputs(ItemList.Hull_EV.get(1), getModItem(IronChests.ID, "BlockIronChest", 1, 4))
-                .circuit(1)
-                .itemOutputs(ItemList.Hatch_Input_Bus_EV.get(1))
-                .fluidInputs(Materials.Polytetrafluoroethylene.getMolten(4 * INGOTS))
-                .duration(24 * SECONDS)
-                .eut(TierEU.RECIPE_EV)
-                .addTo(assemblerRecipes);
+            // EV input bus
+            {
+                GTValues.RA.stdBuilder()
+                    .itemInputs(ItemList.Hull_EV.get(1), getModItem(IronChests.ID, "BlockIronChest", 1, 4))
+                    .circuit(1)
+                    .itemOutputs(ItemList.Hatch_Input_Bus_EV.get(1))
+                    .fluidInputs(Materials.Polytetrafluoroethylene.getMolten(4 * INGOTS))
+                    .duration(24 * SECONDS)
+                    .eut(TierEU.RECIPE_EV)
+                    .addTo(assemblerRecipes);
 
-            GTValues.RA.stdBuilder()
-                .itemInputs(ItemList.Hull_EV.get(1), getModItem(IronChests.ID, "BlockIronChest", 1, 4))
-                .circuit(1)
-                .itemOutputs(ItemList.Hatch_Input_Bus_EV.get(1))
-                .fluidInputs(Materials.Polybenzimidazole.getMolten(1 * HALF_INGOTS))
-                .duration(24 * SECONDS)
-                .eut(TierEU.RECIPE_EV)
-                .addTo(assemblerRecipes);
-        }
+                GTValues.RA.stdBuilder()
+                    .itemInputs(ItemList.Hull_EV.get(1), getModItem(IronChests.ID, "BlockIronChest", 1, 4))
+                    .circuit(1)
+                    .itemOutputs(ItemList.Hatch_Input_Bus_EV.get(1))
+                    .fluidInputs(Materials.Polybenzimidazole.getMolten(1 * HALF_INGOTS))
+                    .duration(24 * SECONDS)
+                    .eut(TierEU.RECIPE_EV)
+                    .addTo(assemblerRecipes);
+            }
 
-        // IV input bus
-        {
-            GTValues.RA.stdBuilder()
-                .itemInputs(ItemList.Hull_IV.get(1), getModItem(IronChests.ID, "BlockIronChest", 1, 1))
-                .circuit(1)
-                .itemOutputs(ItemList.Hatch_Input_Bus_IV.get(1))
-                .fluidInputs(Materials.Polytetrafluoroethylene.getMolten(8 * INGOTS))
-                .duration(24 * SECONDS)
-                .eut(TierEU.RECIPE_IV)
-                .addTo(assemblerRecipes);
+            // IV input bus
+            {
+                GTValues.RA.stdBuilder()
+                    .itemInputs(ItemList.Hull_IV.get(1), getModItem(IronChests.ID, "BlockIronChest", 1, 1))
+                    .circuit(1)
+                    .itemOutputs(ItemList.Hatch_Input_Bus_IV.get(1))
+                    .fluidInputs(Materials.Polytetrafluoroethylene.getMolten(8 * INGOTS))
+                    .duration(24 * SECONDS)
+                    .eut(TierEU.RECIPE_IV)
+                    .addTo(assemblerRecipes);
 
-            GTValues.RA.stdBuilder()
-                .itemInputs(ItemList.Hull_IV.get(1), getModItem(IronChests.ID, "BlockIronChest", 1, 1))
-                .circuit(1)
-                .itemOutputs(ItemList.Hatch_Input_Bus_IV.get(1))
-                .fluidInputs(Materials.Polybenzimidazole.getMolten(1 * INGOTS))
-                .duration(24 * SECONDS)
-                .eut(TierEU.RECIPE_IV)
-                .addTo(assemblerRecipes);
-        }
+                GTValues.RA.stdBuilder()
+                    .itemInputs(ItemList.Hull_IV.get(1), getModItem(IronChests.ID, "BlockIronChest", 1, 1))
+                    .circuit(1)
+                    .itemOutputs(ItemList.Hatch_Input_Bus_IV.get(1))
+                    .fluidInputs(Materials.Polybenzimidazole.getMolten(1 * INGOTS))
+                    .duration(24 * SECONDS)
+                    .eut(TierEU.RECIPE_IV)
+                    .addTo(assemblerRecipes);
+            }
 
-        // LuV input bus
-        {
-            GTValues.RA.stdBuilder()
-                .itemInputs(ItemList.Hull_LuV.get(1), getModItem(IronChests.ID, "BlockIronChest", 1, 2))
-                .circuit(1)
-                .itemOutputs(ItemList.Hatch_Input_Bus_LuV.get(1))
-                .fluidInputs(Materials.Polytetrafluoroethylene.getMolten(16 * INGOTS))
-                .duration(24 * SECONDS)
-                .eut(TierEU.RECIPE_LuV)
-                .addTo(assemblerRecipes);
+            // LuV input bus
+            {
+                GTValues.RA.stdBuilder()
+                    .itemInputs(ItemList.Hull_LuV.get(1), getModItem(IronChests.ID, "BlockIronChest", 1, 2))
+                    .circuit(1)
+                    .itemOutputs(ItemList.Hatch_Input_Bus_LuV.get(1))
+                    .fluidInputs(Materials.Polytetrafluoroethylene.getMolten(16 * INGOTS))
+                    .duration(24 * SECONDS)
+                    .eut(TierEU.RECIPE_LuV)
+                    .addTo(assemblerRecipes);
 
-            GTValues.RA.stdBuilder()
-                .itemInputs(ItemList.Hull_LuV.get(1), getModItem(IronChests.ID, "BlockIronChest", 1, 2))
-                .circuit(1)
-                .itemOutputs(ItemList.Hatch_Input_Bus_LuV.get(1))
-                .fluidInputs(Materials.Polybenzimidazole.getMolten(2 * INGOTS))
-                .duration(24 * SECONDS)
-                .eut(TierEU.RECIPE_LuV)
-                .addTo(assemblerRecipes);
-        }
+                GTValues.RA.stdBuilder()
+                    .itemInputs(ItemList.Hull_LuV.get(1), getModItem(IronChests.ID, "BlockIronChest", 1, 2))
+                    .circuit(1)
+                    .itemOutputs(ItemList.Hatch_Input_Bus_LuV.get(1))
+                    .fluidInputs(Materials.Polybenzimidazole.getMolten(2 * INGOTS))
+                    .duration(24 * SECONDS)
+                    .eut(TierEU.RECIPE_LuV)
+                    .addTo(assemblerRecipes);
+            }
 
-        // ZPM input bus
-        {
-            GTValues.RA.stdBuilder()
-                .itemInputs(ItemList.Hull_ZPM.get(1), getModItem(IronChests.ID, "BlockIronChest", 2, 5))
-                .circuit(1)
-                .itemOutputs(ItemList.Hatch_Input_Bus_ZPM.get(1))
-                .fluidInputs(Materials.Polybenzimidazole.getMolten(4 * INGOTS))
-                .duration(24 * SECONDS)
-                .eut(TierEU.RECIPE_ZPM)
-                .addTo(assemblerRecipes);
-        }
+            // ZPM input bus
+            {
+                GTValues.RA.stdBuilder()
+                    .itemInputs(ItemList.Hull_ZPM.get(1), getModItem(IronChests.ID, "BlockIronChest", 2, 5))
+                    .circuit(1)
+                    .itemOutputs(ItemList.Hatch_Input_Bus_ZPM.get(1))
+                    .fluidInputs(Materials.Polybenzimidazole.getMolten(4 * INGOTS))
+                    .duration(24 * SECONDS)
+                    .eut(TierEU.RECIPE_ZPM)
+                    .addTo(assemblerRecipes);
+            }
 
-        // UV input bus
-        {
-            GTValues.RA.stdBuilder()
-                .itemInputs(ItemList.Hull_UV.get(1), getModItem(IronChests.ID, "BlockIronChest", 2, 6))
-                .circuit(1)
-                .itemOutputs(ItemList.Hatch_Input_Bus_UV.get(1))
-                .fluidInputs(Materials.Polybenzimidazole.getMolten(8 * INGOTS))
-                .duration(24 * SECONDS)
-                .eut(TierEU.RECIPE_UV)
-                .addTo(assemblerRecipes);
+            // UV input bus
+            {
+                GTValues.RA.stdBuilder()
+                    .itemInputs(ItemList.Hull_UV.get(1), getModItem(IronChests.ID, "BlockIronChest", 2, 6))
+                    .circuit(1)
+                    .itemOutputs(ItemList.Hatch_Input_Bus_UV.get(1))
+                    .fluidInputs(Materials.Polybenzimidazole.getMolten(8 * INGOTS))
+                    .duration(24 * SECONDS)
+                    .eut(TierEU.RECIPE_UV)
+                    .addTo(assemblerRecipes);
+            }
         }
 
         // UHV input bus
-        {
-            GTValues.RA.stdBuilder()
-                .itemInputs(ItemList.Hull_MAX.get(1), getModItem(AvaritiaAddons.ID, "CompressedChest", 1))
-                .circuit(1)
-                .itemOutputs(ItemList.Hatch_Input_Bus_MAX.get(1))
-                .fluidInputs(Materials.Polybenzimidazole.getMolten(16 * INGOTS))
-                .duration(24 * SECONDS)
-                .eut(TierEU.RECIPE_UHV)
-                .addTo(assemblerRecipes);
+        if (AvaritiaAddons.isModLoaded()) {
+            {
+                GTValues.RA.stdBuilder()
+                    .itemInputs(ItemList.Hull_MAX.get(1), getModItem(AvaritiaAddons.ID, "CompressedChest", 1))
+                    .circuit(1)
+                    .itemOutputs(ItemList.Hatch_Input_Bus_MAX.get(1))
+                    .fluidInputs(Materials.Polybenzimidazole.getMolten(16 * INGOTS))
+                    .duration(24 * SECONDS)
+                    .eut(TierEU.RECIPE_UHV)
+                    .addTo(assemblerRecipes);
+            }
         }
     }
 
@@ -4549,265 +4545,269 @@ public class AssemblerRecipes implements Runnable {
     private void withRailcraft() {
         if (!Railcraft.isModLoaded()) return;
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(new ItemStack(Blocks.stone_slab, 1, 0), ItemList.RC_Rebar.get(1))
-            .circuit(1)
-            .itemOutputs(ItemList.RC_Tie_Stone.get(1))
-            .duration(6 * SECONDS + 8 * TICKS)
-            .eut(8)
-            .addTo(assemblerRecipes);
+        if (Railcraft.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(new ItemStack(Blocks.stone_slab, 1, 0), ItemList.RC_Rebar.get(1))
+                .circuit(1)
+                .itemOutputs(ItemList.RC_Tie_Stone.get(1))
+                .duration(6 * SECONDS + 8 * TICKS)
+                .eut(8)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(new ItemStack(Blocks.stone_slab, 1, 7), ItemList.RC_Rebar.get(1))
-            .circuit(1)
-            .itemOutputs(ItemList.RC_Tie_Stone.get(1))
-            .duration(6 * SECONDS + 8 * TICKS)
-            .eut(8)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(new ItemStack(Blocks.stone_slab, 1, 7), ItemList.RC_Rebar.get(1))
+                .circuit(1)
+                .itemOutputs(ItemList.RC_Tie_Stone.get(1))
+                .duration(6 * SECONDS + 8 * TICKS)
+                .eut(8)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.stick, Materials.Steel, 3),
-                GTOreDictUnificator.get(OrePrefixes.stick, Materials.Electrum, 3))
-            .circuit(8)
-            .itemOutputs(ItemList.RC_Rail_HS.get(16))
-            .fluidInputs(Materials.Blaze.getMolten(216))
-            .duration(5 * SECONDS)
-            .eut(TierEU.RECIPE_LV / 2)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    GTOreDictUnificator.get(OrePrefixes.stick, Materials.Steel, 3),
+                    GTOreDictUnificator.get(OrePrefixes.stick, Materials.Electrum, 3))
+                .circuit(8)
+                .itemOutputs(ItemList.RC_Rail_HS.get(16))
+                .fluidInputs(Materials.Blaze.getMolten(216))
+                .duration(5 * SECONDS)
+                .eut(TierEU.RECIPE_LV / 2)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.stick, Materials.Steel, 3),
-                GTOreDictUnificator.get(OrePrefixes.stick, Materials.Electrum, 3))
-            .circuit(9)
-            .itemOutputs(ItemList.RC_Rail_HS.get(8))
-            .fluidInputs(Materials.ConductiveIron.getMolten(3 * INGOTS))
-            .duration(5 * SECONDS)
-            .eut(TierEU.RECIPE_LV / 2)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    GTOreDictUnificator.get(OrePrefixes.stick, Materials.Steel, 3),
+                    GTOreDictUnificator.get(OrePrefixes.stick, Materials.Electrum, 3))
+                .circuit(9)
+                .itemOutputs(ItemList.RC_Rail_HS.get(8))
+                .fluidInputs(Materials.ConductiveIron.getMolten(3 * INGOTS))
+                .duration(5 * SECONDS)
+                .eut(TierEU.RECIPE_LV / 2)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.stick, Materials.Steel, 3),
-                GTOreDictUnificator.get(OrePrefixes.stick, Materials.Electrum, 3))
-            .circuit(9)
-            .itemOutputs(ItemList.RC_Rail_HS.get(32))
-            .fluidInputs(Materials.VibrantAlloy.getMolten(216))
-            .duration(5 * SECONDS)
-            .eut(TierEU.RECIPE_LV)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    GTOreDictUnificator.get(OrePrefixes.stick, Materials.Steel, 3),
+                    GTOreDictUnificator.get(OrePrefixes.stick, Materials.Electrum, 3))
+                .circuit(9)
+                .itemOutputs(ItemList.RC_Rail_HS.get(32))
+                .fluidInputs(Materials.VibrantAlloy.getMolten(216))
+                .duration(5 * SECONDS)
+                .eut(TierEU.RECIPE_LV)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.stick, Materials.Steel, 3),
-                GTOreDictUnificator.get(OrePrefixes.stick, Materials.Electrum, 3))
-            .circuit(9)
-            .itemOutputs(ItemList.RC_Rail_HS.get(64))
-            .fluidInputs(Materials.CrystallineAlloy.getMolten(216))
-            .duration(5 * SECONDS)
-            .eut(48)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    GTOreDictUnificator.get(OrePrefixes.stick, Materials.Steel, 3),
+                    GTOreDictUnificator.get(OrePrefixes.stick, Materials.Electrum, 3))
+                .circuit(9)
+                .itemOutputs(ItemList.RC_Rail_HS.get(64))
+                .fluidInputs(Materials.CrystallineAlloy.getMolten(216))
+                .duration(5 * SECONDS)
+                .eut(48)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                ItemList.RC_Rail_Standard.get(3),
-                GTOreDictUnificator.get(OrePrefixes.stick, Materials.Electrum, 3))
-            .circuit(8)
-            .itemOutputs(ItemList.RC_Rail_Adv.get(8))
-            .fluidInputs(Materials.Redstone.getMolten(216))
-            .duration(5 * SECONDS)
-            .eut(TierEU.RECIPE_LV / 2)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    ItemList.RC_Rail_Standard.get(3),
+                    GTOreDictUnificator.get(OrePrefixes.stick, Materials.Electrum, 3))
+                .circuit(8)
+                .itemOutputs(ItemList.RC_Rail_Adv.get(8))
+                .fluidInputs(Materials.Redstone.getMolten(216))
+                .duration(5 * SECONDS)
+                .eut(TierEU.RECIPE_LV / 2)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                ItemList.RC_Rail_Standard.get(3),
-                GTOreDictUnificator.get(OrePrefixes.stick, Materials.Electrum, 3))
-            .circuit(8)
-            .itemOutputs(ItemList.RC_Rail_Adv.get(16))
-            .fluidInputs(Materials.RedAlloy.getMolten(216))
-            .duration(5 * SECONDS)
-            .eut(TierEU.RECIPE_LV / 2)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    ItemList.RC_Rail_Standard.get(3),
+                    GTOreDictUnificator.get(OrePrefixes.stick, Materials.Electrum, 3))
+                .circuit(8)
+                .itemOutputs(ItemList.RC_Rail_Adv.get(16))
+                .fluidInputs(Materials.RedAlloy.getMolten(216))
+                .duration(5 * SECONDS)
+                .eut(TierEU.RECIPE_LV / 2)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                ItemList.RC_Rail_Standard.get(3),
-                GTOreDictUnificator.get(OrePrefixes.stick, Materials.Electrum, 3))
-            .circuit(8)
-            .itemOutputs(ItemList.RC_Rail_Adv.get(32))
-            .fluidInputs(Materials.ConductiveIron.getMolten(216))
-            .duration(5 * SECONDS)
-            .eut(TierEU.RECIPE_LV)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    ItemList.RC_Rail_Standard.get(3),
+                    GTOreDictUnificator.get(OrePrefixes.stick, Materials.Electrum, 3))
+                .circuit(8)
+                .itemOutputs(ItemList.RC_Rail_Adv.get(32))
+                .fluidInputs(Materials.ConductiveIron.getMolten(216))
+                .duration(5 * SECONDS)
+                .eut(TierEU.RECIPE_LV)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                ItemList.RC_Rail_Standard.get(3),
-                GTOreDictUnificator.get(OrePrefixes.stick, Materials.Electrum, 3))
-            .circuit(8)
-            .itemOutputs(ItemList.RC_Rail_Adv.get(64))
-            .fluidInputs(Materials.VibrantAlloy.getMolten(216))
-            .duration(5 * SECONDS)
-            .eut(48)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    ItemList.RC_Rail_Standard.get(3),
+                    GTOreDictUnificator.get(OrePrefixes.stick, Materials.Electrum, 3))
+                .circuit(8)
+                .itemOutputs(ItemList.RC_Rail_Adv.get(64))
+                .fluidInputs(Materials.VibrantAlloy.getMolten(216))
+                .duration(5 * SECONDS)
+                .eut(48)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                ItemList.RC_Rail_Standard.get(1),
-                GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.Copper, 1))
-            .circuit(1)
-            .itemOutputs(ItemList.RC_Rail_Electric.get(1))
-            .duration(2 * SECONDS + 10 * TICKS)
-            .eut(4)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    ItemList.RC_Rail_Standard.get(1),
+                    GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.Copper, 1))
+                .circuit(1)
+                .itemOutputs(ItemList.RC_Rail_Electric.get(1))
+                .duration(2 * SECONDS + 10 * TICKS)
+                .eut(4)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                ItemList.RC_Rail_Standard.get(1),
-                GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.AnnealedCopper, 1))
-            .circuit(1)
-            .itemOutputs(ItemList.RC_Rail_Electric.get(1))
-            .duration(2 * SECONDS + 10 * TICKS)
-            .eut(4)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    ItemList.RC_Rail_Standard.get(1),
+                    GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.AnnealedCopper, 1))
+                .circuit(1)
+                .itemOutputs(ItemList.RC_Rail_Electric.get(1))
+                .duration(2 * SECONDS + 10 * TICKS)
+                .eut(4)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                ItemList.RC_Rail_Standard.get(1),
-                GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.Gold, 1))
-            .circuit(1)
-            .itemOutputs(ItemList.RC_Rail_Electric.get(2))
-            .duration(2 * SECONDS + 10 * TICKS)
-            .eut(4)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    ItemList.RC_Rail_Standard.get(1),
+                    GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.Gold, 1))
+                .circuit(1)
+                .itemOutputs(ItemList.RC_Rail_Electric.get(2))
+                .duration(2 * SECONDS + 10 * TICKS)
+                .eut(4)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                ItemList.RC_Rail_Standard.get(1),
-                GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.Electrum, 1))
-            .circuit(1)
-            .itemOutputs(ItemList.RC_Rail_Electric.get(4))
-            .duration(2 * SECONDS + 10 * TICKS)
-            .eut(TierEU.RECIPE_LV / 2)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    ItemList.RC_Rail_Standard.get(1),
+                    GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.Electrum, 1))
+                .circuit(1)
+                .itemOutputs(ItemList.RC_Rail_Electric.get(4))
+                .duration(2 * SECONDS + 10 * TICKS)
+                .eut(TierEU.RECIPE_LV / 2)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                ItemList.RC_Rail_Standard.get(1),
-                GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.Titanium, 1))
-            .circuit(1)
-            .itemOutputs(ItemList.RC_Rail_Electric.get(8))
-            .duration(2 * SECONDS + 10 * TICKS)
-            .eut(TierEU.RECIPE_LV)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    ItemList.RC_Rail_Standard.get(1),
+                    GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.Titanium, 1))
+                .circuit(1)
+                .itemOutputs(ItemList.RC_Rail_Electric.get(8))
+                .duration(2 * SECONDS + 10 * TICKS)
+                .eut(TierEU.RECIPE_LV)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                ItemList.RC_Rail_Standard.get(1),
-                GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.TungstenSteel, 1))
-            .circuit(1)
-            .itemOutputs(ItemList.RC_Rail_Electric.get(16))
-            .duration(2 * SECONDS + 10 * TICKS)
-            .eut(48)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    ItemList.RC_Rail_Standard.get(1),
+                    GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.TungstenSteel, 1))
+                .circuit(1)
+                .itemOutputs(ItemList.RC_Rail_Electric.get(16))
+                .duration(2 * SECONDS + 10 * TICKS)
+                .eut(48)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                ItemList.RC_Rail_Standard.get(1),
-                GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.HSSG, 1))
-            .circuit(1)
-            .itemOutputs(ItemList.RC_Rail_Electric.get(32))
-            .duration(2 * SECONDS + 10 * TICKS)
-            .eut(TierEU.RECIPE_MV / 2)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    ItemList.RC_Rail_Standard.get(1),
+                    GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.HSSG, 1))
+                .circuit(1)
+                .itemOutputs(ItemList.RC_Rail_Electric.get(32))
+                .duration(2 * SECONDS + 10 * TICKS)
+                .eut(TierEU.RECIPE_MV / 2)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                ItemList.RC_Rail_Standard.get(1),
-                GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.Naquadah, 1))
-            .circuit(1)
-            .itemOutputs(ItemList.RC_Rail_Electric.get(64))
-            .duration(2 * SECONDS + 10 * TICKS)
-            .eut(96)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    ItemList.RC_Rail_Standard.get(1),
+                    GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.Naquadah, 1))
+                .circuit(1)
+                .itemOutputs(ItemList.RC_Rail_Electric.get(64))
+                .duration(2 * SECONDS + 10 * TICKS)
+                .eut(96)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(ItemList.RC_Tie_Wood.get(1), GTOreDictUnificator.get(OrePrefixes.stick, Materials.Iron, 1))
-            .circuit(10)
-            .itemOutputs(ItemList.RC_Rail_Wooden.get(8))
-            .duration(6 * SECONDS + 13 * TICKS)
-            .eut(4)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(ItemList.RC_Tie_Wood.get(1), GTOreDictUnificator.get(OrePrefixes.stick, Materials.Iron, 1))
+                .circuit(10)
+                .itemOutputs(ItemList.RC_Rail_Wooden.get(8))
+                .duration(6 * SECONDS + 13 * TICKS)
+                .eut(4)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                ItemList.RC_Tie_Wood.get(1),
-                GTOreDictUnificator.get(OrePrefixes.stick, Materials.WroughtIron, 1))
-            .circuit(11)
-            .itemOutputs(ItemList.RC_Rail_Wooden.get(8))
-            .duration(6 * SECONDS + 13 * TICKS)
-            .eut(4)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    ItemList.RC_Tie_Wood.get(1),
+                    GTOreDictUnificator.get(OrePrefixes.stick, Materials.WroughtIron, 1))
+                .circuit(11)
+                .itemOutputs(ItemList.RC_Rail_Wooden.get(8))
+                .duration(6 * SECONDS + 13 * TICKS)
+                .eut(4)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(ItemList.RC_Tie_Wood.get(1), GTOreDictUnificator.get(OrePrefixes.stick, Materials.Steel, 1))
-            .circuit(11)
-            .itemOutputs(ItemList.RC_Rail_Wooden.get(16))
-            .duration(6 * SECONDS + 13 * TICKS)
-            .eut(TierEU.RECIPE_LV / 2)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(ItemList.RC_Tie_Wood.get(1), GTOreDictUnificator.get(OrePrefixes.stick, Materials.Steel, 1))
+                .circuit(11)
+                .itemOutputs(ItemList.RC_Rail_Wooden.get(16))
+                .duration(6 * SECONDS + 13 * TICKS)
+                .eut(TierEU.RECIPE_LV / 2)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                ItemList.RC_Tie_Wood.get(1),
-                GTOreDictUnificator.get(OrePrefixes.stick, Materials.StainlessSteel, 1))
-            .circuit(11)
-            .itemOutputs(ItemList.RC_Rail_Wooden.get(32))
-            .duration(6 * SECONDS + 13 * TICKS)
-            .eut(TierEU.RECIPE_LV)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    ItemList.RC_Tie_Wood.get(1),
+                    GTOreDictUnificator.get(OrePrefixes.stick, Materials.StainlessSteel, 1))
+                .circuit(11)
+                .itemOutputs(ItemList.RC_Rail_Wooden.get(32))
+                .duration(6 * SECONDS + 13 * TICKS)
+                .eut(TierEU.RECIPE_LV)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(ItemList.RC_Tie_Wood.get(1), GTOreDictUnificator.get(OrePrefixes.stick, Materials.Titanium, 1))
-            .circuit(11)
-            .itemOutputs(ItemList.RC_Rail_Wooden.get(64))
-            .duration(6 * SECONDS + 13 * TICKS)
-            .eut(48)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    ItemList.RC_Tie_Wood.get(1),
+                    GTOreDictUnificator.get(OrePrefixes.stick, Materials.Titanium, 1))
+                .circuit(11)
+                .itemOutputs(ItemList.RC_Rail_Wooden.get(64))
+                .duration(6 * SECONDS + 13 * TICKS)
+                .eut(48)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(ItemList.RC_Tie_Wood.get(32))
-            .circuit(20)
-            .itemOutputs(ItemList.RC_Bed_Wood.get(24))
-            .duration(10 * SECONDS)
-            .eut(TierEU.RECIPE_LV)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(ItemList.RC_Tie_Wood.get(32))
+                .circuit(20)
+                .itemOutputs(ItemList.RC_Bed_Wood.get(24))
+                .duration(10 * SECONDS)
+                .eut(TierEU.RECIPE_LV)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(ItemList.RC_Tie_Wood.get(64))
-            .circuit(24)
-            .itemOutputs(ItemList.RC_Bed_Wood.get(48))
-            .duration(10 * SECONDS)
-            .eut(48)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(ItemList.RC_Tie_Wood.get(64))
+                .circuit(24)
+                .itemOutputs(ItemList.RC_Bed_Wood.get(48))
+                .duration(10 * SECONDS)
+                .eut(48)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(ItemList.RC_Tie_Stone.get(32))
-            .circuit(20)
-            .itemOutputs(ItemList.RC_Bed_Stone.get(24))
-            .duration(10 * SECONDS)
-            .eut(TierEU.RECIPE_LV)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(ItemList.RC_Tie_Stone.get(32))
+                .circuit(20)
+                .itemOutputs(ItemList.RC_Bed_Stone.get(24))
+                .duration(10 * SECONDS)
+                .eut(TierEU.RECIPE_LV)
+                .addTo(assemblerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(ItemList.RC_Tie_Stone.get(64))
-            .circuit(24)
-            .itemOutputs(ItemList.RC_Bed_Stone.get(48))
-            .duration(10 * SECONDS)
-            .eut(48)
-            .addTo(assemblerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(ItemList.RC_Tie_Stone.get(64))
+                .circuit(24)
+                .itemOutputs(ItemList.RC_Bed_Stone.get(48))
+                .duration(10 * SECONDS)
+                .eut(48)
+                .addTo(assemblerRecipes);
+        }
 
         ItemStack tRailWood = getModItem(Railcraft.ID, "track", 64, 736);
         if (tRailWood != null) {
@@ -6151,19 +6151,20 @@ public class AssemblerRecipes implements Runnable {
                 .addTo(assemblerRecipes);
 
             // chunkloader upgrade OC
-
-            GTValues.RA.stdBuilder()
-                .itemInputs(
-                    ItemList.Circuit_Board_Plastic_Advanced.get(1),
-                    GTOreDictUnificator.get(OrePrefixes.itemCasing, Materials.Aluminium, 2),
-                    getModItem(Railcraft.ID, "machine.alpha", 1L, 0),
-                    getModItem(OpenComputers.ID, "item", 1L, 26))
-                .circuit(1)
-                .itemOutputs(getModItem(OpenComputers.ID, "item", 1L, 62))
-                .fluidInputs(tMat.getMolten(tMultiplier * HALF_INGOTS))
-                .duration(12 * SECONDS + 10 * TICKS)
-                .eut(TierEU.RECIPE_HV / 2)
-                .addTo(assemblerRecipes);
+            if (OpenComputers.isModLoaded()) {
+                GTValues.RA.stdBuilder()
+                    .itemInputs(
+                        ItemList.Circuit_Board_Plastic_Advanced.get(1),
+                        GTOreDictUnificator.get(OrePrefixes.itemCasing, Materials.Aluminium, 2),
+                        getModItem(Railcraft.ID, "machine.alpha", 1L, 0),
+                        getModItem(OpenComputers.ID, "item", 1L, 26))
+                    .circuit(1)
+                    .itemOutputs(getModItem(OpenComputers.ID, "item", 1L, 62))
+                    .fluidInputs(tMat.getMolten(tMultiplier * HALF_INGOTS))
+                    .duration(12 * SECONDS + 10 * TICKS)
+                    .eut(TierEU.RECIPE_HV / 2)
+                    .addTo(assemblerRecipes);
+            }
 
         }
 

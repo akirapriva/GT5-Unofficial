@@ -1,7 +1,6 @@
 package gregtech.loaders.postload.recipes;
 
-import static gregtech.api.enums.Mods.Forestry;
-import static gregtech.api.enums.Mods.IndustrialCraft2;
+import static gregtech.api.enums.Mods.*;
 import static gregtech.api.recipe.RecipeMaps.brewingRecipes;
 import static gregtech.api.util.GTModHandler.getModItem;
 import static gregtech.api.util.GTRecipeBuilder.SECONDS;
@@ -462,29 +461,31 @@ public class BreweryRecipes implements Runnable {
 
         // biomass recipes
         {
-            GTValues.RA.stdBuilder()
-                .itemInputs(getModItem(Forestry.ID, "fertilizerBio", 4L, 0))
-                .fluidInputs(Materials.Water.getFluid(750))
-                .fluidOutputs(Materials.Biomass.getFluid(750))
-                .duration(6 * SECONDS + 8 * TICKS)
-                .eut(4)
-                .addTo(brewingRecipes);
+            if (Forestry.isModLoaded()) {
+                GTValues.RA.stdBuilder()
+                    .itemInputs(getModItem(Forestry.ID, "fertilizerBio", 4L, 0))
+                    .fluidInputs(Materials.Water.getFluid(750))
+                    .fluidOutputs(Materials.Biomass.getFluid(750))
+                    .duration(6 * SECONDS + 8 * TICKS)
+                    .eut(4)
+                    .addTo(brewingRecipes);
 
-            GTValues.RA.stdBuilder()
-                .itemInputs(getModItem(Forestry.ID, "mulch", 16L, 0))
-                .fluidInputs(GTModHandler.getDistilledWater(750L))
-                .fluidOutputs(Materials.Biomass.getFluid(750))
-                .duration(6 * SECONDS + 8 * TICKS)
-                .eut(4)
-                .addTo(brewingRecipes);
+                GTValues.RA.stdBuilder()
+                    .itemInputs(getModItem(Forestry.ID, "mulch", 16L, 0))
+                    .fluidInputs(GTModHandler.getDistilledWater(750L))
+                    .fluidOutputs(Materials.Biomass.getFluid(750))
+                    .duration(6 * SECONDS + 8 * TICKS)
+                    .eut(4)
+                    .addTo(brewingRecipes);
 
-            GTValues.RA.stdBuilder()
-                .itemInputs(getModItem(Forestry.ID, "mulch", 8L, 0))
-                .fluidInputs(getFluidStack("juice", 500))
-                .fluidOutputs(Materials.Biomass.getFluid(750))
-                .duration(6 * SECONDS + 8 * TICKS)
-                .eut(4)
-                .addTo(brewingRecipes);
+                GTValues.RA.stdBuilder()
+                    .itemInputs(getModItem(Forestry.ID, "mulch", 8L, 0))
+                    .fluidInputs(getFluidStack("juice", 500))
+                    .fluidOutputs(Materials.Biomass.getFluid(750))
+                    .duration(6 * SECONDS + 8 * TICKS)
+                    .eut(4)
+                    .addTo(brewingRecipes);
+            }
         }
 
         // ic2 biomass recipes

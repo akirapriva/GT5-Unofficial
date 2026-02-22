@@ -872,6 +872,86 @@ public class OrePrefixes {
         .materialAmount(M / 3)
         .build();
 
+    public static final OrePrefixes toolHeadSword = new OrePrefixBuilder("toolHeadSword")
+        .withDefaultLocalName("Sword Blades")
+        .withSuffix(" Sword Blade")
+        .unifiable()
+        .materialBased()
+        .recyclable()
+        .materialGenerationBits(TOOL)
+        .materialAmount(M * 2)
+        .textureIndex(32)
+        .build();
+
+    public static final OrePrefixes toolHeadPickaxe = new OrePrefixBuilder("toolHeadPickaxe")
+        .withDefaultLocalName("Pickaxe Heads")
+        .withSuffix(" Pickaxe Head")
+        .unifiable()
+        .materialBased()
+        .recyclable()
+        .materialGenerationBits(TOOL)
+        .materialAmount(M * 3)
+        .textureIndex(33)
+        .build();
+
+    public static final OrePrefixes toolHeadShovel = new OrePrefixBuilder("toolHeadShovel")
+        .withDefaultLocalName("Shovel Heads")
+        .withSuffix(" Shovel Head")
+        .unifiable()
+        .materialBased()
+        .recyclable()
+        .materialGenerationBits(TOOL)
+        .materialAmount(M * 1)
+        .defaultStackSize(64)
+        .textureIndex(34)
+        .build();
+
+    public static final OrePrefixes toolHeadUniversalSpade = new OrePrefixBuilder("toolHeadUniversalSpade")
+        .withDefaultLocalName("Universal Spade Heads")
+        .withSuffix(" Universal Spade Head")
+        .unifiable()
+        .materialBased()
+        .recyclable()
+        .materialGenerationBits(TOOL)
+        .materialAmount(M * 1)
+        .defaultStackSize(64)
+        .textureIndex(43)
+        .build();
+
+    public static final OrePrefixes toolHeadAxe = new OrePrefixBuilder("toolHeadAxe").withDefaultLocalName("Axe Heads")
+        .withSuffix(" Axe Head")
+        .unifiable()
+        .materialBased()
+        .recyclable()
+        .materialGenerationBits(TOOL)
+        .materialAmount(M * 3)
+        .defaultStackSize(64)
+        .textureIndex(35)
+        .build();
+
+    public static final OrePrefixes toolHeadHoe = new OrePrefixBuilder("toolHeadHoe").withDefaultLocalName("Hoe Heads")
+        .withSuffix(" Hoe Head")
+        .unifiable()
+        .materialBased()
+        .recyclable()
+        .materialGenerationBits(TOOL)
+        .materialAmount(M * 2)
+        .defaultStackSize(64)
+        .textureIndex(36)
+        .build();
+
+    public static final OrePrefixes toolHeadSense = new OrePrefixBuilder("toolHeadSense")
+        .withDefaultLocalName("Sense Blades")
+        .withSuffix(" Sense Blade")
+        .unifiable()
+        .materialBased()
+        .recyclable()
+        .materialGenerationBits(TOOL)
+        .materialAmount(M * 3)
+        .defaultStackSize(64)
+        .textureIndex(44)
+        .build();
+
     /** consisting out of 2 Ingots. */
     public static final OrePrefixes toolHeadFile = new OrePrefixBuilder("toolHeadFile")
         .withDefaultLocalName("File Heads")
@@ -894,6 +974,18 @@ public class OrePrefixes {
         .materialGenerationBits(TOOL)
         .materialAmount(M * 6)
         .textureIndex(OrePrefixTextureID.TOOL_HEAD_HAMMER)
+        .build();
+
+    public static final OrePrefixes toolHeadPlow = new OrePrefixBuilder("toolHeadPlow")
+        .withDefaultLocalName("Plow Heads")
+        .withSuffix(" Plow Head")
+        .unifiable()
+        .materialBased()
+        .recyclable()
+        .materialGenerationBits(TOOL)
+        .materialAmount(M * 4)
+        .defaultStackSize(64)
+        .textureIndex(45)
         .build();
 
     /** consisting out of 2 Ingots. */
@@ -2109,7 +2201,7 @@ public class OrePrefixes {
     private final int materialGenerationBits;
     private final long materialAmount;
     private final int defaultStackSize;
-    private final int textureIndex;
+    public final int textureIndex;
 
     OrePrefixes(
         // spotless:off
@@ -2458,12 +2550,20 @@ public class OrePrefixes {
             OrePrefixes.screw,
             OrePrefixes.ring,
             OrePrefixes.foil,
+            OrePrefixes.toolHeadSword,
+            OrePrefixes.toolHeadPickaxe,
+            OrePrefixes.toolHeadShovel,
+            OrePrefixes.toolHeadAxe,
+            OrePrefixes.toolHeadHoe,
             OrePrefixes.toolHeadHammer,
             OrePrefixes.toolHeadFile,
             OrePrefixes.toolHeadSaw,
             OrePrefixes.toolHeadDrill,
             OrePrefixes.toolHeadChainsaw,
             OrePrefixes.toolHeadWrench,
+            OrePrefixes.toolHeadUniversalSpade,
+            OrePrefixes.toolHeadSense,
+            OrePrefixes.toolHeadPlow,
             OrePrefixes.toolHeadBuzzSaw,
             OrePrefixes.turbineBlade,
             OrePrefixes.wireFine,

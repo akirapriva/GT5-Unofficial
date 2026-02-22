@@ -226,44 +226,46 @@ public class ChemicalBathRecipes implements Runnable {
                 .addTo(chemicalBathRecipes);
         }
 
-        for (Fluid dyeFluid : Dyes.dyeRed.getFluidDyes()) {
-            GTValues.RA.stdBuilder()
-                .itemInputs(GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.RedAlloy, 1))
-                .itemOutputs(getModItem(BuildCraftTransport.ID, "pipeWire", 4L, 0))
-                .fluidInputs(new FluidStack(dyeFluid, 72))
-                .duration(1 * SECONDS + 12 * TICKS)
-                .eut(TierEU.RECIPE_LV / 2)
-                .addTo(chemicalBathRecipes);
-        }
+        if (BuildCraftTransport.isModLoaded()) {
+            for (Fluid dyeFluid : Dyes.dyeRed.getFluidDyes()) {
+                GTValues.RA.stdBuilder()
+                    .itemInputs(GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.RedAlloy, 1))
+                    .itemOutputs(getModItem(BuildCraftTransport.ID, "pipeWire", 4L, 0))
+                    .fluidInputs(new FluidStack(dyeFluid, 72))
+                    .duration(1 * SECONDS + 12 * TICKS)
+                    .eut(TierEU.RECIPE_LV / 2)
+                    .addTo(chemicalBathRecipes);
+            }
 
-        for (Fluid dyeFluid : Dyes.dyeBlue.getFluidDyes()) {
-            GTValues.RA.stdBuilder()
-                .itemInputs(GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.RedAlloy, 1))
-                .itemOutputs(getModItem(BuildCraftTransport.ID, "pipeWire", 4L, 1))
-                .fluidInputs(new FluidStack(dyeFluid, 72))
-                .duration(1 * SECONDS + 12 * TICKS)
-                .eut(TierEU.RECIPE_LV / 2)
-                .addTo(chemicalBathRecipes);
-        }
+            for (Fluid dyeFluid : Dyes.dyeBlue.getFluidDyes()) {
+                GTValues.RA.stdBuilder()
+                    .itemInputs(GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.RedAlloy, 1))
+                    .itemOutputs(getModItem(BuildCraftTransport.ID, "pipeWire", 4L, 1))
+                    .fluidInputs(new FluidStack(dyeFluid, 72))
+                    .duration(1 * SECONDS + 12 * TICKS)
+                    .eut(TierEU.RECIPE_LV / 2)
+                    .addTo(chemicalBathRecipes);
+            }
 
-        for (Fluid dyeFluid : Dyes.dyeGreen.getFluidDyes()) {
-            GTValues.RA.stdBuilder()
-                .itemInputs(GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.RedAlloy, 1))
-                .itemOutputs(getModItem(BuildCraftTransport.ID, "pipeWire", 4L, 2))
-                .fluidInputs(new FluidStack(dyeFluid, 72))
-                .duration(1 * SECONDS + 12 * TICKS)
-                .eut(TierEU.RECIPE_LV / 2)
-                .addTo(chemicalBathRecipes);
-        }
+            for (Fluid dyeFluid : Dyes.dyeGreen.getFluidDyes()) {
+                GTValues.RA.stdBuilder()
+                    .itemInputs(GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.RedAlloy, 1))
+                    .itemOutputs(getModItem(BuildCraftTransport.ID, "pipeWire", 4L, 2))
+                    .fluidInputs(new FluidStack(dyeFluid, 72))
+                    .duration(1 * SECONDS + 12 * TICKS)
+                    .eut(TierEU.RECIPE_LV / 2)
+                    .addTo(chemicalBathRecipes);
+            }
 
-        for (Fluid dyeFluid : Dyes.dyeYellow.getFluidDyes()) {
-            GTValues.RA.stdBuilder()
-                .itemInputs(GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.RedAlloy, 1))
-                .itemOutputs(getModItem(BuildCraftTransport.ID, "pipeWire", 4L, 3))
-                .fluidInputs(new FluidStack(dyeFluid, 72))
-                .duration(1 * SECONDS + 12 * TICKS)
-                .eut(TierEU.RECIPE_LV / 2)
-                .addTo(chemicalBathRecipes);
+            for (Fluid dyeFluid : Dyes.dyeYellow.getFluidDyes()) {
+                GTValues.RA.stdBuilder()
+                    .itemInputs(GTOreDictUnificator.get(OrePrefixes.wireGt01, Materials.RedAlloy, 1))
+                    .itemOutputs(getModItem(BuildCraftTransport.ID, "pipeWire", 4L, 3))
+                    .fluidInputs(new FluidStack(dyeFluid, 72))
+                    .duration(1 * SECONDS + 12 * TICKS)
+                    .eut(TierEU.RECIPE_LV / 2)
+                    .addTo(chemicalBathRecipes);
+            }
         }
 
         for (Dyes dye : Dyes.VALUES) {

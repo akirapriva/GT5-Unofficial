@@ -188,283 +188,285 @@ public class ArcFurnaceRecipes implements Runnable {
             .metadata(RECYCLE, true)
             .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.beta", 1L, 0))
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Iron, 2L))
-            .duration(7 * SECONDS + 10 * TICKS)
-            .eut(90)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+        if (Railcraft.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.beta", 1L, 0))
+                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Iron, 2L))
+                .duration(7 * SECONDS + 10 * TICKS)
+                .eut(90)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.beta", 1L, 1))
-            .itemOutputs(
-                GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Iron, 1L),
-                GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.Glass, 3))
-            .duration(7 * SECONDS + 10 * TICKS)
-            .eut(90)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.beta", 1L, 1))
+                .itemOutputs(
+                    GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Iron, 1L),
+                    GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.Glass, 3))
+                .duration(7 * SECONDS + 10 * TICKS)
+                .eut(90)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.beta", 1L, 2))
-            .itemOutputs(
-                GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Bronze, 12L),
-                GTOreDictUnificator.get(OrePrefixes.nugget, Materials.Iron, 6))
-            .duration(7 * SECONDS + 10 * TICKS)
-            .eut(90)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.beta", 1L, 2))
+                .itemOutputs(
+                    GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Bronze, 12L),
+                    GTOreDictUnificator.get(OrePrefixes.nugget, Materials.Iron, 6))
+                .duration(7 * SECONDS + 10 * TICKS)
+                .eut(90)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.beta", 1L, 13))
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Steel, 2L))
-            .duration(9 * SECONDS)
-            .eut((int) TierEU.RECIPE_MV)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.beta", 1L, 13))
+                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Steel, 2L))
+                .duration(9 * SECONDS)
+                .eut((int) TierEU.RECIPE_MV)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.beta", 1L, 14))
-            .itemOutputs(
-                GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Steel, 1L),
-                GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.Glass, 3))
-            .duration(9 * SECONDS)
-            .eut((int) TierEU.RECIPE_MV)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.beta", 1L, 14))
+                .itemOutputs(
+                    GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Steel, 1L),
+                    GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.Glass, 3))
+                .duration(9 * SECONDS)
+                .eut((int) TierEU.RECIPE_MV)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.beta", 1L, 15))
-            .itemOutputs(
-                GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Steel, 12L),
-                GTOreDictUnificator.get(OrePrefixes.nugget, Materials.Steel, 6L))
-            .duration(9 * SECONDS)
-            .eut((int) TierEU.RECIPE_MV)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.beta", 1L, 15))
+                .itemOutputs(
+                    GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Steel, 12L),
+                    GTOreDictUnificator.get(OrePrefixes.nugget, Materials.Steel, 6L))
+                .duration(9 * SECONDS)
+                .eut((int) TierEU.RECIPE_MV)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 0))
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Aluminium, 2L))
-            .duration(10 * SECONDS + 10 * TICKS)
-            .eut(150)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 0))
+                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Aluminium, 2L))
+                .duration(10 * SECONDS + 10 * TICKS)
+                .eut(150)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 1))
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.nugget, Materials.Aluminium, 3))
-            .duration(10 * SECONDS + 10 * TICKS)
-            .eut(150)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 1))
+                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.nugget, Materials.Aluminium, 3))
+                .duration(10 * SECONDS + 10 * TICKS)
+                .eut(150)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 2))
-            .itemOutputs(
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Ash, 12L),
-                GTOreDictUnificator.get(OrePrefixes.nugget, Materials.Aluminium, 6L))
-            .duration(10 * SECONDS + 10 * TICKS)
-            .eut(150)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 2))
+                .itemOutputs(
+                    GTOreDictUnificator.get(OrePrefixes.dust, Materials.Ash, 12L),
+                    GTOreDictUnificator.get(OrePrefixes.nugget, Materials.Aluminium, 6L))
+                .duration(10 * SECONDS + 10 * TICKS)
+                .eut(150)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 3))
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.ingot, Materials.StainlessSteel, 2L))
-            .duration(12 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 3))
+                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.ingot, Materials.StainlessSteel, 2L))
+                .duration(12 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 4))
-            .itemOutputs(
-                GTOreDictUnificator.get(OrePrefixes.ingot, Materials.StainlessSteel, 1L),
-                GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.Glass, 3))
-            .duration(12 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 4))
+                .itemOutputs(
+                    GTOreDictUnificator.get(OrePrefixes.ingot, Materials.StainlessSteel, 1L),
+                    GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.Glass, 3))
+                .duration(12 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 5))
-            .itemOutputs(
-                GTOreDictUnificator.get(OrePrefixes.ingot, Materials.StainlessSteel, 12L),
-                GTOreDictUnificator.get(OrePrefixes.nugget, Materials.StainlessSteel, 6L))
-            .duration(12 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 5))
+                .itemOutputs(
+                    GTOreDictUnificator.get(OrePrefixes.ingot, Materials.StainlessSteel, 12L),
+                    GTOreDictUnificator.get(OrePrefixes.nugget, Materials.StainlessSteel, 6L))
+                .duration(12 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 6))
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Titanium, 2L))
-            .duration(13 * SECONDS + 10 * TICKS)
-            .eut(210)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 6))
+                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Titanium, 2L))
+                .duration(13 * SECONDS + 10 * TICKS)
+                .eut(210)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 7))
-            .itemOutputs(
-                GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Titanium, 1L),
-                GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.Glass, 3))
-            .duration(13 * SECONDS + 10 * TICKS)
-            .eut(210)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 7))
+                .itemOutputs(
+                    GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Titanium, 1L),
+                    GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.Glass, 3))
+                .duration(13 * SECONDS + 10 * TICKS)
+                .eut(210)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 8))
-            .itemOutputs(
-                GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Titanium, 12L),
-                GTOreDictUnificator.get(OrePrefixes.nugget, Materials.Titanium, 6L))
-            .duration(13 * SECONDS + 10 * TICKS)
-            .eut(210)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 8))
+                .itemOutputs(
+                    GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Titanium, 12L),
+                    GTOreDictUnificator.get(OrePrefixes.nugget, Materials.Titanium, 6L))
+                .duration(13 * SECONDS + 10 * TICKS)
+                .eut(210)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 9))
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.ingot, Materials.TungstenSteel, 2L))
-            .duration(15 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 9))
+                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.ingot, Materials.TungstenSteel, 2L))
+                .duration(15 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 10))
-            .itemOutputs(
-                GTOreDictUnificator.get(OrePrefixes.ingot, Materials.TungstenSteel, 1L),
-                GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.Glass, 3))
-            .duration(15 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 10))
+                .itemOutputs(
+                    GTOreDictUnificator.get(OrePrefixes.ingot, Materials.TungstenSteel, 1L),
+                    GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.Glass, 3))
+                .duration(15 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 11))
-            .itemOutputs(
-                GTOreDictUnificator.get(OrePrefixes.ingot, Materials.TungstenSteel, 12L),
-                GTOreDictUnificator.get(OrePrefixes.nugget, Materials.TungstenSteel, 6L))
-            .duration(15 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 11))
+                .itemOutputs(
+                    GTOreDictUnificator.get(OrePrefixes.ingot, Materials.TungstenSteel, 12L),
+                    GTOreDictUnificator.get(OrePrefixes.nugget, Materials.TungstenSteel, 6L))
+                .duration(15 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 12))
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Palladium, 2L))
-            .duration(16 * SECONDS + 10 * TICKS)
-            .eut(270)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 12))
+                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Palladium, 2L))
+                .duration(16 * SECONDS + 10 * TICKS)
+                .eut(270)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 13))
-            .itemOutputs(
-                GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Palladium, 1L),
-                GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.Glass, 3))
-            .duration(16 * SECONDS + 10 * TICKS)
-            .eut(270)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 13))
+                .itemOutputs(
+                    GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Palladium, 1L),
+                    GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.Glass, 3))
+                .duration(16 * SECONDS + 10 * TICKS)
+                .eut(270)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 14))
-            .itemOutputs(
-                GTOreDictUnificator.get(OrePrefixes.ingot, Materials.NiobiumTitanium, 12L),
-                GTOreDictUnificator.get(OrePrefixes.nugget, Materials.Chrome, 6L))
-            .duration(16 * SECONDS + 10 * TICKS)
-            .eut(270)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 14))
+                .itemOutputs(
+                    GTOreDictUnificator.get(OrePrefixes.ingot, Materials.NiobiumTitanium, 12L),
+                    GTOreDictUnificator.get(OrePrefixes.nugget, Materials.Chrome, 6L))
+                .duration(16 * SECONDS + 10 * TICKS)
+                .eut(270)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 0))
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Iridium, 2L))
-            .duration(18 * SECONDS)
-            .eut(TierEU.RECIPE_HV)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 0))
+                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Iridium, 2L))
+                .duration(18 * SECONDS)
+                .eut(TierEU.RECIPE_HV)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 1))
-            .itemOutputs(
-                GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Iridium, 1L),
-                GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.Glass, 3))
-            .duration(18 * SECONDS)
-            .eut(TierEU.RECIPE_HV)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 1))
+                .itemOutputs(
+                    GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Iridium, 1L),
+                    GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.Glass, 3))
+                .duration(18 * SECONDS)
+                .eut(TierEU.RECIPE_HV)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 2))
-            .itemOutputs(
-                GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Enderium, 12L),
-                GTOreDictUnificator.get(OrePrefixes.nugget, Materials.Iridium, 6L))
-            .duration(18 * SECONDS)
-            .eut(TierEU.RECIPE_HV)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 2))
+                .itemOutputs(
+                    GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Enderium, 12L),
+                    GTOreDictUnificator.get(OrePrefixes.nugget, Materials.Iridium, 6L))
+                .duration(18 * SECONDS)
+                .eut(TierEU.RECIPE_HV)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 3))
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Osmium, 2L))
-            .duration(18 * SECONDS)
-            .eut(330)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 3))
+                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Osmium, 2L))
+                .duration(18 * SECONDS)
+                .eut(330)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 4))
-            .itemOutputs(
-                GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Osmium, 1L),
-                GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.Glass, 3))
-            .duration(18 * SECONDS)
-            .eut(330)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 4))
+                .itemOutputs(
+                    GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Osmium, 1L),
+                    GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.Glass, 3))
+                .duration(18 * SECONDS)
+                .eut(330)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 5))
-            .itemOutputs(
-                GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Naquadah, 12L),
-                GTOreDictUnificator.get(OrePrefixes.nugget, Materials.Osmium, 6L))
-            .duration(18 * SECONDS)
-            .eut(330)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 5))
+                .itemOutputs(
+                    GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Naquadah, 12L),
+                    GTOreDictUnificator.get(OrePrefixes.nugget, Materials.Osmium, 6L))
+                .duration(18 * SECONDS)
+                .eut(330)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 6))
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Neutronium, 2L))
-            .duration(18 * SECONDS)
-            .eut(TierEU.RECIPE_HV)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 6))
+                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Neutronium, 2L))
+                .duration(18 * SECONDS)
+                .eut(TierEU.RECIPE_HV)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 7))
-            .itemOutputs(
-                GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Neutronium, 1L),
-                GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.Glass, 3))
-            .duration(18 * SECONDS)
-            .eut(TierEU.RECIPE_HV)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 7))
+                .itemOutputs(
+                    GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Neutronium, 1L),
+                    GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.Glass, 3))
+                .duration(18 * SECONDS)
+                .eut(TierEU.RECIPE_HV)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 8))
-            .itemOutputs(
-                GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Neutronium, 12L),
-                GTOreDictUnificator.get(OrePrefixes.nugget, Materials.Neutronium, 6L))
-            .duration(18 * SECONDS)
-            .eut(TierEU.RECIPE_HV)
-            .metadata(RECYCLE, true)
-            .addTo(UniversalArcFurnace);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 8))
+                .itemOutputs(
+                    GTOreDictUnificator.get(OrePrefixes.ingot, Materials.Neutronium, 12L),
+                    GTOreDictUnificator.get(OrePrefixes.nugget, Materials.Neutronium, 6L))
+                .duration(18 * SECONDS)
+                .eut(TierEU.RECIPE_HV)
+                .metadata(RECYCLE, true)
+                .addTo(UniversalArcFurnace);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.Silicon, 1L))

@@ -1,10 +1,6 @@
 package gregtech.loaders.postload.recipes;
 
-import static gregtech.api.enums.Mods.AppliedEnergistics2;
-import static gregtech.api.enums.Mods.BiomesOPlenty;
-import static gregtech.api.enums.Mods.ProjectRedExploration;
-import static gregtech.api.enums.Mods.Railcraft;
-import static gregtech.api.enums.Mods.Thaumcraft;
+import static gregtech.api.enums.Mods.*;
 import static gregtech.api.recipe.RecipeMaps.maceratorRecipes;
 import static gregtech.api.util.GTModHandler.getIC2Item;
 import static gregtech.api.util.GTModHandler.getModItem;
@@ -114,12 +110,14 @@ public class Pulverizer implements Runnable {
                 .addTo(maceratorRecipes);
         }
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Thaumcraft.ID, "ItemResource", 1, 18))
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.Gold, 1))
-            .duration(1 * SECONDS + 1 * TICKS)
-            .eut(4)
-            .addTo(maceratorRecipes);
+        if (Thaumcraft.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Thaumcraft.ID, "ItemResource", 1, 18))
+                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.Gold, 1))
+                .duration(1 * SECONDS + 1 * TICKS)
+                .eut(4)
+                .addTo(maceratorRecipes);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(new ItemStack(Items.reeds, 1))

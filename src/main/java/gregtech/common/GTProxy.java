@@ -61,6 +61,7 @@ import net.minecraft.potion.Potion;
 import net.minecraft.tileentity.TileEntity;
 import net.minecraft.util.DamageSource;
 import net.minecraft.util.MathHelper;
+import net.minecraft.world.WorldSettings.GameType;
 import net.minecraft.world.gen.feature.WorldGenMinable;
 import net.minecraftforge.common.MinecraftForge;
 import net.minecraftforge.event.ForgeEventFactory;
@@ -160,7 +161,9 @@ import gregtech.common.config.OPStuff;
 import gregtech.common.data.GTPowerfailTracker;
 import gregtech.common.data.maglev.TetherManager;
 import gregtech.common.handlers.OffhandToolFunctionalityHandler;
+import gregtech.common.items.IDMetaTool01;
 import gregtech.common.items.MetaGeneratedItem98;
+import gregtech.common.items.MetaGeneratedTool01;
 import gregtech.common.misc.GlobalEnergyWorldSavedData;
 import gregtech.common.misc.GlobalMetricsCoverDatabase;
 import gregtech.common.misc.WirelessChargerManager;
@@ -2068,6 +2071,28 @@ public class GTProxy implements IFuelHandler {
     public void onPlayerTickEventServer(TickEvent.PlayerTickEvent aEvent) {
         if ((!aEvent.side.isServer()) || (aEvent.phase == TickEvent.Phase.END) || (aEvent.player.isDead)) {
             return;
+        }
+
+        if ((aEvent.player.ticksExisted % 200 == 0) && (aEvent.player.capabilities.allowEdit)
+            && (!aEvent.player.capabilities.isCreativeMode)
+            && (this.mSurvivalIntoAdventure)) {
+            aEvent.player.setGameType(GameType.ADVENTURE);
+            aEvent.player.capabilities.allowEdit = false;
+            if (this.mAxeWhenAdventure) {
+                GTUtility.sendChatToPlayer(
+                    aEvent.player,
+                    GTLanguageManager.addStringLocalization(
+                        "Interaction_DESCRIPTION_Index_097",
+                        "It's dangerous to go alone! Take this."));
+                aEvent.player.worldObj.spawnEntityInWorld(
+                    new EntityItem(
+                        aEvent.player.worldObj,
+                        aEvent.player.posX,
+                        aEvent.player.posY,
+                        aEvent.player.posZ,
+                        MetaGeneratedTool01.INSTANCE
+                            .getToolWithStats(IDMetaTool01.AXE.ID, 1, Materials.Flint, Materials.Wood, null)));
+            }
         }
 
         final boolean tHungerEffect = (this.mHungerEffect) && (aEvent.player.ticksExisted % 2400 == 1200);

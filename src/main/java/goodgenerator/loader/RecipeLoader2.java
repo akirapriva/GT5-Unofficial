@@ -3,9 +3,7 @@ package goodgenerator.loader;
 import static goodgenerator.api.recipe.GoodGeneratorRecipeMaps.neutronActivatorRecipes;
 import static goodgenerator.api.recipe.GoodGeneratorRecipeMaps.preciseAssemblerRecipes;
 import static goodgenerator.util.MyRecipeAdder.computeRangeNKE;
-import static gregtech.api.enums.Mods.AppliedEnergistics2;
-import static gregtech.api.enums.Mods.GalacticraftMars;
-import static gregtech.api.enums.Mods.NewHorizonsCoreMod;
+import static gregtech.api.enums.Mods.*;
 import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
 import static gregtech.api.recipe.RecipeMaps.autoclaveRecipes;
 import static gregtech.api.recipe.RecipeMaps.blastFurnaceRecipes;
@@ -252,167 +250,173 @@ public class RecipeLoader2 {
             .addTo(assemblerRecipes);
 
         // Fluid Storage Core T3
-        GTValues.RA.stdBuilder()
-            .metadata(RESEARCH_ITEM, ItemRefer.Fluid_Storage_Core_T2.get(1))
-            .metadata(SCANNING, new Scanning(1 * MINUTES + 30 * SECONDS, TierEU.RECIPE_EV))
-            .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.pipeNonuple, Materials.StainlessSteel, 4),
-                ItemList.Electric_Pump_HV.get(8),
-                ItemList.Quantum_Tank_LV.get(1),
-                GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.Osmium, 8),
-                GTModHandler.getModItem(GalacticraftMars.ID, "item.null", 1L, 6),
-                GTOreDictUnificator.get(OrePrefixes.foil, Materials.Polycaprolactam, 32))
-            .fluidInputs(MaterialsAlloy.INDALLOY_140.getFluidStack(16 * INGOTS), Materials.Lubricant.getFluid(4_000))
-            .itemOutputs(ItemRefer.Fluid_Storage_Core_T3.get(1))
-            .eut(TierEU.RECIPE_LuV)
-            .duration(20 * SECONDS)
-            .addTo(AssemblyLine);
+        if (GalacticraftMars.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .metadata(RESEARCH_ITEM, ItemRefer.Fluid_Storage_Core_T2.get(1))
+                .metadata(SCANNING, new Scanning(1 * MINUTES + 30 * SECONDS, TierEU.RECIPE_EV))
+                .itemInputs(
+                    GTOreDictUnificator.get(OrePrefixes.pipeNonuple, Materials.StainlessSteel, 4),
+                    ItemList.Electric_Pump_HV.get(8),
+                    ItemList.Quantum_Tank_LV.get(1),
+                    GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.Osmium, 8),
+                    GTModHandler.getModItem(GalacticraftMars.ID, "item.null", 1L, 6),
+                    GTOreDictUnificator.get(OrePrefixes.foil, Materials.Polycaprolactam, 32))
+                .fluidInputs(
+                    MaterialsAlloy.INDALLOY_140.getFluidStack(16 * INGOTS),
+                    Materials.Lubricant.getFluid(4_000))
+                .itemOutputs(ItemRefer.Fluid_Storage_Core_T3.get(1))
+                .eut(TierEU.RECIPE_LuV)
+                .duration(20 * SECONDS)
+                .addTo(AssemblyLine);
 
-        // Fluid Storage Core T4
-        GTValues.RA.stdBuilder()
-            .metadata(RESEARCH_ITEM, ItemRefer.Fluid_Storage_Core_T3.get(1))
-            .metadata(SCANNING, new Scanning(1 * MINUTES + 30 * SECONDS, TierEU.RECIPE_IV))
-            .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.pipeNonuple, Materials.Titanium, 4),
-                ItemList.Electric_Pump_EV.get(8),
-                ItemList.Quantum_Tank_LV.get(4),
-                GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.Europium, 8),
-                GTModHandler.getModItem(GalacticraftMars.ID, "item.null", 4L, 6),
-                GTOreDictUnificator.get(OrePrefixes.foil, Materials.StyreneButadieneRubber, 64),
-                GTOreDictUnificator.get(OrePrefixes.pipeLarge, Materials.TungstenSteel, 64))
-            .fluidInputs(MaterialsAlloy.INDALLOY_140.getFluidStack(2 * STACKS), Materials.Lubricant.getFluid(16_000))
-            .itemOutputs(ItemRefer.Fluid_Storage_Core_T4.get(1))
-            .eut(TierEU.RECIPE_ZPM)
-            .duration(20 * SECONDS)
-            .addTo(AssemblyLine);
+            // Fluid Storage Core T4
+            GTValues.RA.stdBuilder()
+                .metadata(RESEARCH_ITEM, ItemRefer.Fluid_Storage_Core_T3.get(1))
+                .metadata(SCANNING, new Scanning(1 * MINUTES + 30 * SECONDS, TierEU.RECIPE_IV))
+                .itemInputs(
+                    GTOreDictUnificator.get(OrePrefixes.pipeNonuple, Materials.Titanium, 4),
+                    ItemList.Electric_Pump_EV.get(8),
+                    ItemList.Quantum_Tank_LV.get(4),
+                    GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.Europium, 8),
+                    GTModHandler.getModItem(GalacticraftMars.ID, "item.null", 4L, 6),
+                    GTOreDictUnificator.get(OrePrefixes.foil, Materials.StyreneButadieneRubber, 64),
+                    GTOreDictUnificator.get(OrePrefixes.pipeLarge, Materials.TungstenSteel, 64))
+                .fluidInputs(
+                    MaterialsAlloy.INDALLOY_140.getFluidStack(2 * STACKS),
+                    Materials.Lubricant.getFluid(16_000))
+                .itemOutputs(ItemRefer.Fluid_Storage_Core_T4.get(1))
+                .eut(TierEU.RECIPE_ZPM)
+                .duration(20 * SECONDS)
+                .addTo(AssemblyLine);
 
-        // Fluid Storage Core T5
-        GTValues.RA.stdBuilder()
-            .metadata(RESEARCH_ITEM, ItemRefer.Fluid_Storage_Core_T4.get(1))
-            .metadata(SCANNING, new Scanning(1 * MINUTES + 30 * SECONDS, TierEU.RECIPE_LuV))
-            .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.pipeNonuple, Materials.MysteriousCrystal, 4),
-                ItemList.Electric_Pump_IV.get(8),
-                ItemList.Quantum_Tank_HV.get(8),
-                GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.Neutronium, 8),
-                GTModHandler.getModItem(GalacticraftMars.ID, "item.null", 16L, 6),
-                GTOreDictUnificator.get(OrePrefixes.plateQuintuple, Materials.Polycaprolactam, 24),
-                GTOreDictUnificator.get(OrePrefixes.pipeHuge, Materials.Titanium, 64))
-            .fluidInputs(
-                Materials.Draconium.getMolten(16 * INGOTS),
-                Materials.Titanium.getMolten(2 * INGOTS),
-                Materials.Lubricant.getFluid(64_000))
-            .itemOutputs(ItemRefer.Fluid_Storage_Core_T5.get(1))
-            .eut(TierEU.RECIPE_UV)
-            .duration(20 * SECONDS)
-            .addTo(AssemblyLine);
+            // Fluid Storage Core T5
+            GTValues.RA.stdBuilder()
+                .metadata(RESEARCH_ITEM, ItemRefer.Fluid_Storage_Core_T4.get(1))
+                .metadata(SCANNING, new Scanning(1 * MINUTES + 30 * SECONDS, TierEU.RECIPE_LuV))
+                .itemInputs(
+                    GTOreDictUnificator.get(OrePrefixes.pipeNonuple, Materials.MysteriousCrystal, 4),
+                    ItemList.Electric_Pump_IV.get(8),
+                    ItemList.Quantum_Tank_HV.get(8),
+                    GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.Neutronium, 8),
+                    GTModHandler.getModItem(GalacticraftMars.ID, "item.null", 16L, 6),
+                    GTOreDictUnificator.get(OrePrefixes.plateQuintuple, Materials.Polycaprolactam, 24),
+                    GTOreDictUnificator.get(OrePrefixes.pipeHuge, Materials.Titanium, 64))
+                .fluidInputs(
+                    Materials.Draconium.getMolten(16 * INGOTS),
+                    Materials.Titanium.getMolten(2 * INGOTS),
+                    Materials.Lubricant.getFluid(64_000))
+                .itemOutputs(ItemRefer.Fluid_Storage_Core_T5.get(1))
+                .eut(TierEU.RECIPE_UV)
+                .duration(20 * SECONDS)
+                .addTo(AssemblyLine);
 
-        // Fluid Storage Core T6
-        GTValues.RA.stdBuilder()
-            .metadata(RESEARCH_ITEM, ItemRefer.Fluid_Storage_Core_T5.get(1))
-            .metadata(SCANNING, new Scanning(1 * MINUTES + 30 * SECONDS, TierEU.RECIPE_UV))
-            .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.pipeNonuple, Materials.Infinity, 4),
-                ItemList.Electric_Pump_LuV.get(8),
-                ItemList.Quantum_Tank_EV.get(16),
-                GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.Infinity, 16),
-                GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.DraconiumAwakened, 16),
-                GTModHandler.getModItem(GalacticraftMars.ID, "item.null", 64L, 6),
-                ItemList.Machine_IV_Compressor.get(64))
-            .fluidInputs(
-                Materials.Draconium.getMolten(16 * INGOTS),
-                Materials.Titanium.getMolten(2 * INGOTS),
-                Materials.Lubricant.getFluid(64_000))
-            .itemOutputs(ItemRefer.Fluid_Storage_Core_T6.get(1))
-            .eut(TierEU.RECIPE_UHV)
-            .duration(20 * SECONDS)
-            .addTo(AssemblyLine);
+            // Fluid Storage Core T6
+            GTValues.RA.stdBuilder()
+                .metadata(RESEARCH_ITEM, ItemRefer.Fluid_Storage_Core_T5.get(1))
+                .metadata(SCANNING, new Scanning(1 * MINUTES + 30 * SECONDS, TierEU.RECIPE_UV))
+                .itemInputs(
+                    GTOreDictUnificator.get(OrePrefixes.pipeNonuple, Materials.Infinity, 4),
+                    ItemList.Electric_Pump_LuV.get(8),
+                    ItemList.Quantum_Tank_EV.get(16),
+                    GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.Infinity, 16),
+                    GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.DraconiumAwakened, 16),
+                    GTModHandler.getModItem(GalacticraftMars.ID, "item.null", 64L, 6),
+                    ItemList.Machine_IV_Compressor.get(64))
+                .fluidInputs(
+                    Materials.Draconium.getMolten(16 * INGOTS),
+                    Materials.Titanium.getMolten(2 * INGOTS),
+                    Materials.Lubricant.getFluid(64_000))
+                .itemOutputs(ItemRefer.Fluid_Storage_Core_T6.get(1))
+                .eut(TierEU.RECIPE_UHV)
+                .duration(20 * SECONDS)
+                .addTo(AssemblyLine);
 
-        // Fluid Storage Core T7
-        GTValues.RA.stdBuilder()
-            .metadata(RESEARCH_ITEM, ItemRefer.Fluid_Storage_Core_T6.get(1))
-            .metadata(SCANNING, new Scanning(1 * MINUTES + 30 * SECONDS, TierEU.RECIPE_UV))
-            .itemInputs(
-                GTModHandler.getModItem(GalacticraftMars.ID, "item.null", 64L, 6),
-                ItemList.Electric_Pump_ZPM.get(8),
-                ItemList.Machine_Multi_NeutroniumCompressor.get(1),
-                ItemList.Quantum_Tank_EV.get(32),
-                GTOreDictUnificator.get(OrePrefixes.pipeNonuple, Materials.Infinity, 8),
-                GTOreDictUnificator.get(OrePrefixes.plateQuintuple, Materials.InfinityCatalyst, 8),
-                GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.DraconiumAwakened, 16))
-            .fluidInputs(
-                Materials.Draconium.getMolten(2 * STACKS + 32 * INGOTS),
-                MaterialsAlloy.INDALLOY_140.getFluidStack(16 * INGOTS),
-                Materials.InfinityCatalyst.getMolten(1_140))
-            .itemOutputs(ItemRefer.Fluid_Storage_Core_T7.get(1))
-            .eut(TierEU.RECIPE_UEV)
-            .duration(20 * SECONDS)
-            .addTo(AssemblyLine);
+            // Fluid Storage Core T7
+            GTValues.RA.stdBuilder()
+                .metadata(RESEARCH_ITEM, ItemRefer.Fluid_Storage_Core_T6.get(1))
+                .metadata(SCANNING, new Scanning(1 * MINUTES + 30 * SECONDS, TierEU.RECIPE_UV))
+                .itemInputs(
+                    GTModHandler.getModItem(GalacticraftMars.ID, "item.null", 64L, 6),
+                    ItemList.Electric_Pump_ZPM.get(8),
+                    ItemList.Machine_Multi_NeutroniumCompressor.get(1),
+                    ItemList.Quantum_Tank_EV.get(32),
+                    GTOreDictUnificator.get(OrePrefixes.pipeNonuple, Materials.Infinity, 8),
+                    GTOreDictUnificator.get(OrePrefixes.plateQuintuple, Materials.InfinityCatalyst, 8),
+                    GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.DraconiumAwakened, 16))
+                .fluidInputs(
+                    Materials.Draconium.getMolten(2 * STACKS + 32 * INGOTS),
+                    MaterialsAlloy.INDALLOY_140.getFluidStack(16 * INGOTS),
+                    Materials.InfinityCatalyst.getMolten(1_140))
+                .itemOutputs(ItemRefer.Fluid_Storage_Core_T7.get(1))
+                .eut(TierEU.RECIPE_UEV)
+                .duration(20 * SECONDS)
+                .addTo(AssemblyLine);
 
-        // Fluid Storage Core T8
-        GTValues.RA.stdBuilder()
-            .metadata(RESEARCH_ITEM, ItemRefer.Fluid_Storage_Core_T7.get(1))
-            .metadata(SCANNING, new Scanning(1 * MINUTES + 30 * SECONDS, TierEU.RECIPE_UHV))
-            .itemInputs(
-                GTModHandler.getModItem(GalacticraftMars.ID, "item.null", 64L, 6),
-                ItemList.Electric_Pump_UV.get(8),
-                ItemList.Machine_Multi_NeutroniumCompressor.get(2),
-                ItemList.Quantum_Tank_EV.get(64),
-                GTOreDictUnificator.get(OrePrefixes.pipeNonuple, Materials.Infinity, 16),
-                GTOreDictUnificator.get(OrePrefixes.plateQuintuple, Materials.Infinity, 24),
-                GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.DraconiumAwakened, 16))
-            .fluidInputs(
-                Materials.Draconium.getMolten(4 * STACKS),
-                MaterialsAlloy.INDALLOY_140.getFluidStack(3 * STACKS + 18 * INGOTS),
-                Materials.InfinityCatalyst.getMolten(39 * INGOTS + 3 * EIGHTH_INGOTS))
-            .itemOutputs(ItemRefer.Fluid_Storage_Core_T8.get(1))
-            .eut(TierEU.RECIPE_UIV)
-            .duration(20 * SECONDS)
-            .addTo(AssemblyLine);
+            // Fluid Storage Core T8
+            GTValues.RA.stdBuilder()
+                .metadata(RESEARCH_ITEM, ItemRefer.Fluid_Storage_Core_T7.get(1))
+                .metadata(SCANNING, new Scanning(1 * MINUTES + 30 * SECONDS, TierEU.RECIPE_UHV))
+                .itemInputs(
+                    GTModHandler.getModItem(GalacticraftMars.ID, "item.null", 64L, 6),
+                    ItemList.Electric_Pump_UV.get(8),
+                    ItemList.Machine_Multi_NeutroniumCompressor.get(2),
+                    ItemList.Quantum_Tank_EV.get(64),
+                    GTOreDictUnificator.get(OrePrefixes.pipeNonuple, Materials.Infinity, 16),
+                    GTOreDictUnificator.get(OrePrefixes.plateQuintuple, Materials.Infinity, 24),
+                    GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.DraconiumAwakened, 16))
+                .fluidInputs(
+                    Materials.Draconium.getMolten(4 * STACKS),
+                    MaterialsAlloy.INDALLOY_140.getFluidStack(3 * STACKS + 18 * INGOTS),
+                    Materials.InfinityCatalyst.getMolten(39 * INGOTS + 3 * EIGHTH_INGOTS))
+                .itemOutputs(ItemRefer.Fluid_Storage_Core_T8.get(1))
+                .eut(TierEU.RECIPE_UIV)
+                .duration(20 * SECONDS)
+                .addTo(AssemblyLine);
 
-        // Fluid Storage Core T9
-        GTValues.RA.stdBuilder()
-            .metadata(RESEARCH_ITEM, ItemRefer.Fluid_Storage_Core_T8.get(1))
-            .metadata(SCANNING, new Scanning(1 * MINUTES + 30 * SECONDS, TierEU.RECIPE_UEV))
-            .itemInputs(
-                GTModHandler.getModItem(GalacticraftMars.ID, "item.null", 64L, 6),
-                ItemList.Electric_Pump_UHV.get(8),
-                ItemList.Machine_Multi_NeutroniumCompressor.get(2),
-                ItemList.Quantum_Tank_IV.get(8),
-                GTOreDictUnificator.get(OrePrefixes.pipeNonuple, Materials.Infinity, 32),
-                GTOreDictUnificator.get(OrePrefixes.plateQuintuple, Materials.Infinity, 36),
-                GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.DraconiumAwakened, 8))
-            .fluidInputs(
-                Materials.Draconium.getMolten(4 * STACKS),
-                MaterialsAlloy.INDALLOY_140.getFluidStack(3 * STACKS + 18 * INGOTS),
-                Materials.TranscendentMetal.getMolten(10 * INGOTS),
-                Materials.InfinityCatalyst.getMolten(39 * INGOTS + 3 * EIGHTH_INGOTS))
-            .itemOutputs(ItemRefer.Fluid_Storage_Core_T9.get(1))
-            .eut(TierEU.RECIPE_UMV)
-            .duration(20 * SECONDS)
-            .addTo(AssemblyLine);
+            // Fluid Storage Core T9
+            GTValues.RA.stdBuilder()
+                .metadata(RESEARCH_ITEM, ItemRefer.Fluid_Storage_Core_T8.get(1))
+                .metadata(SCANNING, new Scanning(1 * MINUTES + 30 * SECONDS, TierEU.RECIPE_UEV))
+                .itemInputs(
+                    GTModHandler.getModItem(GalacticraftMars.ID, "item.null", 64L, 6),
+                    ItemList.Electric_Pump_UHV.get(8),
+                    ItemList.Machine_Multi_NeutroniumCompressor.get(2),
+                    ItemList.Quantum_Tank_IV.get(8),
+                    GTOreDictUnificator.get(OrePrefixes.pipeNonuple, Materials.Infinity, 32),
+                    GTOreDictUnificator.get(OrePrefixes.plateQuintuple, Materials.Infinity, 36),
+                    GTOreDictUnificator.get(OrePrefixes.plateDense, Materials.DraconiumAwakened, 8))
+                .fluidInputs(
+                    Materials.Draconium.getMolten(4 * STACKS),
+                    MaterialsAlloy.INDALLOY_140.getFluidStack(3 * STACKS + 18 * INGOTS),
+                    Materials.TranscendentMetal.getMolten(10 * INGOTS),
+                    Materials.InfinityCatalyst.getMolten(39 * INGOTS + 3 * EIGHTH_INGOTS))
+                .itemOutputs(ItemRefer.Fluid_Storage_Core_T9.get(1))
+                .eut(TierEU.RECIPE_UMV)
+                .duration(20 * SECONDS)
+                .addTo(AssemblyLine);
 
-        // Fluid Storage Core T10
-        GTValues.RA.stdBuilder()
-            .metadata(RESEARCH_ITEM, ItemRefer.Fluid_Storage_Core_T9.get(1))
-            .metadata(SCANNING, new Scanning(1 * MINUTES + 30 * SECONDS, TierEU.RECIPE_UIV))
-            .itemInputs(
-                GTModHandler.getModItem(GalacticraftMars.ID, "item.null", 64L, 6),
-                ItemList.Electric_Pump_UEV.get(8),
-                ItemList.Machine_Multi_NeutroniumCompressor.get(4),
-                ItemList.Quantum_Tank_IV.get(16),
-                GTOreDictUnificator.get(OrePrefixes.pipeNonuple, Materials.Infinity, 32),
-                GTOreDictUnificator.get(OrePrefixes.plateQuintuple, Materials.CosmicNeutronium, 24),
-                GTOreDictUnificator.get(OrePrefixes.plateDouble, Materials.SpaceTime, 4))
-            .fluidInputs(
-                Materials.Draconium.getMolten(4 * STACKS),
-                MaterialsAlloy.INDALLOY_140.getFluidStack(5 * STACKS),
-                Materials.TranscendentMetal.getMolten(30 * INGOTS),
-                Materials.InfinityCatalyst.getMolten(1 * STACKS + 54 * INGOTS + 1 * EIGHTH_INGOTS))
-            .itemOutputs(ItemRefer.Fluid_Storage_Core_T10.get(1))
-            .eut(TierEU.RECIPE_UXV)
-            .duration(20 * SECONDS)
-            .addTo(AssemblyLine);
+            // Fluid Storage Core T10
+            GTValues.RA.stdBuilder()
+                .metadata(RESEARCH_ITEM, ItemRefer.Fluid_Storage_Core_T9.get(1))
+                .metadata(SCANNING, new Scanning(1 * MINUTES + 30 * SECONDS, TierEU.RECIPE_UIV))
+                .itemInputs(
+                    GTModHandler.getModItem(GalacticraftMars.ID, "item.null", 64L, 6),
+                    ItemList.Electric_Pump_UEV.get(8),
+                    ItemList.Machine_Multi_NeutroniumCompressor.get(4),
+                    ItemList.Quantum_Tank_IV.get(16),
+                    GTOreDictUnificator.get(OrePrefixes.pipeNonuple, Materials.Infinity, 32),
+                    GTOreDictUnificator.get(OrePrefixes.plateQuintuple, Materials.CosmicNeutronium, 24),
+                    GTOreDictUnificator.get(OrePrefixes.plateDouble, Materials.SpaceTime, 4))
+                .fluidInputs(
+                    Materials.Draconium.getMolten(4 * STACKS),
+                    MaterialsAlloy.INDALLOY_140.getFluidStack(5 * STACKS),
+                    Materials.TranscendentMetal.getMolten(30 * INGOTS),
+                    Materials.InfinityCatalyst.getMolten(1 * STACKS + 54 * INGOTS + 1 * EIGHTH_INGOTS))
+                .itemOutputs(ItemRefer.Fluid_Storage_Core_T10.get(1))
+                .eut(TierEU.RECIPE_UXV)
+                .duration(20 * SECONDS)
+                .addTo(AssemblyLine);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(

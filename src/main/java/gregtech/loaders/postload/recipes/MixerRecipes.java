@@ -1,12 +1,6 @@
 package gregtech.loaders.postload.recipes;
 
-import static gregtech.api.enums.Mods.AppliedEnergistics2;
-import static gregtech.api.enums.Mods.BiomesOPlenty;
-import static gregtech.api.enums.Mods.Forestry;
-import static gregtech.api.enums.Mods.Natura;
-import static gregtech.api.enums.Mods.PamsHarvestCraft;
-import static gregtech.api.enums.Mods.Railcraft;
-import static gregtech.api.enums.Mods.Thaumcraft;
+import static gregtech.api.enums.Mods.*;
 import static gregtech.api.recipe.RecipeMaps.mixerRecipes;
 import static gregtech.api.util.GTModHandler.getModItem;
 import static gregtech.api.util.GTRecipeBuilder.INGOTS;
@@ -560,72 +554,76 @@ public class MixerRecipes implements Runnable {
             .eut(8)
             .addTo(mixerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 1),
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Redstone, 1),
-                GTOreDictUnificator.get(OrePrefixes.gem, Materials.NetherQuartz, 1))
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.gem, Materials.Fluix, 2))
-            .fluidInputs(Materials.Water.getFluid(500))
-            .duration(20 * TICKS)
-            .eut(TierEU.RECIPE_LV / 2)
-            .addTo(mixerRecipes);
+        if (AppliedEnergistics2.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 1),
+                    GTOreDictUnificator.get(OrePrefixes.dust, Materials.Redstone, 1),
+                    GTOreDictUnificator.get(OrePrefixes.gem, Materials.NetherQuartz, 1))
+                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.gem, Materials.Fluix, 2))
+                .fluidInputs(Materials.Water.getFluid(500))
+                .duration(20 * TICKS)
+                .eut(TierEU.RECIPE_LV / 2)
+                .addTo(mixerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 1),
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Redstone, 1),
-                GTOreDictUnificator.get(OrePrefixes.gem, Materials.NetherQuartz, 1))
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.gem, Materials.Fluix, 2))
-            .fluidInputs(GTModHandler.getDistilledWater(500))
-            .duration(20 * TICKS)
-            .eut(TierEU.RECIPE_LV / 2)
-            .addTo(mixerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 1),
+                    GTOreDictUnificator.get(OrePrefixes.dust, Materials.Redstone, 1),
+                    GTOreDictUnificator.get(OrePrefixes.gem, Materials.NetherQuartz, 1))
+                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.gem, Materials.Fluix, 2))
+                .fluidInputs(GTModHandler.getDistilledWater(500))
+                .duration(20 * TICKS)
+                .eut(TierEU.RECIPE_LV / 2)
+                .addTo(mixerRecipes);
+        }
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(ItemList.IC2_Fertilizer.get(1), new ItemStack(Blocks.dirt, 8, 32767))
-            .circuit(1)
-            .itemOutputs(getModItem(Forestry.ID, "soil", 8L, 0))
-            .fluidInputs(Materials.Water.getFluid(1_000))
-            .duration(3 * SECONDS + 4 * TICKS)
-            .eut(TierEU.RECIPE_LV / 2)
-            .addTo(mixerRecipes);
+        if (Forestry.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(ItemList.IC2_Fertilizer.get(1), new ItemStack(Blocks.dirt, 8, 32767))
+                .circuit(1)
+                .itemOutputs(getModItem(Forestry.ID, "soil", 8L, 0))
+                .fluidInputs(Materials.Water.getFluid(1_000))
+                .duration(3 * SECONDS + 4 * TICKS)
+                .eut(TierEU.RECIPE_LV / 2)
+                .addTo(mixerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(ItemList.FR_Fertilizer.get(1), new ItemStack(Blocks.dirt, 8, 32767))
-            .circuit(1)
-            .itemOutputs(getModItem(Forestry.ID, "soil", 8L, 0))
-            .fluidInputs(Materials.Water.getFluid(1_000))
-            .duration(3 * SECONDS + 4 * TICKS)
-            .eut(TierEU.RECIPE_LV / 2)
-            .addTo(mixerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(ItemList.FR_Fertilizer.get(1), new ItemStack(Blocks.dirt, 8, 32767))
+                .circuit(1)
+                .itemOutputs(getModItem(Forestry.ID, "soil", 8L, 0))
+                .fluidInputs(Materials.Water.getFluid(1_000))
+                .duration(3 * SECONDS + 4 * TICKS)
+                .eut(TierEU.RECIPE_LV / 2)
+                .addTo(mixerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(ItemList.FR_Compost.get(1), new ItemStack(Blocks.dirt, 8, 32767))
-            .circuit(1)
-            .itemOutputs(getModItem(Forestry.ID, "soil", 8L, 0))
-            .fluidInputs(Materials.Water.getFluid(1_000))
-            .duration(3 * SECONDS + 4 * TICKS)
-            .eut(TierEU.RECIPE_LV / 2)
-            .addTo(mixerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(ItemList.FR_Compost.get(1), new ItemStack(Blocks.dirt, 8, 32767))
+                .circuit(1)
+                .itemOutputs(getModItem(Forestry.ID, "soil", 8L, 0))
+                .fluidInputs(Materials.Water.getFluid(1_000))
+                .duration(3 * SECONDS + 4 * TICKS)
+                .eut(TierEU.RECIPE_LV / 2)
+                .addTo(mixerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(ItemList.FR_Mulch.get(8), new ItemStack(Blocks.dirt, 8, 32767))
-            .circuit(1)
-            .itemOutputs(getModItem(Forestry.ID, "soil", 8L, 0))
-            .fluidInputs(Materials.Water.getFluid(1_000))
-            .duration(3 * SECONDS + 4 * TICKS)
-            .eut(TierEU.RECIPE_LV / 2)
-            .addTo(mixerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(ItemList.FR_Mulch.get(8), new ItemStack(Blocks.dirt, 8, 32767))
+                .circuit(1)
+                .itemOutputs(getModItem(Forestry.ID, "soil", 8L, 0))
+                .fluidInputs(Materials.Water.getFluid(1_000))
+                .duration(3 * SECONDS + 4 * TICKS)
+                .eut(TierEU.RECIPE_LV / 2)
+                .addTo(mixerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(new ItemStack(Blocks.sand, 1, 32767), new ItemStack(Blocks.dirt, 1, 32767))
-            .circuit(1)
-            .itemOutputs(getModItem(Forestry.ID, "soil", 2L, 1))
-            .fluidInputs(Materials.Water.getFluid(250))
-            .duration(16 * TICKS)
-            .eut(TierEU.RECIPE_LV / 2)
-            .addTo(mixerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(new ItemStack(Blocks.sand, 1, 32767), new ItemStack(Blocks.dirt, 1, 32767))
+                .circuit(1)
+                .itemOutputs(getModItem(Forestry.ID, "soil", 2L, 1))
+                .fluidInputs(Materials.Water.getFluid(250))
+                .duration(16 * TICKS)
+                .eut(TierEU.RECIPE_LV / 2)
+                .addTo(mixerRecipes);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(
@@ -1021,77 +1019,79 @@ public class MixerRecipes implements Runnable {
                     .eut(TierEU.RECIPE_MV / 2)
                     .addTo(mixerRecipes);
 
-                GTValues.RA.stdBuilder()
-                    .itemInputs(
-                        GTOreDictUnificator.get(OrePrefixes.block, Materials.Lignite, 1),
-                        ItemList.MSFMixture.get(6),
-                        getModItem(Thaumcraft.ID, "ItemResource", 4))
-                    .circuit(1)
-                    .itemOutputs(ItemList.Block_MSSFUEL.get(1))
-                    .fluidInputs(Materials.NitroFuel.getFluid(1_000))
-                    .duration(7 * SECONDS)
-                    .eut(TierEU.RECIPE_HV)
-                    .addTo(mixerRecipes);
+                if (Thaumcraft.isModLoaded()) {
+                    GTValues.RA.stdBuilder()
+                        .itemInputs(
+                            GTOreDictUnificator.get(OrePrefixes.block, Materials.Lignite, 1),
+                            ItemList.MSFMixture.get(6),
+                            getModItem(Thaumcraft.ID, "ItemResource", 4))
+                        .circuit(1)
+                        .itemOutputs(ItemList.Block_MSSFUEL.get(1))
+                        .fluidInputs(Materials.NitroFuel.getFluid(1_000))
+                        .duration(7 * SECONDS)
+                        .eut(TierEU.RECIPE_HV)
+                        .addTo(mixerRecipes);
 
-                GTValues.RA.stdBuilder()
-                    .itemInputs(
-                        GTOreDictUnificator.get(OrePrefixes.block, Materials.Charcoal, 1),
-                        ItemList.MSFMixture.get(4),
-                        getModItem(Thaumcraft.ID, "ItemResource", 4))
-                    .circuit(1)
-                    .itemOutputs(ItemList.Block_MSSFUEL.get(1))
-                    .fluidInputs(Materials.NitroFuel.getFluid(750))
-                    .duration(6 * SECONDS)
-                    .eut(TierEU.RECIPE_HV)
-                    .addTo(mixerRecipes);
+                    GTValues.RA.stdBuilder()
+                        .itemInputs(
+                            GTOreDictUnificator.get(OrePrefixes.block, Materials.Charcoal, 1),
+                            ItemList.MSFMixture.get(4),
+                            getModItem(Thaumcraft.ID, "ItemResource", 4))
+                        .circuit(1)
+                        .itemOutputs(ItemList.Block_MSSFUEL.get(1))
+                        .fluidInputs(Materials.NitroFuel.getFluid(750))
+                        .duration(6 * SECONDS)
+                        .eut(TierEU.RECIPE_HV)
+                        .addTo(mixerRecipes);
 
-                GTValues.RA.stdBuilder()
-                    .itemInputs(
-                        GTOreDictUnificator.get(OrePrefixes.block, Materials.Coal, 1),
-                        ItemList.MSFMixture.get(2),
-                        getModItem(Thaumcraft.ID, "ItemResource", 4))
-                    .circuit(1)
-                    .itemOutputs(ItemList.Block_MSSFUEL.get(1))
-                    .fluidInputs(Materials.NitroFuel.getFluid(500))
-                    .duration(5 * SECONDS)
-                    .eut(TierEU.RECIPE_HV)
-                    .addTo(mixerRecipes);
+                    GTValues.RA.stdBuilder()
+                        .itemInputs(
+                            GTOreDictUnificator.get(OrePrefixes.block, Materials.Coal, 1),
+                            ItemList.MSFMixture.get(2),
+                            getModItem(Thaumcraft.ID, "ItemResource", 4))
+                        .circuit(1)
+                        .itemOutputs(ItemList.Block_MSSFUEL.get(1))
+                        .fluidInputs(Materials.NitroFuel.getFluid(500))
+                        .duration(5 * SECONDS)
+                        .eut(TierEU.RECIPE_HV)
+                        .addTo(mixerRecipes);
 
-                GTValues.RA.stdBuilder()
-                    .itemInputs(
-                        GTOreDictUnificator.get(OrePrefixes.block, Materials.Lignite, 1),
-                        ItemList.MSFMixture.get(6),
-                        getModItem(Thaumcraft.ID, "ItemResource", 4))
-                    .circuit(1)
-                    .itemOutputs(ItemList.Block_MSSFUEL.get(1))
-                    .fluidInputs(Materials.GasolinePremium.getFluid(400))
-                    .duration(7 * SECONDS)
-                    .eut(TierEU.RECIPE_HV)
-                    .addTo(mixerRecipes);
+                    GTValues.RA.stdBuilder()
+                        .itemInputs(
+                            GTOreDictUnificator.get(OrePrefixes.block, Materials.Lignite, 1),
+                            ItemList.MSFMixture.get(6),
+                            getModItem(Thaumcraft.ID, "ItemResource", 4))
+                        .circuit(1)
+                        .itemOutputs(ItemList.Block_MSSFUEL.get(1))
+                        .fluidInputs(Materials.GasolinePremium.getFluid(400))
+                        .duration(7 * SECONDS)
+                        .eut(TierEU.RECIPE_HV)
+                        .addTo(mixerRecipes);
 
-                GTValues.RA.stdBuilder()
-                    .itemInputs(
-                        GTOreDictUnificator.get(OrePrefixes.block, Materials.Charcoal, 1),
-                        ItemList.MSFMixture.get(4),
-                        getModItem(Thaumcraft.ID, "ItemResource", 4))
-                    .circuit(1)
-                    .itemOutputs(ItemList.Block_MSSFUEL.get(1))
-                    .fluidInputs(Materials.GasolinePremium.getFluid(300))
-                    .duration(6 * SECONDS)
-                    .eut(TierEU.RECIPE_HV)
-                    .addTo(mixerRecipes);
+                    GTValues.RA.stdBuilder()
+                        .itemInputs(
+                            GTOreDictUnificator.get(OrePrefixes.block, Materials.Charcoal, 1),
+                            ItemList.MSFMixture.get(4),
+                            getModItem(Thaumcraft.ID, "ItemResource", 4))
+                        .circuit(1)
+                        .itemOutputs(ItemList.Block_MSSFUEL.get(1))
+                        .fluidInputs(Materials.GasolinePremium.getFluid(300))
+                        .duration(6 * SECONDS)
+                        .eut(TierEU.RECIPE_HV)
+                        .addTo(mixerRecipes);
 
-                GTValues.RA.stdBuilder()
-                    .itemInputs(
-                        GTOreDictUnificator.get(OrePrefixes.block, Materials.Coal, 1),
-                        ItemList.MSFMixture.get(2),
-                        getModItem(Thaumcraft.ID, "ItemResource", 4))
-                    .circuit(1)
-                    .itemOutputs(ItemList.Block_MSSFUEL.get(1))
-                    .fluidInputs(Materials.GasolinePremium.getFluid(200))
-                    .duration(5 * SECONDS)
-                    .eut(TierEU.RECIPE_HV)
-                    .addTo(mixerRecipes);
+                    GTValues.RA.stdBuilder()
+                        .itemInputs(
+                            GTOreDictUnificator.get(OrePrefixes.block, Materials.Coal, 1),
+                            ItemList.MSFMixture.get(2),
+                            getModItem(Thaumcraft.ID, "ItemResource", 4))
+                        .circuit(1)
+                        .itemOutputs(ItemList.Block_MSSFUEL.get(1))
+                        .fluidInputs(Materials.GasolinePremium.getFluid(200))
+                        .duration(5 * SECONDS)
+                        .eut(TierEU.RECIPE_HV)
+                        .addTo(mixerRecipes);
+                }
             }
         }
 
@@ -1169,70 +1169,80 @@ public class MixerRecipes implements Runnable {
             .eut(2)
             .addTo(mixerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(new ItemStack(Blocks.dirt, 1, 32767), new ItemStack(Items.wheat, 4, 32767))
-            .circuit(2)
-            .itemOutputs(getModItem(Forestry.ID, "fertilizerBio", 1L, 0))
-            .fluidInputs(Materials.Water.getFluid(100))
-            .duration(10 * SECONDS)
-            .eut(TierEU.RECIPE_LV / 2)
-            .addTo(mixerRecipes);
+        if (Forestry.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(new ItemStack(Blocks.dirt, 1, 32767), new ItemStack(Items.wheat, 4, 32767))
+                .circuit(2)
+                .itemOutputs(getModItem(Forestry.ID, "fertilizerBio", 1L, 0))
+                .fluidInputs(Materials.Water.getFluid(100))
+                .duration(10 * SECONDS)
+                .eut(TierEU.RECIPE_LV / 2)
+                .addTo(mixerRecipes);
+        }
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(new ItemStack(Blocks.dirt, 1, 32767), getModItem(BiomesOPlenty.ID, "plants", 4, 6))
-            .circuit(2)
-            .itemOutputs(getModItem(Forestry.ID, "fertilizerBio", 1L, 0))
-            .fluidInputs(Materials.Water.getFluid(100))
-            .duration(10 * SECONDS)
-            .eut(TierEU.RECIPE_LV / 2)
-            .addTo(mixerRecipes);
+        if (BiomesOPlenty.isModLoaded() && Forestry.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(new ItemStack(Blocks.dirt, 1, 32767), getModItem(BiomesOPlenty.ID, "plants", 4, 6))
+                .circuit(2)
+                .itemOutputs(getModItem(Forestry.ID, "fertilizerBio", 1L, 0))
+                .fluidInputs(Materials.Water.getFluid(100))
+                .duration(10 * SECONDS)
+                .eut(TierEU.RECIPE_LV / 2)
+                .addTo(mixerRecipes);
+        }
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(new ItemStack(Blocks.dirt, 1, 32767), getModItem(PamsHarvestCraft.ID, "oatsItem", 4))
-            .circuit(2)
-            .itemOutputs(getModItem(Forestry.ID, "fertilizerBio", 1L, 0))
-            .fluidInputs(Materials.Water.getFluid(100))
-            .duration(10 * SECONDS)
-            .eut(TierEU.RECIPE_LV / 2)
-            .addTo(mixerRecipes);
+        if (PamsHarvestCraft.isModLoaded() && Forestry.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(new ItemStack(Blocks.dirt, 1, 32767), getModItem(PamsHarvestCraft.ID, "oatsItem", 4))
+                .circuit(2)
+                .itemOutputs(getModItem(Forestry.ID, "fertilizerBio", 1L, 0))
+                .fluidInputs(Materials.Water.getFluid(100))
+                .duration(10 * SECONDS)
+                .eut(TierEU.RECIPE_LV / 2)
+                .addTo(mixerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(new ItemStack(Blocks.dirt, 1, 32767), getModItem(PamsHarvestCraft.ID, "ryeItem", 4))
-            .circuit(2)
-            .itemOutputs(getModItem(Forestry.ID, "fertilizerBio", 1L, 0))
-            .fluidInputs(Materials.Water.getFluid(100))
-            .duration(10 * SECONDS)
-            .eut(TierEU.RECIPE_LV / 2)
-            .addTo(mixerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(new ItemStack(Blocks.dirt, 1, 32767), getModItem(PamsHarvestCraft.ID, "ryeItem", 4))
+                .circuit(2)
+                .itemOutputs(getModItem(Forestry.ID, "fertilizerBio", 1L, 0))
+                .fluidInputs(Materials.Water.getFluid(100))
+                .duration(10 * SECONDS)
+                .eut(TierEU.RECIPE_LV / 2)
+                .addTo(mixerRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(new ItemStack(Blocks.dirt, 1, 32767), getModItem(PamsHarvestCraft.ID, "barleyItem", 4))
-            .circuit(2)
-            .itemOutputs(getModItem(Forestry.ID, "fertilizerBio", 1L, 0))
-            .fluidInputs(Materials.Water.getFluid(100))
-            .duration(10 * SECONDS)
-            .eut(TierEU.RECIPE_LV / 2)
-            .addTo(mixerRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(new ItemStack(Blocks.dirt, 1, 32767), getModItem(PamsHarvestCraft.ID, "barleyItem", 4))
+                .circuit(2)
+                .itemOutputs(getModItem(Forestry.ID, "fertilizerBio", 1L, 0))
+                .fluidInputs(Materials.Water.getFluid(100))
+                .duration(10 * SECONDS)
+                .eut(TierEU.RECIPE_LV / 2)
+                .addTo(mixerRecipes);
+        }
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(new ItemStack(Blocks.dirt, 1, 32767), getModItem(Natura.ID, "barleyFood", 4))
-            .circuit(2)
-            .itemOutputs(getModItem(Forestry.ID, "fertilizerBio", 1L, 0))
-            .fluidInputs(Materials.Water.getFluid(100))
-            .duration(10 * SECONDS)
-            .eut(TierEU.RECIPE_LV / 2)
-            .addTo(mixerRecipes);
+        if (Natura.isModLoaded() && Forestry.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(new ItemStack(Blocks.dirt, 1, 32767), getModItem(Natura.ID, "barleyFood", 4))
+                .circuit(2)
+                .itemOutputs(getModItem(Forestry.ID, "fertilizerBio", 1L, 0))
+                .fluidInputs(Materials.Water.getFluid(100))
+                .duration(10 * SECONDS)
+                .eut(TierEU.RECIPE_LV / 2)
+                .addTo(mixerRecipes);
+        }
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                new ItemStack(Blocks.dirt, 1, 32767),
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Ash, 4))
-            .circuit(3)
-            .itemOutputs(getModItem(Forestry.ID, "fertilizerBio", 1L, 0))
-            .fluidInputs(Materials.Water.getFluid(100))
-            .duration(10 * SECONDS)
-            .eut(TierEU.RECIPE_LV / 2)
-            .addTo(mixerRecipes);
+        if (Forestry.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    new ItemStack(Blocks.dirt, 1, 32767),
+                    GTOreDictUnificator.get(OrePrefixes.dust, Materials.Ash, 4))
+                .circuit(3)
+                .itemOutputs(getModItem(Forestry.ID, "fertilizerBio", 1L, 0))
+                .fluidInputs(Materials.Water.getFluid(100))
+                .duration(10 * SECONDS)
+                .eut(TierEU.RECIPE_LV / 2)
+                .addTo(mixerRecipes);
+        }
 
         // radiation manufacturing
 

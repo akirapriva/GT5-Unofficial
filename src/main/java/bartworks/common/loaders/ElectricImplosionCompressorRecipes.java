@@ -8,11 +8,7 @@ import static goodgenerator.loader.Loaders.highDensityThoriumNugget;
 import static goodgenerator.loader.Loaders.highDensityUranium;
 import static goodgenerator.loader.Loaders.highDensityUraniumNugget;
 import static gregtech.api.enums.GTValues.M;
-import static gregtech.api.enums.Mods.Avaritia;
-import static gregtech.api.enums.Mods.EternalSingularity;
-import static gregtech.api.enums.Mods.OpenComputers;
-import static gregtech.api.enums.Mods.SuperSolarPanels;
-import static gregtech.api.enums.Mods.UniversalSingularities;
+import static gregtech.api.enums.Mods.*;
 import static gregtech.api.util.GTModHandler.getModItem;
 import static gregtech.api.util.GTRecipeBuilder.HALF_INGOTS;
 import static gregtech.api.util.GTRecipeBuilder.INGOTS;
@@ -100,12 +96,14 @@ public class ElectricImplosionCompressorRecipes implements Runnable {
             .addTo(electricImplosionCompressorRecipes);
 
         // Infinity Catalyst
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.InfinityCatalyst, 64L))
-            .itemOutputs(getModItem(Avaritia.ID, "Resource", 1L, 5))
-            .duration(1)
-            .eut(TierEU.RECIPE_UIV)
-            .addTo(electricImplosionCompressorRecipes);
+        if (Avaritia.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.InfinityCatalyst, 64L))
+                .itemOutputs(getModItem(Avaritia.ID, "Resource", 1L, 5))
+                .duration(1)
+                .eut(TierEU.RECIPE_UIV)
+                .addTo(electricImplosionCompressorRecipes);
+        }
 
         // MHDCSM V2
         GTValues.RA.stdBuilder()
@@ -148,16 +146,18 @@ public class ElectricImplosionCompressorRecipes implements Runnable {
 
         final int partFraction = (int) (part.getMaterialAmount() * INGOTS / M);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                new Object[] { OrePrefixes.circuit.get(Materials.UHV), circuitMultiplier },
-                getModItem(SuperSolarPanels.ID, "solarsplitter", 1, 0),
-                getModItem(OpenComputers.ID, "hologram2", circuitMultiplier, 0),
-                GTOreDictUnificator.get(part, Materials.Eternity, multiplier))
-            .itemOutputs(GTOreDictUnificator.get(part, Materials.MHDCSM, multiplier))
-            .fluidInputs(Materials.MHDCSM.getMolten((long) partFraction * multiplier))
-            .duration((int) (multiplier * (20 * partFraction / (float) INGOTS)))
-            .eut(TierEU.RECIPE_UXV)
-            .addTo(electricImplosionCompressorRecipes);
+        if (OpenComputers.isModLoaded() && SuperSolarPanels.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    new Object[] { OrePrefixes.circuit.get(Materials.UHV), circuitMultiplier },
+                    getModItem(SuperSolarPanels.ID, "solarsplitter", 1, 0),
+                    getModItem(OpenComputers.ID, "hologram2", circuitMultiplier, 0),
+                    GTOreDictUnificator.get(part, Materials.Eternity, multiplier))
+                .itemOutputs(GTOreDictUnificator.get(part, Materials.MHDCSM, multiplier))
+                .fluidInputs(Materials.MHDCSM.getMolten((long) partFraction * multiplier))
+                .duration((int) (multiplier * (20 * partFraction / (float) INGOTS)))
+                .eut(TierEU.RECIPE_UXV)
+                .addTo(electricImplosionCompressorRecipes);
+        }
     }
 }

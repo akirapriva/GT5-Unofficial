@@ -1,8 +1,6 @@
 package gregtech.loaders.oreprocessing;
 
-import static gregtech.api.enums.Mods.AppliedEnergistics2;
-import static gregtech.api.enums.Mods.BuildCraftSilicon;
-import static gregtech.api.enums.Mods.NewHorizonsCoreMod;
+import static gregtech.api.enums.Mods.*;
 import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
 import static gregtech.api.recipe.RecipeMaps.laserEngraverRecipes;
 import static gregtech.api.util.GTRecipeBuilder.INGOTS;
@@ -45,23 +43,25 @@ public class ProcessingCrafting implements gregtech.api.interfaces.IOreRecipeReg
             }
             case "craftingLensBlue" -> {
 
-                GTValues.RA.stdBuilder()
-                    .itemInputs(
-                        GTOreDictUnificator.get(OrePrefixes.block, Materials.Iron, 1L),
-                        GTUtility.copyAmount(0, aStack))
-                    .itemOutputs(GTModHandler.getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 13))
-                    .duration(1 * MINUTES + 40 * SECONDS)
-                    .eut(TierEU.RECIPE_EV)
-                    .addTo(laserEngraverRecipes);
+                if (AppliedEnergistics2.isModLoaded()) {
+                    GTValues.RA.stdBuilder()
+                        .itemInputs(
+                            GTOreDictUnificator.get(OrePrefixes.block, Materials.Iron, 1L),
+                            GTUtility.copyAmount(0, aStack))
+                        .itemOutputs(GTModHandler.getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 13))
+                        .duration(1 * MINUTES + 40 * SECONDS)
+                        .eut(TierEU.RECIPE_EV)
+                        .addTo(laserEngraverRecipes);
 
-                GTValues.RA.stdBuilder()
-                    .itemInputs(
-                        GTOreDictUnificator.get(OrePrefixes.block, Materials.WroughtIron, 1L),
-                        GTUtility.copyAmount(0, aStack))
-                    .itemOutputs(GTModHandler.getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 13))
-                    .duration(1 * MINUTES + 40 * SECONDS)
-                    .eut(TierEU.RECIPE_EV)
-                    .addTo(laserEngraverRecipes);
+                    GTValues.RA.stdBuilder()
+                        .itemInputs(
+                            GTOreDictUnificator.get(OrePrefixes.block, Materials.WroughtIron, 1L),
+                            GTUtility.copyAmount(0, aStack))
+                        .itemOutputs(GTModHandler.getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 13))
+                        .duration(1 * MINUTES + 40 * SECONDS)
+                        .eut(TierEU.RECIPE_EV)
+                        .addTo(laserEngraverRecipes);
+                }
 
                 GTValues.RA.stdBuilder()
                     .itemInputs(ItemList.IC2_LapotronCrystal.getWildcard(1L), GTUtility.copyAmount(0, aStack))
@@ -106,23 +106,25 @@ public class ProcessingCrafting implements gregtech.api.interfaces.IOreRecipeReg
             }
             case "craftingLensYellow" -> {
 
-                GTValues.RA.stdBuilder()
-                    .itemInputs(
-                        GTOreDictUnificator.get(OrePrefixes.block, Materials.Iron, 1L),
-                        GTUtility.copyAmount(0, aStack))
-                    .itemOutputs(GTModHandler.getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 14))
-                    .duration(1 * MINUTES + 40 * SECONDS)
-                    .eut(TierEU.RECIPE_EV)
-                    .addTo(laserEngraverRecipes);
+                if (AppliedEnergistics2.isModLoaded()) {
+                    GTValues.RA.stdBuilder()
+                        .itemInputs(
+                            GTOreDictUnificator.get(OrePrefixes.block, Materials.Iron, 1L),
+                            GTUtility.copyAmount(0, aStack))
+                        .itemOutputs(GTModHandler.getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 14))
+                        .duration(1 * MINUTES + 40 * SECONDS)
+                        .eut(TierEU.RECIPE_EV)
+                        .addTo(laserEngraverRecipes);
 
-                GTValues.RA.stdBuilder()
-                    .itemInputs(
-                        GTOreDictUnificator.get(OrePrefixes.block, Materials.WroughtIron, 1L),
-                        GTUtility.copyAmount(0, aStack))
-                    .itemOutputs(GTModHandler.getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 14))
-                    .duration(1 * MINUTES + 40 * SECONDS)
-                    .eut(TierEU.RECIPE_EV)
-                    .addTo(laserEngraverRecipes);
+                    GTValues.RA.stdBuilder()
+                        .itemInputs(
+                            GTOreDictUnificator.get(OrePrefixes.block, Materials.WroughtIron, 1L),
+                            GTUtility.copyAmount(0, aStack))
+                        .itemOutputs(GTModHandler.getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 14))
+                        .duration(1 * MINUTES + 40 * SECONDS)
+                        .eut(TierEU.RECIPE_EV)
+                        .addTo(laserEngraverRecipes);
+                }
 
                 GTValues.RA.stdBuilder()
                     .itemInputs(ItemList.Circuit_Silicon_Wafer.get(1), GTUtility.copyAmount(0, aStack))
@@ -196,23 +198,25 @@ public class ProcessingCrafting implements gregtech.api.interfaces.IOreRecipeReg
             }
             case "craftingLensCyan" -> {
 
-                GTValues.RA.stdBuilder()
-                    .itemInputs(
-                        GTOreDictUnificator.get(OrePrefixes.block, Materials.Iron, 1L),
-                        GTUtility.copyAmount(0, aStack))
-                    .itemOutputs(GTModHandler.getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 15))
-                    .duration(1 * MINUTES + 40 * SECONDS)
-                    .eut(TierEU.RECIPE_EV)
-                    .addTo(laserEngraverRecipes);
+                if (AppliedEnergistics2.isModLoaded()) {
+                    GTValues.RA.stdBuilder()
+                        .itemInputs(
+                            GTOreDictUnificator.get(OrePrefixes.block, Materials.Iron, 1L),
+                            GTUtility.copyAmount(0, aStack))
+                        .itemOutputs(GTModHandler.getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 15))
+                        .duration(1 * MINUTES + 40 * SECONDS)
+                        .eut(TierEU.RECIPE_EV)
+                        .addTo(laserEngraverRecipes);
 
-                GTValues.RA.stdBuilder()
-                    .itemInputs(
-                        GTOreDictUnificator.get(OrePrefixes.block, Materials.WroughtIron, 1L),
-                        GTUtility.copyAmount(0, aStack))
-                    .itemOutputs(GTModHandler.getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 15))
-                    .duration(1 * MINUTES + 40 * SECONDS)
-                    .eut(TierEU.RECIPE_EV)
-                    .addTo(laserEngraverRecipes);
+                    GTValues.RA.stdBuilder()
+                        .itemInputs(
+                            GTOreDictUnificator.get(OrePrefixes.block, Materials.WroughtIron, 1L),
+                            GTUtility.copyAmount(0, aStack))
+                        .itemOutputs(GTModHandler.getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 15))
+                        .duration(1 * MINUTES + 40 * SECONDS)
+                        .eut(TierEU.RECIPE_EV)
+                        .addTo(laserEngraverRecipes);
+                }
 
                 GTValues.RA.stdBuilder()
                     .itemInputs(ItemList.Circuit_Silicon_Wafer.get(1), GTUtility.copyAmount(0, aStack))
@@ -256,14 +260,16 @@ public class ProcessingCrafting implements gregtech.api.interfaces.IOreRecipeReg
             }
             case "craftingLensRed" -> {
 
-                GTValues.RA.stdBuilder()
-                    .itemInputs(
-                        GTOreDictUnificator.get(OrePrefixes.plate, Materials.Redstone, 1L),
-                        GTUtility.copyAmount(0, aStack))
-                    .itemOutputs(GTModHandler.getModItem(BuildCraftSilicon.ID, "redstoneChipset", 1L, 0))
-                    .duration(2 * SECONDS + 10 * TICKS)
-                    .eut(TierEU.RECIPE_MV)
-                    .addTo(laserEngraverRecipes);
+                if (BuildCraftSilicon.isModLoaded()) {
+                    GTValues.RA.stdBuilder()
+                        .itemInputs(
+                            GTOreDictUnificator.get(OrePrefixes.plate, Materials.Redstone, 1L),
+                            GTUtility.copyAmount(0, aStack))
+                        .itemOutputs(GTModHandler.getModItem(BuildCraftSilicon.ID, "redstoneChipset", 1L, 0))
+                        .duration(2 * SECONDS + 10 * TICKS)
+                        .eut(TierEU.RECIPE_MV)
+                        .addTo(laserEngraverRecipes);
+                }
 
                 GTValues.RA.stdBuilder()
                     .itemInputs(
@@ -372,23 +378,25 @@ public class ProcessingCrafting implements gregtech.api.interfaces.IOreRecipeReg
             }
             case "craftingLensWhite" -> {
 
-                GTValues.RA.stdBuilder()
-                    .itemInputs(
-                        GTOreDictUnificator.get(OrePrefixes.block, Materials.Iron, 1L),
-                        GTUtility.copyAmount(0, aStack))
-                    .itemOutputs(GTModHandler.getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 19))
-                    .duration(1 * MINUTES + 40 * SECONDS)
-                    .eut(TierEU.RECIPE_EV)
-                    .addTo(laserEngraverRecipes);
+                if (AppliedEnergistics2.isModLoaded()) {
+                    GTValues.RA.stdBuilder()
+                        .itemInputs(
+                            GTOreDictUnificator.get(OrePrefixes.block, Materials.Iron, 1L),
+                            GTUtility.copyAmount(0, aStack))
+                        .itemOutputs(GTModHandler.getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 19))
+                        .duration(1 * MINUTES + 40 * SECONDS)
+                        .eut(TierEU.RECIPE_EV)
+                        .addTo(laserEngraverRecipes);
 
-                GTValues.RA.stdBuilder()
-                    .itemInputs(
-                        GTOreDictUnificator.get(OrePrefixes.block, Materials.WroughtIron, 1L),
-                        GTUtility.copyAmount(0, aStack))
-                    .itemOutputs(GTModHandler.getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 19))
-                    .duration(1 * MINUTES + 40 * SECONDS)
-                    .eut(TierEU.RECIPE_EV)
-                    .addTo(laserEngraverRecipes);
+                    GTValues.RA.stdBuilder()
+                        .itemInputs(
+                            GTOreDictUnificator.get(OrePrefixes.block, Materials.WroughtIron, 1L),
+                            GTUtility.copyAmount(0, aStack))
+                        .itemOutputs(GTModHandler.getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 19))
+                        .duration(1 * MINUTES + 40 * SECONDS)
+                        .eut(TierEU.RECIPE_EV)
+                        .addTo(laserEngraverRecipes);
+                }
 
                 GTValues.RA.stdBuilder()
                     .itemInputs(new ItemStack(Blocks.sandstone, 1, 2), GTUtility.copyAmount(0, aStack))
@@ -411,14 +419,16 @@ public class ProcessingCrafting implements gregtech.api.interfaces.IOreRecipeReg
                     .eut(TierEU.RECIPE_LV / 2)
                     .addTo(laserEngraverRecipes);
 
-                GTValues.RA.stdBuilder()
-                    .itemInputs(
-                        GTModHandler.getModItem(AppliedEnergistics2.ID, "tile.BlockQuartz", 1L),
-                        GTUtility.copyAmount(0, aStack))
-                    .itemOutputs(GTModHandler.getModItem(AppliedEnergistics2.ID, "tile.BlockQuartzChiseled", 1L))
-                    .duration(2 * SECONDS + 10 * TICKS)
-                    .eut(TierEU.RECIPE_LV / 2)
-                    .addTo(laserEngraverRecipes);
+                if (AppliedEnergistics2.isModLoaded()) {
+                    GTValues.RA.stdBuilder()
+                        .itemInputs(
+                            GTModHandler.getModItem(AppliedEnergistics2.ID, "tile.BlockQuartz", 1L),
+                            GTUtility.copyAmount(0, aStack))
+                        .itemOutputs(GTModHandler.getModItem(AppliedEnergistics2.ID, "tile.BlockQuartzChiseled", 1L))
+                        .duration(2 * SECONDS + 10 * TICKS)
+                        .eut(TierEU.RECIPE_LV / 2)
+                        .addTo(laserEngraverRecipes);
+                }
 
                 GTValues.RA.stdBuilder()
                     .itemInputs(ItemList.Circuit_Silicon_Wafer.get(1), GTUtility.copyAmount(0, aStack))

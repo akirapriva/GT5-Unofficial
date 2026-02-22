@@ -2,6 +2,7 @@ package gtPlusPlus.core.recipe;
 
 import static gregtech.api.enums.Mods.Backpack;
 import static gregtech.api.enums.Mods.Baubles;
+import static gregtech.api.enums.Mods.BiomesOPlenty;
 import static gregtech.api.enums.Mods.Forestry;
 import static gregtech.api.enums.Mods.NewHorizonsCoreMod;
 import static gregtech.api.recipe.RecipeMaps.alloySmelterRecipes;
@@ -230,15 +231,17 @@ public class RecipesGregTech {
             .addTo(chemicalPlantRecipes);
 
         // Modify Sapling into Pine Sapling
-        GTValues.RA.stdBuilder()
-            .itemInputs(new ItemStack(Blocks.sapling, 32))
-            .circuit(6)
-            .itemOutputs(new ItemStack(BOPBlockRegistrator.sapling_Pine, 16))
-            .fluidInputs(new FluidStack(GTPPFluids.GeneticMutagen, 2_000), GTModHandler.getDistilledWater(8_000))
-            .duration(120 * SECONDS)
-            .eut(TierEU.RECIPE_MV / 2)
-            .metadata(CHEMPLANT_CASING_TIER, 2)
-            .addTo(chemicalPlantRecipes);
+        if (BiomesOPlenty.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(new ItemStack(Blocks.sapling, 32))
+                .circuit(6)
+                .itemOutputs(new ItemStack(BOPBlockRegistrator.sapling_Pine, 16))
+                .fluidInputs(new FluidStack(GTPPFluids.GeneticMutagen, 2_000), GTModHandler.getDistilledWater(8_000))
+                .duration(120 * SECONDS)
+                .eut(TierEU.RECIPE_MV / 2)
+                .metadata(CHEMPLANT_CASING_TIER, 2)
+                .addTo(chemicalPlantRecipes);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(GTOreDictUnificator.get(OrePrefixes.gem, Materials.NetherStar, 2))
@@ -866,29 +869,31 @@ public class RecipesGregTech {
         }
 
         // Sapling compatibility recipes
-        GTValues.RA.stdBuilder()
-            .itemInputs(new ItemStack(BOPBlockRegistrator.sapling_Rainforest))
-            .fluidInputs(Materials.Water.getFluid(100))
-            .fluidOutputs(Materials.Biomass.getFluid(100))
-            .duration(1 * MINUTES)
-            .eut(3)
-            .addTo(brewingRecipes);
+        if (BiomesOPlenty.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(new ItemStack(BOPBlockRegistrator.sapling_Rainforest))
+                .fluidInputs(Materials.Water.getFluid(100))
+                .fluidOutputs(Materials.Biomass.getFluid(100))
+                .duration(1 * MINUTES)
+                .eut(3)
+                .addTo(brewingRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(new ItemStack(BOPBlockRegistrator.sapling_Rainforest))
-            .fluidInputs(Materials.Honey.getFluid(100))
-            .fluidOutputs(Materials.Biomass.getFluid(100))
-            .duration(1 * MINUTES)
-            .eut(3)
-            .addTo(brewingRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(new ItemStack(BOPBlockRegistrator.sapling_Rainforest))
+                .fluidInputs(Materials.Honey.getFluid(100))
+                .fluidOutputs(Materials.Biomass.getFluid(100))
+                .duration(1 * MINUTES)
+                .eut(3)
+                .addTo(brewingRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(new ItemStack(BOPBlockRegistrator.sapling_Rainforest))
-            .fluidInputs(FluidRegistry.getFluidStack("juice", 100))
-            .fluidOutputs(Materials.Biomass.getFluid(100))
-            .duration(1 * MINUTES)
-            .eut(3)
-            .addTo(brewingRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(new ItemStack(BOPBlockRegistrator.sapling_Rainforest))
+                .fluidInputs(FluidRegistry.getFluidStack("juice", 100))
+                .fluidOutputs(Materials.Biomass.getFluid(100))
+                .duration(1 * MINUTES)
+                .eut(3)
+                .addTo(brewingRecipes);
+        }
     }
 
     private static void electrolyzerRecipes() {

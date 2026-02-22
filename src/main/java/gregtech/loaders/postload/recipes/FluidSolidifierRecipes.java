@@ -1,7 +1,6 @@
 package gregtech.loaders.postload.recipes;
 
-import static gregtech.api.enums.Mods.IndustrialCraft2;
-import static gregtech.api.enums.Mods.Railcraft;
+import static gregtech.api.enums.Mods.*;
 import static gregtech.api.recipe.RecipeMaps.fluidSolidifierRecipes;
 import static gregtech.api.util.GTModHandler.getModItem;
 import static gregtech.api.util.GTRecipeBuilder.HALF_INGOTS;
@@ -47,13 +46,15 @@ public class FluidSolidifierRecipes implements Runnable {
             .eut(TierEU.RECIPE_LV)
             .addTo(fluidSolidifierRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(ItemList.Shape_Mold_Ball.get(0L))
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.gem, Materials.Mercury, 1L))
-            .fluidInputs(Materials.Mercury.getFluid(1_000))
-            .duration(6 * SECONDS + 8 * TICKS)
-            .eut(4)
-            .addTo(fluidSolidifierRecipes);
+        if (Thaumcraft.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(ItemList.Shape_Mold_Ball.get(0L))
+                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.gem, Materials.Mercury, 1L))
+                .fluidInputs(Materials.Mercury.getFluid(1_000))
+                .duration(6 * SECONDS + 8 * TICKS)
+                .eut(4)
+                .addTo(fluidSolidifierRecipes);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(ItemList.Shape_Mold_Ball.get(0L))
@@ -215,13 +216,15 @@ public class FluidSolidifierRecipes implements Runnable {
             .eut(TierEU.RECIPE_MV)
             .addTo(fluidSolidifierRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(ItemList.Shape_Mold_Ball.get(0L))
-            .itemOutputs(ItemList.Circuit_Parts_Glass_Tube.get(1))
-            .fluidInputs(getFluidStack("glass.molten", 1000))
-            .duration(10 * SECONDS)
-            .eut(24)
-            .addTo(fluidSolidifierRecipes);
+        if (TinkerConstruct.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(ItemList.Shape_Mold_Ball.get(0L))
+                .itemOutputs(ItemList.Circuit_Parts_Glass_Tube.get(1))
+                .fluidInputs(getFluidStack("glass.molten", 1000))
+                .duration(10 * SECONDS)
+                .eut(24)
+                .addTo(fluidSolidifierRecipes);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(ItemList.Shape_Mold_Ball.get(0L))
@@ -287,13 +290,15 @@ public class FluidSolidifierRecipes implements Runnable {
             .eut(TierEU.RECIPE_EV)
             .addTo(fluidSolidifierRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(ItemList.Shape_Mold_Anvil.get(0L))
-            .itemOutputs(getModItem(Railcraft.ID, "anvil", 1L, 0))
-            .fluidInputs(Materials.Steel.getMolten(4464L))
-            .duration(6 * SECONDS + 8 * TICKS)
-            .eut(TierEU.RECIPE_LV / 2)
-            .addTo(fluidSolidifierRecipes);
+        if (Railcraft.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(ItemList.Shape_Mold_Anvil.get(0L))
+                .itemOutputs(getModItem(Railcraft.ID, "anvil", 1L, 0))
+                .fluidInputs(Materials.Steel.getMolten(4464L))
+                .duration(6 * SECONDS + 8 * TICKS)
+                .eut(TierEU.RECIPE_LV / 2)
+                .addTo(fluidSolidifierRecipes);
+        }
         // Bartworks Glass Tube
         GTValues.RA.stdBuilder()
             .itemInputs(ItemList.Shape_Mold_Rod_Long.get(0L))

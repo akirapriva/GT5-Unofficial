@@ -1,11 +1,6 @@
 package gregtech.loaders.postload.recipes;
 
-import static gregtech.api.enums.Mods.AppliedEnergistics2;
-import static gregtech.api.enums.Mods.ExtraUtilities;
-import static gregtech.api.enums.Mods.Forestry;
-import static gregtech.api.enums.Mods.Thaumcraft;
-import static gregtech.api.enums.Mods.ThaumicTinkerer;
-import static gregtech.api.enums.Mods.TwilightForest;
+import static gregtech.api.enums.Mods.*;
 import static gregtech.api.recipe.RecipeMaps.centrifugeRecipes;
 import static gregtech.api.util.GTModHandler.getModItem;
 import static gregtech.api.util.GTRecipeBuilder.INGOTS;
@@ -37,17 +32,19 @@ public class CentrifugeRecipes implements Runnable {
     @Override
     public void run() {
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.InfusedGold, 1))
-            .itemOutputs(
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Gold, 1),
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Gold, 1),
-                getModItem(Thaumcraft.ID, "ItemResource", 2L, 14))
-            .outputChances(10000, 10000, 9000)
-            .fluidInputs(Materials.Mercury.getFluid(200))
-            .duration(20 * SECONDS)
-            .eut((int) TierEU.RECIPE_MV)
-            .addTo(centrifugeRecipes);
+        if (Thaumcraft.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.InfusedGold, 1))
+                .itemOutputs(
+                    GTOreDictUnificator.get(OrePrefixes.dust, Materials.Gold, 1),
+                    GTOreDictUnificator.get(OrePrefixes.dust, Materials.Gold, 1),
+                    getModItem(Thaumcraft.ID, "ItemResource", 2L, 14))
+                .outputChances(10000, 10000, 9000)
+                .fluidInputs(Materials.Mercury.getFluid(200))
+                .duration(20 * SECONDS)
+                .eut((int) TierEU.RECIPE_MV)
+                .addTo(centrifugeRecipes);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(ItemList.Cell_Empty.get(1))
@@ -342,37 +339,39 @@ public class CentrifugeRecipes implements Runnable {
             .eut(5)
             .addTo(centrifugeRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(TwilightForest.ID, "item.meefRaw", 1L, 32767))
-            .circuit(1)
-            .fluidOutputs(Materials.Methane.getGas(48))
-            .duration(19 * SECONDS + 4 * TICKS)
-            .eut(5)
-            .addTo(centrifugeRecipes);
+        if (TwilightForest.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(TwilightForest.ID, "item.meefRaw", 1L, 32767))
+                .circuit(1)
+                .fluidOutputs(Materials.Methane.getGas(48))
+                .duration(19 * SECONDS + 4 * TICKS)
+                .eut(5)
+                .addTo(centrifugeRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(TwilightForest.ID, "item.meefSteak", 1L, 32767))
-            .circuit(1)
-            .fluidOutputs(Materials.Methane.getGas(36))
-            .duration(14 * SECONDS + 8 * TICKS)
-            .eut(5)
-            .addTo(centrifugeRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(TwilightForest.ID, "item.meefSteak", 1L, 32767))
+                .circuit(1)
+                .fluidOutputs(Materials.Methane.getGas(36))
+                .duration(14 * SECONDS + 8 * TICKS)
+                .eut(5)
+                .addTo(centrifugeRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(TwilightForest.ID, "item.venisonRaw", 1L, 32767))
-            .circuit(1)
-            .fluidOutputs(Materials.Methane.getGas(48))
-            .duration(19 * SECONDS + 4 * TICKS)
-            .eut(5)
-            .addTo(centrifugeRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(TwilightForest.ID, "item.venisonRaw", 1L, 32767))
+                .circuit(1)
+                .fluidOutputs(Materials.Methane.getGas(48))
+                .duration(19 * SECONDS + 4 * TICKS)
+                .eut(5)
+                .addTo(centrifugeRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(TwilightForest.ID, "item.venisonCooked", 1L, 32767))
-            .circuit(1)
-            .fluidOutputs(Materials.Methane.getGas(36))
-            .duration(14 * SECONDS + 8 * TICKS)
-            .eut(5)
-            .addTo(centrifugeRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(TwilightForest.ID, "item.venisonCooked", 1L, 32767))
+                .circuit(1)
+                .fluidOutputs(Materials.Methane.getGas(36))
+                .duration(14 * SECONDS + 8 * TICKS)
+                .eut(5)
+                .addTo(centrifugeRecipes);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(new ItemStack(Blocks.sand, 1, 1))
@@ -610,35 +609,37 @@ public class CentrifugeRecipes implements Runnable {
             .eut(TierEU.RECIPE_IV / 2)
             .addTo(centrifugeRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 45))
-            .circuit(1)
-            .itemOutputs(
-                GTOreDictUnificator.get(OrePrefixes.dustSmall, Materials.BasalticMineralSand, 1),
-                GTOreDictUnificator.get(OrePrefixes.dustSmall, Materials.Olivine, 1),
-                GTOreDictUnificator.get(OrePrefixes.dustSmall, Materials.Obsidian, 1),
-                GTOreDictUnificator.get(OrePrefixes.dustSmall, Materials.Basalt, 1),
-                GTOreDictUnificator.get(OrePrefixes.dustSmall, Materials.Flint, 1),
-                GTOreDictUnificator.get(OrePrefixes.dustSmall, Materials.RareEarth, 1))
-            .outputChances(2000, 2000, 2000, 2000, 2000, 2000)
-            .duration(3 * SECONDS + 4 * TICKS)
-            .eut(20)
-            .addTo(centrifugeRecipes);
+        if (AppliedEnergistics2.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 1L, 45))
+                .circuit(1)
+                .itemOutputs(
+                    GTOreDictUnificator.get(OrePrefixes.dustSmall, Materials.BasalticMineralSand, 1),
+                    GTOreDictUnificator.get(OrePrefixes.dustSmall, Materials.Olivine, 1),
+                    GTOreDictUnificator.get(OrePrefixes.dustSmall, Materials.Obsidian, 1),
+                    GTOreDictUnificator.get(OrePrefixes.dustSmall, Materials.Basalt, 1),
+                    GTOreDictUnificator.get(OrePrefixes.dustSmall, Materials.Flint, 1),
+                    GTOreDictUnificator.get(OrePrefixes.dustSmall, Materials.RareEarth, 1))
+                .outputChances(2000, 2000, 2000, 2000, 2000, 2000)
+                .duration(3 * SECONDS + 4 * TICKS)
+                .eut(20)
+                .addTo(centrifugeRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 36L, 45))
-            .circuit(2)
-            .itemOutputs(
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.BasalticMineralSand, 2),
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Olivine, 2),
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Obsidian, 2),
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Basalt, 2),
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.Flint, 2),
-                GTOreDictUnificator.get(OrePrefixes.dust, Materials.RareEarth, 2))
-            .outputChances(9000, 9000, 9000, 9000, 9000, 9000)
-            .duration(25 * SECONDS + 18 * TICKS)
-            .eut(80)
-            .addTo(centrifugeRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(AppliedEnergistics2.ID, "item.ItemMultiMaterial", 36L, 45))
+                .circuit(2)
+                .itemOutputs(
+                    GTOreDictUnificator.get(OrePrefixes.dust, Materials.BasalticMineralSand, 2),
+                    GTOreDictUnificator.get(OrePrefixes.dust, Materials.Olivine, 2),
+                    GTOreDictUnificator.get(OrePrefixes.dust, Materials.Obsidian, 2),
+                    GTOreDictUnificator.get(OrePrefixes.dust, Materials.Basalt, 2),
+                    GTOreDictUnificator.get(OrePrefixes.dust, Materials.Flint, 2),
+                    GTOreDictUnificator.get(OrePrefixes.dust, Materials.RareEarth, 2))
+                .outputChances(9000, 9000, 9000, 9000, 9000, 9000)
+                .duration(25 * SECONDS + 18 * TICKS)
+                .eut(80)
+                .addTo(centrifugeRecipes);
+        }
 
         // Ash centrifuge recipes
 

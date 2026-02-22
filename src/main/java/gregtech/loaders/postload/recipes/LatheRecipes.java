@@ -31,14 +31,16 @@ public class LatheRecipes implements Runnable {
             .eut(8)
             .addTo(latheRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Forestry.ID, "slabs", 1L, WILDCARD))
-            .itemOutputs(
-                new ItemStack(Items.bowl, 1),
-                GTOreDictUnificator.get(OrePrefixes.dustSmall, Materials.Wood, 1))
-            .duration(2 * SECONDS + 10 * TICKS)
-            .eut(8)
-            .addTo(latheRecipes);
+        if (Forestry.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Forestry.ID, "slabs", 1L, WILDCARD))
+                .itemOutputs(
+                    new ItemStack(Items.bowl, 1),
+                    GTOreDictUnificator.get(OrePrefixes.dustSmall, Materials.Wood, 1))
+                .duration(2 * SECONDS + 10 * TICKS)
+                .eut(8)
+                .addTo(latheRecipes);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(WerkstoffMaterialPool.LanthanumHexaboride.get(OrePrefixes.gemFlawless, 1))

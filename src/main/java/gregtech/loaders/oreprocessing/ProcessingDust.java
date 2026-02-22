@@ -1,5 +1,6 @@
 package gregtech.loaders.oreprocessing;
 
+import static gregtech.api.enums.Mods.Botania;
 import static gregtech.api.recipe.RecipeMaps.autoclaveRecipes;
 import static gregtech.api.recipe.RecipeMaps.blastFurnaceRecipes;
 import static gregtech.api.recipe.RecipeMaps.cannerRecipes;
@@ -331,15 +332,17 @@ public class ProcessingDust implements gregtech.api.interfaces.IOreRecipeRegistr
                         break;
                     case "ManaDiamond":
                     case "BotaniaDragonstone": {
-                        GTValues.RA.stdBuilder()
-                            .itemInputs(GTUtility.copyAmount(4, aStack))
-                            .itemOutputs(
-                                GTOreDictUnificator.get(OrePrefixes.gem, aMaterial, 3L),
-                                GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.AshDark, 16L))
-                            .duration(1 * SECONDS)
-                            .eut(TierEU.RECIPE_LV)
-                            .metadata(ADDITIVE_AMOUNT, 32)
-                            .addTo(implosionRecipes);
+                        if (Botania.isModLoaded()) {
+                            GTValues.RA.stdBuilder()
+                                .itemInputs(GTUtility.copyAmount(4, aStack))
+                                .itemOutputs(
+                                    GTOreDictUnificator.get(OrePrefixes.gem, aMaterial, 3L),
+                                    GTOreDictUnificator.get(OrePrefixes.dustTiny, Materials.AshDark, 16L))
+                                .duration(1 * SECONDS)
+                                .eut(TierEU.RECIPE_LV)
+                                .metadata(ADDITIVE_AMOUNT, 32)
+                                .addTo(implosionRecipes);
+                        }
                     }
                         break;
                     case "Opal":

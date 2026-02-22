@@ -1,5 +1,6 @@
 package gtPlusPlus.xmod.ic2.recipe;
 
+import static gregtech.api.enums.Mods.*;
 import static gregtech.api.recipe.RecipeMaps.assemblerRecipes;
 import static gregtech.api.recipe.RecipeMaps.extruderRecipes;
 import static gregtech.api.util.GTRecipeBuilder.MINUTES;
@@ -68,14 +69,16 @@ public class RecipeIC2 {
             .duration(2 * MINUTES + 8 * SECONDS)
             .eut(250)
             .addTo(extruderRecipes);
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.block, Materials.EnergeticAlloy, 1),
-                GregtechItemList.Shape_Extruder_WindmillShaft.get(0))
-            .itemOutputs(GregtechItemList.EnergeticAlloyShaft.get(1))
-            .duration(2 * MINUTES + 8 * SECONDS)
-            .eut(250)
-            .addTo(extruderRecipes);
+        if (EnderIO.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    GTOreDictUnificator.get(OrePrefixes.block, Materials.EnergeticAlloy, 1),
+                    GregtechItemList.Shape_Extruder_WindmillShaft.get(0))
+                .itemOutputs(GregtechItemList.EnergeticAlloyShaft.get(1))
+                .duration(2 * MINUTES + 8 * SECONDS)
+                .eut(250)
+                .addTo(extruderRecipes);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(
@@ -102,14 +105,16 @@ public class RecipeIC2 {
             .duration(8 * MINUTES + 32 * SECONDS)
             .eut(TierEU.RECIPE_EV)
             .addTo(extruderRecipes);
-        GTValues.RA.stdBuilder()
-            .itemInputs(
-                GTOreDictUnificator.get(OrePrefixes.block, Materials.VibrantAlloy, 1),
-                GregtechItemList.Shape_Extruder_WindmillShaft.get(0))
-            .itemOutputs(GregtechItemList.VibrantAlloyShaft.get(1))
-            .duration(8 * MINUTES + 32 * SECONDS)
-            .eut(TierEU.RECIPE_EV)
-            .addTo(extruderRecipes);
+        if (EnderIO.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(
+                    GTOreDictUnificator.get(OrePrefixes.block, Materials.VibrantAlloy, 1),
+                    GregtechItemList.Shape_Extruder_WindmillShaft.get(0))
+                .itemOutputs(GregtechItemList.VibrantAlloyShaft.get(1))
+                .duration(8 * MINUTES + 32 * SECONDS)
+                .eut(TierEU.RECIPE_EV)
+                .addTo(extruderRecipes);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(

@@ -1,5 +1,6 @@
 package gregtech.loaders.postload.recipes;
 
+import static gregtech.api.enums.Mods.*;
 import static gregtech.api.enums.Mods.Forestry;
 import static gregtech.api.enums.Mods.IndustrialCraft2;
 import static gregtech.api.enums.Mods.NewHorizonsCoreMod;
@@ -156,12 +157,14 @@ public class FluidExtractorRecipes implements Runnable {
             .eut(4)
             .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.gem, Materials.Mercury, 1L))
-            .fluidOutputs(Materials.Mercury.getFluid(1_000))
-            .duration(6 * SECONDS + 8 * TICKS)
-            .eut(4)
-            .addTo(fluidExtractionRecipes);
+        if (Thaumcraft.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.gem, Materials.Mercury, 1L))
+                .fluidOutputs(Materials.Mercury.getFluid(1_000))
+                .duration(6 * SECONDS + 8 * TICKS)
+                .eut(4)
+                .addTo(fluidExtractionRecipes);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.Monazite, 1L))
@@ -234,255 +237,257 @@ public class FluidExtractorRecipes implements Runnable {
             .eut(28)
             .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.beta", 1L, 0))
-            .fluidOutputs(Materials.Iron.getMolten(2 * INGOTS))
-            .duration(15 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+        if (Railcraft.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.beta", 1L, 0))
+                .fluidOutputs(Materials.Iron.getMolten(2 * INGOTS))
+                .duration(15 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.beta", 1L, 1))
-            .fluidOutputs(Materials.Iron.getMolten(1 * INGOTS))
-            .duration(15 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.beta", 1L, 1))
+                .fluidOutputs(Materials.Iron.getMolten(1 * INGOTS))
+                .duration(15 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.beta", 1L, 2))
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.nugget, Materials.Iron, 6))
-            .outputChances(10000)
-            .fluidOutputs(Materials.Bronze.getMolten(1728))
-            .duration(15 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.beta", 1L, 2))
+                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.nugget, Materials.Iron, 6))
+                .outputChances(10000)
+                .fluidOutputs(Materials.Bronze.getMolten(1728))
+                .duration(15 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.beta", 1L, 13))
-            .fluidOutputs(Materials.Steel.getMolten(2 * INGOTS))
-            .duration(20 * SECONDS)
-            .eut(90)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.beta", 1L, 13))
+                .fluidOutputs(Materials.Steel.getMolten(2 * INGOTS))
+                .duration(20 * SECONDS)
+                .eut(90)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.beta", 1L, 14))
-            .fluidOutputs(Materials.Steel.getMolten(1 * INGOTS))
-            .duration(20 * SECONDS)
-            .eut(90)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.beta", 1L, 14))
+                .fluidOutputs(Materials.Steel.getMolten(1 * INGOTS))
+                .duration(20 * SECONDS)
+                .eut(90)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.beta", 1L, 15))
-            .fluidOutputs(Materials.Steel.getMolten(1836))
-            .duration(20 * SECONDS)
-            .eut(90)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.beta", 1L, 15))
+                .fluidOutputs(Materials.Steel.getMolten(1836))
+                .duration(20 * SECONDS)
+                .eut(90)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 0))
-            .fluidOutputs(Materials.Aluminium.getMolten(2 * INGOTS))
-            .duration(25 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 0))
+                .fluidOutputs(Materials.Aluminium.getMolten(2 * INGOTS))
+                .duration(25 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 1))
-            .fluidOutputs(Materials.Aluminium.getMolten(1 * INGOTS))
-            .duration(25 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 1))
+                .fluidOutputs(Materials.Aluminium.getMolten(1 * INGOTS))
+                .duration(25 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 2))
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.Ash, 12L))
-            .outputChances(10000)
-            .fluidOutputs(Materials.Aluminium.getMolten(108L))
-            .duration(25 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 2))
+                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.Ash, 12L))
+                .outputChances(10000)
+                .fluidOutputs(Materials.Aluminium.getMolten(108L))
+                .duration(25 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 3))
-            .fluidOutputs(Materials.StainlessSteel.getMolten(2 * INGOTS))
-            .duration(30 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 3))
+                .fluidOutputs(Materials.StainlessSteel.getMolten(2 * INGOTS))
+                .duration(30 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 4))
-            .fluidOutputs(Materials.StainlessSteel.getMolten(1 * INGOTS))
-            .duration(30 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 4))
+                .fluidOutputs(Materials.StainlessSteel.getMolten(1 * INGOTS))
+                .duration(30 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 5))
-            .fluidOutputs(Materials.StainlessSteel.getMolten(1836))
-            .duration(30 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 5))
+                .fluidOutputs(Materials.StainlessSteel.getMolten(1836))
+                .duration(30 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 6))
-            .fluidOutputs(Materials.Titanium.getMolten(2 * INGOTS))
-            .duration(35 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 6))
+                .fluidOutputs(Materials.Titanium.getMolten(2 * INGOTS))
+                .duration(35 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 7))
-            .fluidOutputs(Materials.Titanium.getMolten(1 * INGOTS))
-            .duration(35 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 7))
+                .fluidOutputs(Materials.Titanium.getMolten(1 * INGOTS))
+                .duration(35 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 8))
-            .fluidOutputs(Materials.Titanium.getMolten(1836))
-            .duration(35 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 8))
+                .fluidOutputs(Materials.Titanium.getMolten(1836))
+                .duration(35 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 9))
-            .fluidOutputs(Materials.TungstenSteel.getMolten(2 * INGOTS))
-            .duration(40 * SECONDS)
-            .eut(TierEU.RECIPE_HV)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 9))
+                .fluidOutputs(Materials.TungstenSteel.getMolten(2 * INGOTS))
+                .duration(40 * SECONDS)
+                .eut(TierEU.RECIPE_HV)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 10))
-            .fluidOutputs(Materials.TungstenSteel.getMolten(1 * INGOTS))
-            .duration(40 * SECONDS)
-            .eut(TierEU.RECIPE_HV)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 10))
+                .fluidOutputs(Materials.TungstenSteel.getMolten(1 * INGOTS))
+                .duration(40 * SECONDS)
+                .eut(TierEU.RECIPE_HV)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 11))
-            .fluidOutputs(Materials.TungstenSteel.getMolten(1836))
-            .duration(40 * SECONDS)
-            .eut(TierEU.RECIPE_HV)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 11))
+                .fluidOutputs(Materials.TungstenSteel.getMolten(1836))
+                .duration(40 * SECONDS)
+                .eut(TierEU.RECIPE_HV)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 12))
-            .fluidOutputs(Materials.Palladium.getMolten(2 * INGOTS))
-            .duration(45 * SECONDS)
-            .eut(TierEU.RECIPE_HV)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 12))
+                .fluidOutputs(Materials.Palladium.getMolten(2 * INGOTS))
+                .duration(45 * SECONDS)
+                .eut(TierEU.RECIPE_HV)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 13))
-            .fluidOutputs(Materials.Palladium.getMolten(1 * INGOTS))
-            .duration(45 * SECONDS)
-            .eut(TierEU.RECIPE_HV)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 13))
+                .fluidOutputs(Materials.Palladium.getMolten(1 * INGOTS))
+                .duration(45 * SECONDS)
+                .eut(TierEU.RECIPE_HV)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 14))
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.nugget, Materials.Chrome, 6L))
-            .outputChances(10000)
-            .fluidOutputs(Materials.NiobiumTitanium.getMolten(1728))
-            .duration(45 * SECONDS)
-            .eut(TierEU.RECIPE_HV)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.zeta", 1L, 14))
+                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.nugget, Materials.Chrome, 6L))
+                .outputChances(10000)
+                .fluidOutputs(Materials.NiobiumTitanium.getMolten(1728))
+                .duration(45 * SECONDS)
+                .eut(TierEU.RECIPE_HV)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 0))
-            .fluidOutputs(Materials.Iridium.getMolten(2 * INGOTS))
-            .duration(50 * SECONDS)
-            .eut(TierEU.RECIPE_HV)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 0))
+                .fluidOutputs(Materials.Iridium.getMolten(2 * INGOTS))
+                .duration(50 * SECONDS)
+                .eut(TierEU.RECIPE_HV)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 1))
-            .fluidOutputs(Materials.Iridium.getMolten(1 * INGOTS))
-            .duration(50 * SECONDS)
-            .eut(TierEU.RECIPE_HV)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 1))
+                .fluidOutputs(Materials.Iridium.getMolten(1 * INGOTS))
+                .duration(50 * SECONDS)
+                .eut(TierEU.RECIPE_HV)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 2))
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.nugget, Materials.Iridium, 6L))
-            .outputChances(10000)
-            .fluidOutputs(Materials.Enderium.getMolten(1728))
-            .duration(50 * SECONDS)
-            .eut(TierEU.RECIPE_HV)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 2))
+                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.nugget, Materials.Iridium, 6L))
+                .outputChances(10000)
+                .fluidOutputs(Materials.Enderium.getMolten(1728))
+                .duration(50 * SECONDS)
+                .eut(TierEU.RECIPE_HV)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 3))
-            .fluidOutputs(Materials.Osmium.getMolten(2 * INGOTS))
-            .duration(55 * SECONDS)
-            .eut(TierEU.RECIPE_EV)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 3))
+                .fluidOutputs(Materials.Osmium.getMolten(2 * INGOTS))
+                .duration(55 * SECONDS)
+                .eut(TierEU.RECIPE_EV)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 4))
-            .fluidOutputs(Materials.Osmium.getMolten(1 * INGOTS))
-            .duration(55 * SECONDS)
-            .eut(TierEU.RECIPE_EV)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 4))
+                .fluidOutputs(Materials.Osmium.getMolten(1 * INGOTS))
+                .duration(55 * SECONDS)
+                .eut(TierEU.RECIPE_EV)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 5))
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.nugget, Materials.Osmium, 6L))
-            .outputChances(10000)
-            .fluidOutputs(Materials.Naquadah.getMolten(1728))
-            .duration(55 * SECONDS)
-            .eut(TierEU.RECIPE_EV)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 5))
+                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.nugget, Materials.Osmium, 6L))
+                .outputChances(10000)
+                .fluidOutputs(Materials.Naquadah.getMolten(1728))
+                .duration(55 * SECONDS)
+                .eut(TierEU.RECIPE_EV)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 6))
-            .fluidOutputs(Materials.Neutronium.getMolten(2 * INGOTS))
-            .duration(60 * SECONDS)
-            .eut(TierEU.RECIPE_EV)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 6))
+                .fluidOutputs(Materials.Neutronium.getMolten(2 * INGOTS))
+                .duration(60 * SECONDS)
+                .eut(TierEU.RECIPE_EV)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 7))
-            .fluidOutputs(Materials.Neutronium.getMolten(1 * INGOTS))
-            .duration(60 * SECONDS)
-            .eut(TierEU.RECIPE_EV)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 7))
+                .fluidOutputs(Materials.Neutronium.getMolten(1 * INGOTS))
+                .duration(60 * SECONDS)
+                .eut(TierEU.RECIPE_EV)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 8))
-            .fluidOutputs(Materials.Neutronium.getMolten(1836))
-            .duration(60 * SECONDS)
-            .eut(TierEU.RECIPE_EV)
-            .recipeCategory(RecipeCategories.fluidExtractorRecycling)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Railcraft.ID, "machine.eta", 1L, 8))
+                .fluidOutputs(Materials.Neutronium.getMolten(1836))
+                .duration(60 * SECONDS)
+                .eut(TierEU.RECIPE_EV)
+                .recipeCategory(RecipeCategories.fluidExtractorRecycling)
+                .addTo(fluidExtractionRecipes);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(new ItemStack(Items.wheat_seeds, 1, 32767))
@@ -533,49 +538,53 @@ public class FluidExtractorRecipes implements Runnable {
             .eut(4)
             .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(getModItem(Forestry.ID, "phosphor", 1L))
-            .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.Phosphorus, 1L))
-            .outputChances(1000)
-            .fluidOutputs(Materials.Lava.getFluid(800L))
-            .duration(12 * SECONDS + 16 * TICKS)
-            .eut(TierEU.RECIPE_MV)
-            .addTo(fluidExtractionRecipes);
+        if (Forestry.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(getModItem(Forestry.ID, "phosphor", 1L))
+                .itemOutputs(GTOreDictUnificator.get(OrePrefixes.dust, Materials.Phosphorus, 1L))
+                .outputChances(1000)
+                .fluidOutputs(Materials.Lava.getFluid(800L))
+                .duration(12 * SECONDS + 16 * TICKS)
+                .eut(TierEU.RECIPE_MV)
+                .addTo(fluidExtractionRecipes);
+        }
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTModHandler.getModItem(TinkerConstruct.ID, "oreBerries", 1L, 0))
-            .fluidOutputs(Materials.Iron.getMolten(1 * NUGGETS))
-            .duration(2 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .addTo(fluidExtractionRecipes);
+        if (TinkerConstruct.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTModHandler.getModItem(TinkerConstruct.ID, "oreBerries", 1L, 0))
+                .fluidOutputs(Materials.Iron.getMolten(1 * NUGGETS))
+                .duration(2 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTModHandler.getModItem(TinkerConstruct.ID, "oreBerries", 1L, 1))
-            .fluidOutputs(Materials.Gold.getMolten(1 * NUGGETS))
-            .duration(2 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTModHandler.getModItem(TinkerConstruct.ID, "oreBerries", 1L, 1))
+                .fluidOutputs(Materials.Gold.getMolten(1 * NUGGETS))
+                .duration(2 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTModHandler.getModItem(TinkerConstruct.ID, "oreBerries", 1L, 2))
-            .fluidOutputs(Materials.Copper.getMolten(1 * NUGGETS))
-            .duration(2 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTModHandler.getModItem(TinkerConstruct.ID, "oreBerries", 1L, 2))
+                .fluidOutputs(Materials.Copper.getMolten(1 * NUGGETS))
+                .duration(2 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTModHandler.getModItem(TinkerConstruct.ID, "oreBerries", 1L, 3))
-            .fluidOutputs(Materials.Tin.getMolten(1 * NUGGETS))
-            .duration(2 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTModHandler.getModItem(TinkerConstruct.ID, "oreBerries", 1L, 3))
+                .fluidOutputs(Materials.Tin.getMolten(1 * NUGGETS))
+                .duration(2 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .addTo(fluidExtractionRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTModHandler.getModItem(TinkerConstruct.ID, "oreBerries", 1L, 4))
-            .fluidOutputs(Materials.Aluminium.getMolten(1 * NUGGETS))
-            .duration(2 * SECONDS)
-            .eut(TierEU.RECIPE_HV)
-            .addTo(fluidExtractionRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTModHandler.getModItem(TinkerConstruct.ID, "oreBerries", 1L, 4))
+                .fluidOutputs(Materials.Aluminium.getMolten(1 * NUGGETS))
+                .duration(2 * SECONDS)
+                .eut(TierEU.RECIPE_HV)
+                .addTo(fluidExtractionRecipes);
+        }
 
         if (Forestry.isModLoaded()) {
             // Beecombs fluid extractor recipes

@@ -192,7 +192,7 @@ public class ProcessingToolOther implements gregtech.api.interfaces.IOreRecipeRe
                     new Object[] { "ABC", "DEF", "CFG", 'A', OrePrefixes.stickLong.get(aMaterial), 'B',
                         OrePrefixes.toolHeadSaw.get(aMaterial), 'C', OrePrefixes.ring.get(aMaterial), 'D',
                         OrePrefixes.toolHeadFile.get(aMaterial), 'E', OrePrefixes.plate.get(aMaterial), 'F',
-                        OrePrefixes.spring.get(aMaterial), 'G', Dyes.dyeBlue });
+                        OrePrefixes.toolHeadSword.get(aMaterial), 'G', Dyes.dyeBlue });
 
                 GTModHandler.addCraftingRecipe(
                     MetaGeneratedTool01.INSTANCE

@@ -1,5 +1,6 @@
 package gregtech.loaders.postload.recipes;
 
+import static gregtech.api.enums.Mods.Railcraft;
 import static gregtech.api.recipe.RecipeMaps.benderRecipes;
 import static gregtech.api.util.GTRecipeBuilder.SECONDS;
 import static gregtech.api.util.GTRecipeBuilder.TICKS;
@@ -11,6 +12,7 @@ import goodgenerator.items.GGMaterial;
 import gregtech.api.enums.GTValues;
 import gregtech.api.enums.ItemList;
 import gregtech.api.enums.Materials;
+import gregtech.api.enums.Mods.*;
 import gregtech.api.enums.OrePrefixes;
 import gregtech.api.enums.TierEU;
 import gregtech.api.util.GTOreDictUnificator;
@@ -19,213 +21,216 @@ public class BenderRecipes implements Runnable {
 
     @Override
     public void run() {
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Aluminium, 20L))
-            .circuit(10)
-            .itemOutputs(ItemList.RC_Rail_Standard.get(64L))
-            .duration(15 * SECONDS)
-            .eut(TierEU.RECIPE_LV)
-            .addTo(benderRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Iron, 48L))
-            .circuit(10)
-            .itemOutputs(ItemList.RC_Rail_Standard.get(64L))
-            .duration(15 * SECONDS)
-            .eut(TierEU.RECIPE_LV)
-            .addTo(benderRecipes);
+        if (Railcraft.isModLoaded()) {
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Aluminium, 20L))
+                .circuit(10)
+                .itemOutputs(ItemList.RC_Rail_Standard.get(64L))
+                .duration(15 * SECONDS)
+                .eut(TierEU.RECIPE_LV)
+                .addTo(benderRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.WroughtIron, 32L))
-            .circuit(10)
-            .itemOutputs(ItemList.RC_Rail_Standard.get(64L))
-            .duration(15 * SECONDS)
-            .eut(TierEU.RECIPE_LV)
-            .addTo(benderRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Iron, 48L))
+                .circuit(10)
+                .itemOutputs(ItemList.RC_Rail_Standard.get(64L))
+                .duration(15 * SECONDS)
+                .eut(TierEU.RECIPE_LV)
+                .addTo(benderRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Bronze, 32L))
-            .circuit(10)
-            .itemOutputs(ItemList.RC_Rail_Standard.get(64L))
-            .duration(15 * SECONDS)
-            .eut(TierEU.RECIPE_LV)
-            .addTo(benderRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.WroughtIron, 32L))
+                .circuit(10)
+                .itemOutputs(ItemList.RC_Rail_Standard.get(64L))
+                .duration(15 * SECONDS)
+                .eut(TierEU.RECIPE_LV)
+                .addTo(benderRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Steel, 24L))
-            .circuit(10)
-            .itemOutputs(ItemList.RC_Rail_Standard.get(64L))
-            .duration(15 * SECONDS)
-            .eut(TierEU.RECIPE_LV)
-            .addTo(benderRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Bronze, 32L))
+                .circuit(10)
+                .itemOutputs(ItemList.RC_Rail_Standard.get(64L))
+                .duration(15 * SECONDS)
+                .eut(TierEU.RECIPE_LV)
+                .addTo(benderRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.StainlessSteel, 16L))
-            .circuit(10)
-            .itemOutputs(ItemList.RC_Rail_Standard.get(64L))
-            .duration(15 * SECONDS)
-            .eut(TierEU.RECIPE_LV)
-            .addTo(benderRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Steel, 24L))
+                .circuit(10)
+                .itemOutputs(ItemList.RC_Rail_Standard.get(64L))
+                .duration(15 * SECONDS)
+                .eut(TierEU.RECIPE_LV)
+                .addTo(benderRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Titanium, 12L))
-            .circuit(10)
-            .itemOutputs(ItemList.RC_Rail_Standard.get(64L))
-            .duration(15 * SECONDS)
-            .eut(TierEU.RECIPE_LV)
-            .addTo(benderRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.StainlessSteel, 16L))
+                .circuit(10)
+                .itemOutputs(ItemList.RC_Rail_Standard.get(64L))
+                .duration(15 * SECONDS)
+                .eut(TierEU.RECIPE_LV)
+                .addTo(benderRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.TungstenSteel, 9L))
-            .circuit(10)
-            .itemOutputs(ItemList.RC_Rail_Standard.get(64L))
-            .duration(15 * SECONDS)
-            .eut(TierEU.RECIPE_LV)
-            .addTo(benderRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Titanium, 12L))
+                .circuit(10)
+                .itemOutputs(ItemList.RC_Rail_Standard.get(64L))
+                .duration(15 * SECONDS)
+                .eut(TierEU.RECIPE_LV)
+                .addTo(benderRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Iridium, 6L))
-            .circuit(10)
-            .itemOutputs(ItemList.RC_Rail_Standard.get(64L))
-            .duration(15 * SECONDS)
-            .eut(TierEU.RECIPE_LV)
-            .addTo(benderRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.TungstenSteel, 9L))
+                .circuit(10)
+                .itemOutputs(ItemList.RC_Rail_Standard.get(64L))
+                .duration(15 * SECONDS)
+                .eut(TierEU.RECIPE_LV)
+                .addTo(benderRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Osmium, 3L))
-            .circuit(10)
-            .itemOutputs(ItemList.RC_Rail_Standard.get(64L))
-            .duration(15 * SECONDS)
-            .eut(TierEU.RECIPE_LV)
-            .addTo(benderRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Iridium, 6L))
+                .circuit(10)
+                .itemOutputs(ItemList.RC_Rail_Standard.get(64L))
+                .duration(15 * SECONDS)
+                .eut(TierEU.RECIPE_LV)
+                .addTo(benderRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Osmiridium, 2L))
-            .circuit(10)
-            .itemOutputs(ItemList.RC_Rail_Standard.get(64L))
-            .duration(15 * SECONDS)
-            .eut(TierEU.RECIPE_LV)
-            .addTo(benderRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Osmium, 3L))
+                .circuit(10)
+                .itemOutputs(ItemList.RC_Rail_Standard.get(64L))
+                .duration(15 * SECONDS)
+                .eut(TierEU.RECIPE_LV)
+                .addTo(benderRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Obsidian, 24L))
-            .circuit(11)
-            .itemOutputs(ItemList.RC_Rail_Reinforced.get(64L))
-            .duration(30 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .addTo(benderRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Osmiridium, 2L))
+                .circuit(10)
+                .itemOutputs(ItemList.RC_Rail_Standard.get(64L))
+                .duration(15 * SECONDS)
+                .eut(TierEU.RECIPE_LV)
+                .addTo(benderRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.StainlessSteel, 12L))
-            .circuit(11)
-            .itemOutputs(ItemList.RC_Rail_Reinforced.get(64L))
-            .duration(30 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .addTo(benderRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Obsidian, 24L))
+                .circuit(11)
+                .itemOutputs(ItemList.RC_Rail_Reinforced.get(64L))
+                .duration(30 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .addTo(benderRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.TungstenSteel, 6L))
-            .circuit(11)
-            .itemOutputs(ItemList.RC_Rail_Reinforced.get(64L))
-            .duration(30 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .addTo(benderRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.StainlessSteel, 12L))
+                .circuit(11)
+                .itemOutputs(ItemList.RC_Rail_Reinforced.get(64L))
+                .duration(30 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .addTo(benderRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Iridium, 3L))
-            .circuit(11)
-            .itemOutputs(ItemList.RC_Rail_Reinforced.get(64L))
-            .duration(30 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .addTo(benderRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.TungstenSteel, 6L))
+                .circuit(11)
+                .itemOutputs(ItemList.RC_Rail_Reinforced.get(64L))
+                .duration(30 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .addTo(benderRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Osmium, 1L))
-            .circuit(11)
-            .itemOutputs(ItemList.RC_Rail_Reinforced.get(64L))
-            .duration(30 * SECONDS)
-            .eut(TierEU.RECIPE_MV)
-            .addTo(benderRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Iridium, 3L))
+                .circuit(11)
+                .itemOutputs(ItemList.RC_Rail_Reinforced.get(64L))
+                .duration(30 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .addTo(benderRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Aluminium, 20L))
-            .circuit(12)
-            .itemOutputs(ItemList.RC_Rebar.get(64L))
-            .duration(10 * SECONDS)
-            .eut(200)
-            .addTo(benderRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Osmium, 1L))
+                .circuit(11)
+                .itemOutputs(ItemList.RC_Rail_Reinforced.get(64L))
+                .duration(30 * SECONDS)
+                .eut(TierEU.RECIPE_MV)
+                .addTo(benderRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Iron, 48L))
-            .circuit(12)
-            .itemOutputs(ItemList.RC_Rebar.get(64L))
-            .duration(10 * SECONDS)
-            .eut(200)
-            .addTo(benderRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Aluminium, 20L))
+                .circuit(12)
+                .itemOutputs(ItemList.RC_Rebar.get(64L))
+                .duration(10 * SECONDS)
+                .eut(200)
+                .addTo(benderRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.WroughtIron, 24L))
-            .circuit(12)
-            .itemOutputs(ItemList.RC_Rebar.get(64L))
-            .duration(10 * SECONDS)
-            .eut(200)
-            .addTo(benderRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Iron, 48L))
+                .circuit(12)
+                .itemOutputs(ItemList.RC_Rebar.get(64L))
+                .duration(10 * SECONDS)
+                .eut(200)
+                .addTo(benderRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Bronze, 32L))
-            .circuit(12)
-            .itemOutputs(ItemList.RC_Rebar.get(64L))
-            .duration(10 * SECONDS)
-            .eut(200)
-            .addTo(benderRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.WroughtIron, 24L))
+                .circuit(12)
+                .itemOutputs(ItemList.RC_Rebar.get(64L))
+                .duration(10 * SECONDS)
+                .eut(200)
+                .addTo(benderRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Steel, 16L))
-            .circuit(12)
-            .itemOutputs(ItemList.RC_Rebar.get(64L))
-            .duration(10 * SECONDS)
-            .eut(200)
-            .addTo(benderRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Bronze, 32L))
+                .circuit(12)
+                .itemOutputs(ItemList.RC_Rebar.get(64L))
+                .duration(10 * SECONDS)
+                .eut(200)
+                .addTo(benderRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.StainlessSteel, 12L))
-            .circuit(12)
-            .itemOutputs(ItemList.RC_Rebar.get(64L))
-            .duration(10 * SECONDS)
-            .eut(200)
-            .addTo(benderRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Steel, 16L))
+                .circuit(12)
+                .itemOutputs(ItemList.RC_Rebar.get(64L))
+                .duration(10 * SECONDS)
+                .eut(200)
+                .addTo(benderRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Titanium, 8))
-            .circuit(12)
-            .itemOutputs(ItemList.RC_Rebar.get(64L))
-            .duration(10 * SECONDS)
-            .eut(200)
-            .addTo(benderRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.StainlessSteel, 12L))
+                .circuit(12)
+                .itemOutputs(ItemList.RC_Rebar.get(64L))
+                .duration(10 * SECONDS)
+                .eut(200)
+                .addTo(benderRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.TungstenSteel, 6L))
-            .circuit(12)
-            .itemOutputs(ItemList.RC_Rebar.get(64L))
-            .duration(10 * SECONDS)
-            .eut(200)
-            .addTo(benderRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Titanium, 8))
+                .circuit(12)
+                .itemOutputs(ItemList.RC_Rebar.get(64L))
+                .duration(10 * SECONDS)
+                .eut(200)
+                .addTo(benderRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Iridium, 4L))
-            .circuit(12)
-            .itemOutputs(ItemList.RC_Rebar.get(64L))
-            .duration(10 * SECONDS)
-            .eut(200)
-            .addTo(benderRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.TungstenSteel, 6L))
+                .circuit(12)
+                .itemOutputs(ItemList.RC_Rebar.get(64L))
+                .duration(10 * SECONDS)
+                .eut(200)
+                .addTo(benderRecipes);
 
-        GTValues.RA.stdBuilder()
-            .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Osmium, 2L))
-            .circuit(12)
-            .itemOutputs(ItemList.RC_Rebar.get(64L))
-            .duration(10 * SECONDS)
-            .eut(200)
-            .addTo(benderRecipes);
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Iridium, 4L))
+                .circuit(12)
+                .itemOutputs(ItemList.RC_Rebar.get(64L))
+                .duration(10 * SECONDS)
+                .eut(200)
+                .addTo(benderRecipes);
+
+            GTValues.RA.stdBuilder()
+                .itemInputs(GTOreDictUnificator.get(OrePrefixes.stick, Materials.Osmium, 2L))
+                .circuit(12)
+                .itemOutputs(ItemList.RC_Rebar.get(64L))
+                .duration(10 * SECONDS)
+                .eut(200)
+                .addTo(benderRecipes);
+        }
 
         GTValues.RA.stdBuilder()
             .itemInputs(ItemList.IC2_Mixed_Metal_Ingot.get(1L))
