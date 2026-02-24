@@ -3,12 +3,7 @@ GT5-Unofficial
 
 ## About
 
-GT5-Unofficial is a decompiled and modified version of GT5.07.07. The goal of the mod is to maintain and extend the end
-game of GT5. This version has been heavily modified for use with the GTNH modpack.
-
-## Downloads
-
-Builds can be found on the [GTNH Jenkins Server](http://jenkins.usrv.eu:8080/job/Gregtech-5-Unofficial/).
+GT5-Unofficial is a decompiled and modified version of GT5.07.07. However the goal of the GT5u Community Edition is going on its own way for some content and remove the hard dependencies of GT:NH.
 
 ## Installation
 
@@ -18,17 +13,17 @@ Place the downloaded jar file into your mods/ folder. A number of other mods may
 
 ## Issues
 
-Please report any issues you to find to the main GTNH issue tracker. Include as much information as possible including
+Please report any issues you to find to the main GT5u: CE issue tracker. Include as much information as possible including
 as version and steps to reproduce.
 
 ## Contribution
 
 Please do! However, please take a note of
-[current issues](https://github.com/GTNewHorizons/GT-New-Horizons-Modpack/issues) and what is currently being worked on.
+[current issues](https://github.com/akirapriva/GT5u-Community-Edition/issues) and what is currently being worked on.
 
 You don't need to clone the repository with full history to contribute, to save disk space and bandwidth you can clone:
 ```bash
-git clone --depth 3 https://github.com/GTNewHorizons/GT5-Unofficial.git GT5-Unofficial
+git clone --depth 3 https://github.com/akirapriva/GT5-Unofficial.git GT5-Unofficial
 ```
 This way you'll get the last 3 commits of history in your local checkout, instead of all of it.
 
@@ -37,7 +32,7 @@ the chance of strange errors.
 
 ## Attribution
 
-Some textures/ideas have been taken from future versions of GT and texture pack authors for GTNH. Credit goes to Jimbno for the UU-Tex texture pack and its contributions to the base pack here: https://github.com/Jimbno/UU-Tex.
+Some textures/ideas have been taken from future versions of GT and texture pack authors for GT5u: CE. Credit goes to Jimbno for the UU-Tex texture pack and its contributions to the base pack here: https://github.com/Jimbno/UU-Tex.
 Many sound effects were backported from the GregTech Community Edition Unofficial / Modern team: https://github.com/GregTechCEu/
 
 ## Music duration metadata
