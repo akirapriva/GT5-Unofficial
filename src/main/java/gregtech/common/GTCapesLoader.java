@@ -96,7 +96,7 @@ public class GTCapesLoader implements Runnable {
         //                                       |---------------------------------------UUID--------------------------------------|:capeName(optional)
         Pattern pattern = Pattern.compile("^([0-9a-fA-F]{8}-?[0-9a-fA-F]{4}-?[0-9a-fA-F]{4}-?[0-9a-fA-F]{4}-?[0-9a-fA-F]{12})(?:$|\\:(cape\\w+).*$)");
         // spotless:on
-        String url = "https://raw.githubusercontent.com/GTNewHorizons/CustomGTCapeHook-Cape-List/master/capesUUID.txt";
+        String url = "https://raw.githubusercontent.com/akirapriva/cape-hook/refs/heads/main/capesUUID?token=GHSAT0AAAAAADUIVJJONRKIHUDP45X7YET42M57IRA";
         try (final Scanner scanner = new Scanner(new URL(url).openStream())) {
             while (scanner.hasNextLine()) {
                 Matcher matcher = pattern.matcher(scanner.nextLine());
